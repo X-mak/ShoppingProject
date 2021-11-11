@@ -1,0 +1,10 @@
+    #main p{
+        text-align: center;
+        font-size: 28px;
+        font-weight: bold;
+        margin: 200px 0;
+    }
+    ul li:nth-child(5) a{
+		background-color: #f7d024;
+        color: black;
+	} 

@@ -1,0 +1,19 @@
+#main .goods{
+    border: 1px solid #000;
+    width: 60%;
+    margin: 0 auto;
+}
+#main .goods table{
+    width: 100%; 
+    text-align: center;
+}
+.first{
+    font-weight:bold;
+}
+#main .goods table td{
+    width: 50%;
+}
+ul li:nth-child(3) a{
+	background-color: #f7d024;
+    color: black;
+} 

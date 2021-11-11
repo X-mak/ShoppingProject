@@ -1,0 +1,73 @@
+body
+{
+	margin: 0;
+	padding: 0;
+	background: url(https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F6%2F5317e66c778ae.jpg%3Fdown&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1637672317&t=37180161e169886d909d68f4b7d3ff16);
+	background-size: cover;
+	background-position: 0px -140px;
+	background-repeat: no-repeat;
+	font-family: sans-serif;
+}
+.login-Box
+{
+	position: absolute;
+	top: 50%;
+	left: 80%;
+	transform: translate(-50%,-50%);
+	width: 350px;
+	height: 420px;
+	padding: 70px 40px;
+	box-sizing: border-box;
+	background: rgba(59, 35, 35, 0.5);
+}
+h2
+{
+	margin: 0;
+	padding: 0 0 20px;
+	color: #bfa;
+	text-align: center;
+}
+.login-Box p
+{
+	margin: 0;
+	padding: 0;
+	font-weight: bold;
+	color: #fff;
+}
+.login-Box input
+{
+	width: 100%;
+	margin-bottom: 20px;
+}
+.login-Box input[type="text"],
+.login-Box input[type="password"]
+{
+	border: none;
+	border-bottom: 1px solid #fff;
+	background: transparent;
+	outline: none;
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+}
+::placeholder
+{
+	color: rgba(255,255,255,0.52);
+}
+.login-Box input[type="submit"]
+{
+	border: none;
+	outline: none;
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+	background: #ff267e;
+	cursor: pointer;
+	border-radius: 20px;
+    margin-top: 20px;
+}
+.login-Box input[type="submit"]:hover
+{
+	background: #efed40;
+	color: #262626;
+}

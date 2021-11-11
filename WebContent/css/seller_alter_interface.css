@@ -1,0 +1,26 @@
+    #main form{
+        margin: 50px 460px;
+    }
+    #main form p{
+        margin: 0;
+	    padding: 0;
+        font-size: 18px;
+	    font-weight: bold;
+	    color: rgb(12, 12, 12);
+    }
+    #main form input{
+        margin: 10px 0;
+        height: 24px;
+        width: 300px;
+    }
+    #main form input[type="submit"]{
+        background-color: #f09348;
+        height: 50px;
+        color: #fff;
+        font-weight: bold;
+        margin:40px auto;
+    }
+    #main form input[type="submit"]:hover{
+        background-color: #f7d024;
+        color: black;
+    }
