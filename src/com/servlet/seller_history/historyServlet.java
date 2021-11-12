@@ -26,7 +26,7 @@ public class historyServlet extends HttpServlet {
 		OrdersUtil ou = new OrdersUI();
 		ArrayList<Orders> ListOrder = ou.showAllOrders();
 		session.setAttribute("orders", ListOrder);
-		response.sendRedirect("seller_history/historicalgoods.jsp");
+		response.sendRedirect("view/seller_history/historicalgoods.jsp");
 	}
 
 	

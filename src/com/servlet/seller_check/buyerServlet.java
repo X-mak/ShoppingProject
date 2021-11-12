@@ -24,7 +24,7 @@ public class buyerServlet extends HttpServlet {
 		OrdersUtil ou = new OrdersUI();
 		ArrayList<Orders> ListOrder = ou.showAllOrders();
 		session.setAttribute("orders", ListOrder);
-		response.sendRedirect("seller_check/buyerinf.jsp");
+		response.sendRedirect("management/seller_check/buyerinf.jsp");
 	}
 
 	

@@ -14,7 +14,7 @@
 <head>
 <meta charset="UTF-8">
 <title>购物平台</title>
-<%@include file="getpath.jsp" %>
+<%@include file="util/getpath.jsp" %>
 <link rel="stylesheet" href="<%=basePath %>css/index.css">
 </head>
 <%
@@ -26,20 +26,20 @@
 		<div class="login-btn mid">
             <ul class="custom-login">
                 <li>
-                    <a href="<%=basePath%>seller_login/seller_login.jsp">
+                    <a href="<%=basePath%>authentication/seller_login/seller_login.jsp">
                         卖家登录
                     </a>
                 </li>
                 
                 <li>|</li>
                 <li>
-                    <a href="<%=basePath%>buyer_login/buyer_login.jsp">
+                    <a href="<%=basePath%>authentication/buyer_login/buyer_login.jsp">
                         买家登录
                     </a>
                 </li>
                 <li>|</li>
                 <li>
-                    <a href="<%=basePath%>buyer_register/buyer_register.jsp">
+                    <a href="<%=basePath%>authentication/buyer_register/buyer_register.jsp">
                         买家注册
                     </a>
                 </li>
@@ -72,7 +72,7 @@ while(im.hasNext()){
 	String img_path = "imgs/"+p.getP_ads();
 %>
 	<div class="agood">
-            <a href="buyer_buy/merchandiseinf.jsp?id=<%=m.getM_id()%>">
+            <a href="management/buyer_buy/merchandiseinf.jsp?id=<%=m.getM_id()%>">
                 <img src=<%=img_path %>><br />
                 <h4>
                    <%=m.getM_name() %>

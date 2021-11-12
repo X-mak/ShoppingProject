@@ -25,7 +25,7 @@ public class buyerviewhistoryServlet extends HttpServlet {
 		BuyerUtil bu = new BuyerUI();
 		ArrayList<Orders> ao = bu.getBuyerOrders(ba.getB_act());
 		session.setAttribute("orders", ao);
-		response.sendRedirect("buyer_view/buyer_history.jsp");
+		response.sendRedirect("view/buyer_view/buyer_history.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

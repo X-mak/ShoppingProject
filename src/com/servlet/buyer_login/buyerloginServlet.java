@@ -30,11 +30,11 @@ public class buyerloginServlet extends HttpServlet {
 				flag2 = "True";
 				session.setAttribute("flag2", flag2);
 				session.setAttribute("buyeruser", ba);
-				response.sendRedirect("buyer_login/buyer_login_success.jsp");
+				response.sendRedirect("authentication/buyer_login/buyer_login_success.jsp");
 			}else {
 				flag2 = "False";
 				session.setAttribute("flag2", flag2);
-				response.sendRedirect("buyer_login/buyer_login.jsp");
+				response.sendRedirect("authentication/buyer_login/buyer_login.jsp");
 			}
 		
 	}

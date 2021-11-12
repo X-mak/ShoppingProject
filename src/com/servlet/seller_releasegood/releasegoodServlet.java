@@ -78,7 +78,7 @@ public class releasegoodServlet extends HttpServlet {
 				}
 				}
 				if(goodname.equals("")||goodinf.equals("")||goodprice<=0||goodnum<=0) {
-					response.sendRedirect("seller_releasegood/releasegood_fail.jsp");
+					response.sendRedirect("management/seller_releasegood/releasegood_fail.jsp");
 				}
 				else{											   //********需要重写
 			Merchandise m = new Merchandise(1,goodname,goodinf);   //商铺id，商品名称，商品信息
@@ -87,14 +87,14 @@ public class releasegoodServlet extends HttpServlet {
 			MPicture mp = new MPicture(fileName);				   //单单创建p_ads属性的mpicture
 			am.add(mp);
 			su.addMerchan(m, am, goodprice, goodnum, goodgenre);
-			response.sendRedirect("seller_releasegood/releasegood_success.jsp");}
+			response.sendRedirect("management/seller_releasegood/releasegood_success.jsp");}
 		}
 		}catch (FileUploadException e) {
 			e.printStackTrace();
-			response.sendRedirect("seller_releasegood/releasegood_fail.jsp");
+			response.sendRedirect("management/seller_releasegood/releasegood_fail.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
-			response.sendRedirect("seller_releasegood/releasegood_fail.jsp");
+			response.sendRedirect("management/seller_releasegood/releasegood_fail.jsp");
 		}
 	}
 
