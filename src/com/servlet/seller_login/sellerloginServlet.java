@@ -31,7 +31,8 @@ public class sellerloginServlet extends HttpServlet {
 		String flag1="True";
 			if(iu.checkLogin(account, pwd, "seller")) {
 				session.setAttribute("selleruser", sa);
-				response.sendRedirect("authentication/seller_login/seller_login_success.jsp");
+				String address = "authentication/seller_login/seller_login_success.jsp";
+				response.sendRedirect(address);
 			}else {
 				flag1="False";
 				session.setAttribute("flag1", flag1);
