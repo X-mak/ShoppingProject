@@ -38,13 +38,13 @@ public class sellerregisterServlet extends HttpServlet {
 				try {
 					if(!sd.selectAct(sa)) {
 					sd.insertAccount(sa);
-					response.sendRedirect("seller_register/seller_register_success.jsp");
+					response.sendRedirect("authentication/seller_register/seller_register_success.jsp");
 					}
 				} catch (SQLException | IOException e) {
 					e.printStackTrace();
 				}
 			}else {
-				response.sendRedirect("seller_register/seller_register_fail.jsp");
+				response.sendRedirect("authentication/seller_register/seller_register_fail.jsp");
 			}
 	}
 

@@ -24,7 +24,7 @@ public class buyerhistoryServlet extends HttpServlet {
 		SellerUtil su = new SellerUI();
 		ArrayList<Orders> ao = su.showBuyerHistory(b_act);
 		session.setAttribute("orders", ao);
-		response.sendRedirect("seller_viewbuyerinfo/buyer_history.jsp");
+		response.sendRedirect("view/seller_viewbuyerinfo/buyer_history.jsp");
 	}
 
 

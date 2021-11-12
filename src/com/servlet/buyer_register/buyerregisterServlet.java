@@ -43,13 +43,13 @@ public class buyerregisterServlet extends HttpServlet {
 			if(flag) {
 					if(!bd.selectAct(ba)) {//≤ª‘ –Ì’À∫≈÷ÿ∏¥
 					iu.addBuyer(b_acc, b_pwd1, b_ads, b_tel);
-					response.sendRedirect("buyer_register/buyer_register_success.jsp");
+					response.sendRedirect("authentication/buyer_register/buyer_register_success.jsp");
 					}else {
-					response.sendRedirect("buyer_register/buyer_register_fail.jsp");
+					response.sendRedirect("authentication/buyer_register/buyer_register_fail.jsp");
 					}
 				 
 			}else {
-				response.sendRedirect("buyer_register/buyer_register_fail.jsp");
+				response.sendRedirect("authentication/buyer_register/buyer_register_fail.jsp");
 			}
 		}
 		catch (SQLException | IOException e) {

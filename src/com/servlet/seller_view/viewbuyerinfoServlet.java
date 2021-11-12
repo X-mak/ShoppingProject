@@ -22,7 +22,7 @@ public class viewbuyerinfoServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		ArrayList<BuyerInfo> ab = su.showAllBuyers();
 		session.setAttribute("ab",ab);
-		response.sendRedirect("seller_viewbuyerinfo/seller_viewbuyerinfo.jsp");
+		response.sendRedirect("view/seller_viewbuyerinfo/seller_viewbuyerinfo.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

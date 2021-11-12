@@ -25,9 +25,9 @@ public class sellerpwdchangeServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		SellerUtil su = new SellerUI();
 			if(su.changePwd(account, pwd, newpwd)) {
-				response.sendRedirect("seller_alter/sellerpwdchange_success.jsp");
+				response.sendRedirect("authentication/seller_alter/sellerpwdchange_success.jsp");
 			}else {
-				response.sendRedirect("seller_alter/sellerpwdchange_fail.jsp");
+				response.sendRedirect("authentication/seller_alter/sellerpwdchange_fail.jsp");
 			}
 	}			
 	

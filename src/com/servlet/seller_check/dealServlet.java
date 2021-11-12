@@ -24,7 +24,7 @@ public class dealServlet extends HttpServlet {
 		OrdersUtil ou = new OrdersUI();
 		flag = ou.finshDeal(o_id);
 		if(flag){
-			response.sendRedirect("seller_login/seller_login_success.jsp");
+			response.sendRedirect("authentication/seller_login/seller_login_success.jsp");
 		}
 		 
 	}
