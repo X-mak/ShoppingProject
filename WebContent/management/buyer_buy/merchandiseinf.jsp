@@ -1,6 +1,6 @@
+<%@page import="com.util.util.GetFull"%>
+<%@page import="com.util.view.MerchanView"%>
 <%@page import="com.vo.MPicture"%>
-<%@page import="com.util.merchan.MerchandiseUtil"%>
-<%@page import="com.util.merchan.MerchandiseUI"%>
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
@@ -17,8 +17,8 @@
 <%	    //该界面还需要修改，未完全正常
 		int m_id = Integer.parseInt(request.getParameter("id"));
 		Merchandise m = new Merchandise(m_id);
-		MerchandiseUtil mu = new MerchandiseUI();
-		Merchandise new_m = mu.getAllMerchan(m);
+		GetFull gf = new GetFull();
+		Merchandise new_m = gf.getAllMerchan(m);
 		ArrayList<MPicture> amp = new_m.getmPicture();
 		String img_path = basePath+"/imgs/"+amp.get(0).getP_ads();
 		// String img_path = basePath+"/imgs/"+merchan.getM_pic();

@@ -1,9 +1,8 @@
+<%@page import="com.util.view.MerchanView"%>
 <%@page import="com.vo.SellerAccount"%>
 <%@page import="com.dao.seller.SellerDI"%>
 <%@page import="com.dao.seller.SellerD"%>
 <%@page import="com.vo.MPicture"%>
-<%@page import="com.util.index.IndexUI"%>
-<%@page import="com.util.index.IndexUtil"%>
 <%@page import="com.vo.Merchandise"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.Iterator"%>
@@ -63,8 +62,8 @@
     <hr>
     <div class="goods mid">
 <%
-IndexUtil iu = new IndexUI();
-ArrayList<Merchandise> am = iu.showAllMerchanOnSale();
+MerchanView mv = new MerchanView();
+ArrayList<Merchandise> am = mv.showAllMerchanOnSale();
 Iterator<Merchandise> im = am.iterator(); 
 while(im.hasNext()){
 	Merchandise m = im.next();
