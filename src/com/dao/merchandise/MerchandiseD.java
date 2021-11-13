@@ -32,5 +32,8 @@ public interface MerchandiseD {
 	public ArrayList<Merchandise> selectAllMerchan()throws SQLException;
 	
 	
+	public ArrayList<Merchandise> selectMerchanLike(String words)throws SQLException;
+	
+	
 	public boolean updateStatus(Merchandise m,int status)throws SQLException;
 }
