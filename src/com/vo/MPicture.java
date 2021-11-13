@@ -47,5 +47,11 @@ public class MPicture {
 		super();
 		this.p_ads = p_ads;
 	}
+	public MPicture(int p_id, String p_ads, int m_id) {
+		super();
+		this.p_id = p_id;
+		this.p_ads = p_ads;
+		this.m_id = m_id;
+	}
 	
 }

@@ -17,7 +17,6 @@
 <link rel="stylesheet"  type="text/css" href="<%= basePath %>css/seller_check_interface.css">
 </head>
 <body>
-
     <div id = "main">
         <div class="goods">
             <div class="agood">

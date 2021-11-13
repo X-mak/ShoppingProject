@@ -26,7 +26,6 @@ public class PriceLogDI implements PriceLogD {
 	
 	
 	public PriceLog insertLog(PriceLog pl)throws SQLException{
-		boolean flag = false;
 		Connection conn = getConnect();
 		PreparedStatement ps = null;
 		ResultSet rs = null;

@@ -2,9 +2,12 @@ package com.util.util;
 
 import com.dao.merchandise.MerchandiseD;
 import com.dao.merchandise.MerchandiseDI;
+import com.dao.orders.OrdersD;
+import com.dao.orders.OrdersDI;
 import com.vo.Merchandise;
+import com.vo.Orders;
 
-public class GetFull {
+public class GetFull implements GetFullUtil{
 
 	public Merchandise getAllMerchan(Merchandise m) {
 		MerchandiseD md = new MerchandiseDI();
@@ -21,5 +24,19 @@ public class GetFull {
 			e.printStackTrace();
 		}
 		return new_m;
+	}
+	
+	
+	public Orders getAllOrders(Orders o) {
+		OrdersD od = new OrdersDI();
+		Orders new_o = o;
+		try {
+			new_o = od.selectOrdersById(o.getO_id());
+			new_o = od.selectBuyerInfo(new_o);
+			new_o = od.selectMerchandise(new_o);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new_o;
 	}
 }
