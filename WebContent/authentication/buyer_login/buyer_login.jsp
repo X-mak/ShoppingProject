@@ -21,7 +21,7 @@
                 			<% 
                 		}
            %>
-        <form action="<%=basePath %>buyerloginServlet" method="post">
+        <form action="<%=basePath %>/buyerloginServlet" method="post">
             <p>用户名</p>
                 <input type="text" name="buyeracnumber" id="name" placeholder="请输入用户名"><br/>
             <p>密码</p>
