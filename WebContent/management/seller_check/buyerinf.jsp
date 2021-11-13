@@ -1,7 +1,5 @@
 <%@page import="com.vo.BuyerAddress"%>
 <%@page import="com.vo.Orders"%>
-<%@page import="com.util.buyer.BuyerUI"%>
-<%@page import="com.util.buyer.BuyerUtil"%>
 <%@page import="com.vo.BuyerInfo"%>
 <%@page import="com.vo.Merchandise"%>
 <%@page import="com.dao.*" %>
