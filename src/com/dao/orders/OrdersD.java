@@ -24,6 +24,9 @@ public interface OrdersD {
 	public Orders selectMerchandise(Orders o)throws SQLException;
 	
 	
+	public Orders selectOrdersById(int o_id)throws SQLException;
+	
+	
 	public ArrayList<Orders> selectByBuyerStatus(String b_act,int o_status)throws SQLException;
 	
 	

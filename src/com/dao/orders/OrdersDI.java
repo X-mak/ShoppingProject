@@ -155,6 +155,31 @@ public class OrdersDI implements OrdersD {
 	
 	
 	
+	public Orders selectOrdersById(int o_id)throws SQLException{
+		Orders new_o = null;
+		Connection conn = getConnect();
+		PreparedStatement ps = null;
+		ResultSet rs =  null;
+		try {
+			String sql = "SELECT * FROM orders WHERE o_id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, o_id);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				new_o = new Orders(o_id,rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5));
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(conn != null)conn.close();
+			if(ps != null)ps.close();
+			if(rs != null)rs.close();		
+		}
+		return new_o;
+	}
+	
+	
+	
 	public ArrayList<Orders> selectByBuyerStatus(String b_act,int o_status)throws SQLException{
 		ArrayList<Orders> ao = new ArrayList<Orders>();
 		Connection conn = getConnect();

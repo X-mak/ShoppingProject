@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.mysql.jdbc.Statement;
+import com.util.util.Search;
 import com.vo.MGenre;
 import com.vo.MPicture;
 import com.vo.Merchandise;
@@ -69,7 +70,7 @@ public class MerchandiseDI implements MerchandiseD {
 			ps.setInt(1, m.getM_id());
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				MPicture p = new MPicture(rs.getString(2),rs.getInt(3)); //这里存在错误，写成了rs.getString(1),rs.getInt(2)
+				MPicture p = new MPicture(rs.getInt(1),rs.getString(2),rs.getInt(3)); //这里存在错误，写成了rs.getString(1),rs.getInt(2)
 				am.add(p);
 			}
 			new_m.setmPicture(am);;
@@ -203,6 +204,36 @@ public class MerchandiseDI implements MerchandiseD {
 			rs = ps.executeQuery();
 			while(rs.next()) {
 				Merchandise m = new Merchandise(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getInt(5));
+				l.add(m);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(conn != null)conn.close();
+			if(ps != null)ps.close();
+			if(rs != null)rs.close();		
+		}
+		return l;
+	}
+	
+	
+	public ArrayList<Merchandise> selectMerchanLike(String words)throws SQLException{
+		ArrayList<Merchandise> l = new ArrayList<Merchandise>();
+		Connection conn = getConnect();
+		PreparedStatement ps = null;
+		ResultSet rs =  null;
+		try {
+			String sql = "SELECT m.m_id FROM merchandise m INNER JOIN mgenre g ON m.m_id = g.m_id WHERE (m_intro LIKE ? OR m_name LIKE ? OR genre1 LIKE ? OR genre2 LIKE ?) AND m_status = 1";
+			ps = conn.prepareStatement(sql);
+			Search s = new Search();
+			String w = s.getKeyWords(words);
+			ps.setString(1, w);
+			ps.setString(2, w);
+			ps.setString(3, w);
+			ps.setString(4, w);
+			rs = ps.executeQuery();
+			while(rs.next()) {
+				Merchandise m = new Merchandise(rs.getInt(1));
 				l.add(m);
 			}
 		}catch(Exception e) {
