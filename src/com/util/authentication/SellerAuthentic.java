@@ -1,22 +1,28 @@
 package com.util.authentication;
 
+import com.dao.buyer.BuyerD;
+import com.dao.buyer.BuyerDI;
 import com.dao.seller.SellerD;
 import com.dao.seller.SellerDI;
+import com.vo.BuyerAccount;
 import com.vo.SellerAccount;
 
 public class SellerAuthentic implements SellerAuthenticUtil {
 
 	
-	public boolean checkLogin(String act,String pwd) {
+	public String checkLogin(String act,String pwd) {
 		SellerD sd = new SellerDI();
-		boolean flag = false;
+		BuyerD bd = new BuyerDI();
+		String ans = "empty";
 		try {				
 			SellerAccount sa = new SellerAccount(act,pwd);
-			flag = sd.selectAccount(sa);
+			BuyerAccount ba = new BuyerAccount(act, pwd);
+			if(sd.selectAccount(sa))ans = "seller";
+			else if(bd.selectAccount(ba))ans = "buyer";
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return flag;
+		return ans;
 	}
 	
 	
