@@ -26,14 +26,7 @@
             <ul class="custom-login">
                 <li>
                     <a href="<%=basePath%>authentication/seller_login/seller_login.jsp">
-                        卖家登录
-                    </a>
-                </li>
-                
-                <li>|</li>
-                <li>
-                    <a href="<%=basePath%>authentication/buyer_login/buyer_login.jsp">
-                        买家登录
+                        用户登录
                     </a>
                 </li>
                 <li>|</li>

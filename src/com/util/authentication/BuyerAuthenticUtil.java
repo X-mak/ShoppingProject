@@ -13,6 +13,5 @@ public interface BuyerAuthenticUtil {
 	public BuyerInfo addBuyer(String act,String pwd,String ads,int tele);
 	
 	
-	public boolean checkLogin(String act,String pwd);
 
 }
