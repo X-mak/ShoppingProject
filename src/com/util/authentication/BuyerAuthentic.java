@@ -4,10 +4,12 @@ import java.util.ArrayList;
 
 import com.dao.buyer.BuyerD;
 import com.dao.buyer.BuyerDI;
-
+import com.dao.seller.SellerD;
+import com.dao.seller.SellerDI;
 import com.vo.BuyerAccount;
 import com.vo.BuyerAddress;
 import com.vo.BuyerInfo;
+import com.vo.SellerAccount;
 
 public class BuyerAuthentic implements BuyerAuthenticUtil {
 
@@ -48,10 +50,12 @@ public class BuyerAuthentic implements BuyerAuthenticUtil {
 	public BuyerInfo addBuyer(String act,String pwd,String ads,int tele) {
 		BuyerInfo bi = null;
 		BuyerD bd = new BuyerDI();
+		SellerD sd = new SellerDI();
 		try {
 			ArrayList<BuyerAddress> aba = new ArrayList<BuyerAddress>();
 			BuyerAccount ba = new BuyerAccount(act,pwd);
-			if(!bd.selectAct(ba)) {
+			SellerAccount sa = new SellerAccount(act, pwd);
+			if(!bd.selectAct(ba) && !sd.selectAct(sa)) {
 				bi = new BuyerInfo(act,tele);
 				BuyerAddress bad = new BuyerAddress(act,ads);
 				bd.insertAccount(ba);              //顺序和下一行反了
@@ -68,15 +72,4 @@ public class BuyerAuthentic implements BuyerAuthenticUtil {
 	
 	
 	
-	public boolean checkLogin(String act,String pwd) {
-		BuyerD bd = new BuyerDI();
-		boolean flag = false;
-		try {
-			BuyerAccount ba = new BuyerAccount(act,pwd);
-			flag = bd.selectAccount(ba);					
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return flag;
-	}
 }
