@@ -132,6 +132,34 @@ public class BuyerDI implements BuyerD {
 	
 	
 	
+	public BuyerInfo selectAccount(BuyerInfo bi)throws SQLException{
+		BuyerInfo new_b = bi;
+		BuyerAccount ba = null;
+		Connection conn = getConnect();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			String sql = "select * from buyeraccount where BINARY b_act = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, bi.getB_act());
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				ba = new BuyerAccount(rs.getString(1),rs.getString(2));
+			}
+			new_b.setBuyerAccount(ba);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(conn != null)conn.close();
+			if(ps != null)ps.close();
+			if(rs != null)rs.close();
+		}	
+		return new_b;
+	}
+	
+	
+	
+	
 	public boolean insertAccount(BuyerAccount ba)throws SQLException{
 		boolean flag = false;
 		Connection conn = getConnect();

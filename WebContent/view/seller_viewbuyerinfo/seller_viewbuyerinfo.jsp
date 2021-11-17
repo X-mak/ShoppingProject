@@ -27,12 +27,12 @@
 <%
       	while(ib.hasNext()) {
       		BuyerInfo bi = ib.next();
-      		//BuyerAddress bad = bi.getBuyerAddress().get(0);   //bi里面的地址还未存放
+      		BuyerAddress bad = bi.getBuyerAddress().get(0);   //bi里面的地址还未存放
 %>			
 		<tr>
         	<td><%= bi.getB_act()%></td>
             <td><%= bi.getB_tele() %></td>
-            <td><%="****" %></td>
+            <td><%= bad.getB_ads() %></td>
             <td><a href = "<%=basePath %>buyerhistoryServlet?b_act=<%=bi.getB_act() %>">购买历史</a></td>
         </tr>
          <%} %>
