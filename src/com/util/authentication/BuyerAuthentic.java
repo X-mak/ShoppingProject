@@ -36,8 +36,8 @@ public class BuyerAuthentic implements BuyerAuthenticUtil {
 		try {
 			bi = new BuyerInfo(b_act,b_tele);
 			bd.updateInfo(bi);
-			bi = bd.selectAddress(bi);
-			bd.updateAddress(bi.getBuyerAddress().get(0));
+			BuyerAddress ba = new BuyerAddress(b_act,b_ads);
+			bd.updateAddress(ba);
 			bi = bd.selectAddress(bi);
 		}catch(Exception e) {
 			e.printStackTrace();

@@ -17,8 +17,11 @@ public interface MerchanManageUtil {
 	public Merchandise addStock(int m_id,int num);
 	
 	
-	public Merchandise addGenre2(int m_id,String genre2);
+	public Merchandise addGenre(int m_id,String genre1,String genre2);
 	
 	
-	public Merchandise addMerchan(Merchandise m,ArrayList<MPicture> am,int price,int num,String genre1);
+	public Merchandise updateGenre(int m_id,String genre1 , String genre2);
+	
+	
+	public Merchandise addMerchan(Merchandise m,ArrayList<MPicture> am,int price,int num);
 }

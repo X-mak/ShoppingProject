@@ -79,18 +79,16 @@ public class MerchanManage implements MerchanManageUtil {
 	}
 	
 	
-	public Merchandise addGenre2(int m_id,String genre2) {
+	public Merchandise addGenre(int m_id,String genre1,String genre2) {
 		Merchandise m = null;
 		MGenreD mgd = new MGenreDI();
-		MerchandiseD md = new MerchandiseDI();
 		GetFull gf = new GetFull();
 		try {
-			m = md.selectMerchan(m_id);
-			m = md.selectMGenre(m);
-			MGenre mg = m.getmGenre();
-			mg.setGenre2(genre2);
-			mgd.updateGenre2(m_id, genre2);
-			m = gf.getAllMerchan(m);
+			m = new Merchandise(m_id);
+			MGenre mg = new MGenre(m_id,genre1,genre2);
+			if(mgd.insertGenre(mg) != null) {
+				m = gf.getAllMerchan(m);
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -98,12 +96,32 @@ public class MerchanManage implements MerchanManageUtil {
 	}
 	
 	
-	public Merchandise addMerchan(Merchandise m,ArrayList<MPicture> am,int price,int num,String genre1) {
+	
+	
+	public Merchandise updateGenre(int m_id,String genre1 , String genre2) {
+		Merchandise m = null;
+		MGenreD mgd = new MGenreDI();
+		GetFull gf = new GetFull();
+		try {
+			m = new Merchandise(m_id);
+			MGenre mg = new MGenre(m_id,genre1,genre2);
+			if(mgd.updateGenre(mg)) {
+				m = gf.getAllMerchan(m);
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return m;
+	}
+	
+	
+	
+	
+	public Merchandise addMerchan(Merchandise m,ArrayList<MPicture> am,int price,int num) {
 		MerchandiseD md = new MerchandiseDI();
 		MPictureD pd = new MPictureDI();
 		PriceLogD pld = new PriceLogDI();
 		StockLogD sd = new StockLogDI();
-		MGenreD mgd = new MGenreDI();
 		ArrayList<MPicture> amp = new ArrayList<MPicture>();
 		ArrayList<PriceLog> apl = new ArrayList<PriceLog>();
 		ArrayList<StockLog> asl = new ArrayList<StockLog>();
@@ -122,15 +140,12 @@ public class MerchanManage implements MerchanManageUtil {
 			String time = df.format(date);
 			PriceLog pl = new PriceLog(m.getM_id(),price,time);
 			StockLog sl = new StockLog(m.getM_id(),num,time);
-			MGenre mg = new MGenre(m.getM_id(),genre1);
 			pl = pld.insertLog(pl);
 			sl = sd.insertLog(sl);
-			mg = mgd.insertGenre1(mg);
 			apl.add(pl);
 			asl.add(sl);
 			m.setPriceLog(apl);
 			m.setStockLog(asl);
-			m.setmGenre(mg);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

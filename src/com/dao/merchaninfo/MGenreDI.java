@@ -24,16 +24,17 @@ public class MGenreDI implements MGenreD {
 	
 	
 	
-	public boolean updateGenre2(int m_id,String genre2)throws SQLException{
+	public boolean updateGenre(MGenre mg)throws SQLException{
 		boolean flag = false;
 		Connection conn = getConnect();
 		PreparedStatement ps = null;
 		int rs = 0;
 		try {
-			String sql = "UPDATE mgenre SET genre2 = ? WHERE m_id = ?";
+			String sql = "UPDATE mgenre SET genre1 = ? AND genre2 = ? WHERE m_id = ?";
 			ps = conn.prepareStatement(sql);
-			ps.setString(1,genre2);
-			ps.setInt(2, m_id);
+			ps.setString(1, mg.getGenre1());
+			ps.setString(2, mg.getGenre2());
+			ps.setInt(3, mg.getM_id());
 			rs = ps.executeUpdate();
 			if(rs != 0)
 				flag = true;			
@@ -48,16 +49,17 @@ public class MGenreDI implements MGenreD {
 	
 	
 	
-	public MGenre insertGenre1(MGenre mg)throws SQLException{
+	public MGenre insertGenre(MGenre mg)throws SQLException{
 		MGenre new_mg = null;
 		Connection conn = getConnect();
 		PreparedStatement ps = null;
 		int rs = 0;
 		try {
-			String sql = "insert mgenre(m_id,genre1) values (?,?)";
+			String sql = "insert mgenre(m_id,genre1,genre2) values (?,?,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, mg.getM_id());
 			ps.setString(2, mg.getGenre1());
+			ps.setString(3, mg.getGenre2());
 			rs = ps.executeUpdate();
 			if(rs != 0)
 				new_mg = mg;		

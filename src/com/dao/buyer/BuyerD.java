@@ -21,6 +21,9 @@ public interface BuyerD {
 	public BuyerInfo selectAddress(BuyerInfo bi)throws SQLException;
 	
 	
+	public BuyerInfo selectAccount(BuyerInfo bi)throws SQLException;
+	
+	
 	public boolean insertAccount(BuyerAccount ba)throws SQLException;
 	
 	

@@ -1,9 +1,12 @@
 package com.util.util;
 
+import com.dao.buyer.BuyerD;
+import com.dao.buyer.BuyerDI;
 import com.dao.merchandise.MerchandiseD;
 import com.dao.merchandise.MerchandiseDI;
 import com.dao.orders.OrdersD;
 import com.dao.orders.OrdersDI;
+import com.vo.BuyerInfo;
 import com.vo.Merchandise;
 import com.vo.Orders;
 
@@ -38,5 +41,18 @@ public class GetFull implements GetFullUtil{
 			e.printStackTrace();
 		}
 		return new_o;
+	}
+	
+	
+	public BuyerInfo getAllBuyer(BuyerInfo bi) {
+		BuyerD bd = new BuyerDI();
+		BuyerInfo new_bi = bi;
+		try {
+			new_bi = bd.selectAccount(bi);
+			new_bi = bd.selectAddress(bi);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new_bi;
 	}
 }
