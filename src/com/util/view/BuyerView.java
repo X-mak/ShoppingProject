@@ -1,22 +1,32 @@
 package com.util.view;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import com.dao.buyer.BuyerD;
 import com.dao.buyer.BuyerDI;
+import com.util.util.GetFull;
 import com.vo.BuyerInfo;
 
 public class BuyerView implements BuyerViewUtil {
 
 	public ArrayList<BuyerInfo> showAllBuyers(){
-		ArrayList<BuyerInfo> ab = new ArrayList<BuyerInfo>();
+		ArrayList<BuyerInfo> ab1 = new ArrayList<BuyerInfo>();
+		ArrayList<BuyerInfo> ab2 = new ArrayList<BuyerInfo>();
 		BuyerD bd = new BuyerDI();
+		GetFull gf = new GetFull();
 		try {
-			ab = bd.selectAllInfo();
+			ab1 = bd.selectAllInfo();
+			Iterator<BuyerInfo> ib = ab1.iterator();
+			while(ib.hasNext()) {
+				BuyerInfo bi = ib.next();
+				bi = gf.getAllBuyer(bi);
+				ab2.add(bi);
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return ab;
+		return ab2;
 	}
 	
 	

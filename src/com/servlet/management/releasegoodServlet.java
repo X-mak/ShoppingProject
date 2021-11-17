@@ -83,7 +83,7 @@ public class releasegoodServlet extends HttpServlet {
 			ArrayList<MPicture> am = new ArrayList<MPicture>();
 			MPicture mp = new MPicture(fileName);				   //单单创建p_ads属性的mpicture
 			am.add(mp);
-			mm.addMerchan(m, am, goodprice, goodnum, goodgenre);
+			mm.addMerchan(m, am, goodprice, goodnum);
 			response.sendRedirect("management/seller_releasegood/releasegood_success.jsp");}
 		}
 		}catch (FileUploadException e) {
