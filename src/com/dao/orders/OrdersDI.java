@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import com.mysql.jdbc.Statement;
+import com.util.util.GetFull;
 import com.vo.BuyerInfo;
 import com.vo.Merchandise;
 import com.vo.Orders;
@@ -32,11 +33,12 @@ public class OrdersDI implements OrdersD {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
-			String sql = "INSERT INTO orders VALUES(null,?,?,0,?)";
+			String sql = "INSERT INTO orders VALUES(null,?,?,?,0,?)";
 			ps = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 			ps.setInt(1, o.getM_id());
 			ps.setString(2, o.getB_act());
-			ps.setInt(3, o.getO_num());
+			ps.setInt(3, o.getSl_id());
+			ps.setInt(4, o.getO_num());
 			ps.executeUpdate();
 			rs = ps.getGeneratedKeys();
 			if(rs.next()) {
@@ -60,11 +62,10 @@ public class OrdersDI implements OrdersD {
 		PreparedStatement ps = null;
 		int rs = 0;
 		try {
-			String sql = "UPDATE orders SET o_status = ? WHERE m_id = ? and b_act = ?";
+			String sql = "UPDATE orders SET o_status = ? WHERE o_id = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, o_status);
-			ps.setInt(2, o.getM_id());
-			ps.setString(3, o.getB_act());
+			ps.setInt(2, o.getO_id());
 			rs = ps.executeUpdate();
 			if(rs != 0)
 				flag = true;			
@@ -85,10 +86,9 @@ public class OrdersDI implements OrdersD {
 		PreparedStatement ps = null;
 		int rs = 0;
 		try {
-			String sql = "DELETE FROM orders WHERE m_id = ? and b_act = ?";
+			String sql = "DELETE FROM orders WHERE o_id = ?";
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, o.getM_id());
-			ps.setString(2, o.getB_act());
+			ps.setInt(1, o.getO_id());
 			rs = ps.executeUpdate();
 			if(rs != 0)
 				flag = true;			
@@ -131,6 +131,7 @@ public class OrdersDI implements OrdersD {
 	
 	public Orders selectMerchandise(Orders o)throws SQLException{
 		Orders new_o = o;
+		GetFull gf = new GetFull();
 		Connection conn = getConnect();
 		PreparedStatement ps = null;
 		ResultSet rs =  null;
@@ -141,6 +142,7 @@ public class OrdersDI implements OrdersD {
 			rs = ps.executeQuery();
 			if(rs.next()) {
 				Merchandise m = new Merchandise(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4));
+				m = gf.getAllMerchan(m);
 				new_o.setMerchandise(m);
 			}
 		}catch(Exception e) {
@@ -166,7 +168,7 @@ public class OrdersDI implements OrdersD {
 			ps.setInt(1, o_id);
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				new_o = new Orders(o_id,rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5));
+				new_o = new Orders(o_id,rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6));
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -192,7 +194,7 @@ public class OrdersDI implements OrdersD {
 			ps.setInt(2, o_status);
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				Orders o = new Orders(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5));
+				Orders o = new Orders(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6));
 				ao.add(o);
 			}
 		}catch(Exception e) {
@@ -217,7 +219,7 @@ public class OrdersDI implements OrdersD {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				Orders o = new Orders(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5));
+				Orders o = new Orders(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6));
 				ao.add(o);
 			}
 		}catch(Exception e) {
@@ -241,7 +243,7 @@ public class OrdersDI implements OrdersD {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				Orders o = new Orders(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5));
+				Orders o = new Orders(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6));
 				ao.add(o);
 			}
 		}catch(Exception e) {
@@ -266,7 +268,7 @@ public class OrdersDI implements OrdersD {
 			ps.setString(1, b_act);
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				Orders o = new Orders(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5));
+				Orders o = new Orders(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getInt(5),rs.getInt(6));
 				ao.add(o);
 			}
 		}catch(Exception e) {

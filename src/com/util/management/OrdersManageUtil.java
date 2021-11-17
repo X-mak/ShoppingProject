@@ -12,4 +12,9 @@ public interface OrdersManageUtil {
 	
 	
 	public boolean finshDeal(int o_id);
+	
+	
+	public boolean deleteOrder(int o_id);
+	
+	
 }
