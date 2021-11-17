@@ -36,7 +36,7 @@
 <%
 	ArrayList<Orders> ao = (ArrayList<Orders>)session.getAttribute("orders");
 	Iterator<Orders> io = ao.iterator();
-	Orders o = new Orders();
+	Orders o = new Order();
 	while(io.hasNext()){
 		o = io.next();
 		if(o.getO_status()==0){
