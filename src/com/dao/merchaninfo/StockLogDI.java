@@ -51,5 +51,25 @@ public class StockLogDI implements StockLogD {
 	}
 	
 	
-
+	public boolean deleteLog(int o_id)throws SQLException{
+		boolean flag = false;
+		Connection conn = getConnect();
+		PreparedStatement ps = null;
+		int rs = 0;
+		try {
+			String sql = "DELETE from stocklog where o_id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, o_id);
+			rs = ps.executeUpdate();
+			if(rs != 0)
+				flag = true;		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(conn != null)conn.close();
+			if(ps != null)ps.close();
+		}	
+		return flag;
+	}
+	
 }
