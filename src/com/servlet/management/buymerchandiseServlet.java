@@ -17,7 +17,7 @@ public class buymerchandiseServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
-		int m_id = Integer.parseInt((String)session.getAttribute("m_id"));
+		int m_id = Integer.parseInt((String) session.getAttribute("m_id"));
 		String buynum = (String)session.getAttribute("buynum");
 		BuyerAccount ba = (BuyerAccount)session.getAttribute("buyeruser");
 		OrdersManageUtil om =new OrdersManage();

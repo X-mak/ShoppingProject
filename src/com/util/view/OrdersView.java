@@ -35,7 +35,7 @@ public class OrdersView implements OrdersViewUtil {
 		ArrayList<Orders> ao2 = new ArrayList<Orders>();
 		OrdersD od = new OrdersDI();
 		try {
-			ao1 = od.selectOrders();
+			ao1 = od.selectAllOrders();
 			Iterator<Orders> io = ao1.iterator();
 			while(io.hasNext()) {
 				Orders o = io.next();

@@ -14,6 +14,7 @@ public class MerchanView implements MerchanViewUtil {
 	
 	public ArrayList<Merchandise> showAllMerchanOnSale() {
 		MerchandiseD md = new MerchandiseDI();
+		GetFull gf = new GetFull();
 		ArrayList<Merchandise> am1 = new ArrayList<Merchandise>();
 		ArrayList<Merchandise> am2 = new ArrayList<Merchandise>();
 		try {
@@ -21,9 +22,7 @@ public class MerchanView implements MerchanViewUtil {
 			Iterator<Merchandise> im = am1.iterator();
 			while(im.hasNext()) {
 				Merchandise m = im.next();
-				m = md.selectMPicture(m);
-				m = md.selectPriceLog(m);
-				m = md.selectStockLog(m);
+				m = gf.getAllMerchan(m);
 				am2.add(m);
 			}
 		}catch(Exception e) {

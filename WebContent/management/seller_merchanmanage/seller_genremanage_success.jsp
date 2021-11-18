@@ -6,9 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<%@include file="../../util/buyer_checklogin.jsp" %>
-<%@include file="../../util/getpath.jsp" %>
+<%@include file="../../util/checklogin.jsp" %>
+<%@include file="../../component/navigation.jsp" %>
 <body>
-订单提交成功！
+商品分类提交成功！
 </body>
 </html>

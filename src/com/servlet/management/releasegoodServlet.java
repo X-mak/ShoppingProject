@@ -35,7 +35,6 @@ public class releasegoodServlet extends HttpServlet {
 		String goodname = null;
 		int goodprice = 0 ;
 		int goodnum = 0 ;
-		String goodgenre = request.getParameter("selectName");
 		String goodinf = null;
 		String fileName = null;
 		HttpSession session=request.getSession();	
