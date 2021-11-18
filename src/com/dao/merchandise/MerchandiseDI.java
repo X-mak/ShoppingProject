@@ -126,7 +126,7 @@ public class MerchandiseDI implements MerchandiseD {
 			ps.setInt(1, m.getM_id());
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				StockLog sl = new StockLog(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(4));
+				StockLog sl = new StockLog(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getString(5));
 				as.add(sl);
 			}
 			new_m.setStockLog(as);
@@ -174,7 +174,7 @@ public class MerchandiseDI implements MerchandiseD {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
-			String sql = "select * from merchandise where m_id = ? and m_status = 1";
+			String sql = "select * from merchandise where m_id = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, m_id);
 			rs = ps.executeQuery();

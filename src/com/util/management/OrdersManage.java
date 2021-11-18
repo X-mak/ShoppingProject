@@ -37,6 +37,9 @@ public class OrdersManage implements OrdersManageUtil {
 				o = od.insertOrders(o);
 				o = od.selectBuyerInfo(o);
 				o = od.selectMerchandise(o);
+				if(i == 0) {
+					md.updateStatus(m, 0);
+				}
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

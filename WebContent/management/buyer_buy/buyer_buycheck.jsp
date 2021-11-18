@@ -11,12 +11,12 @@
 <body>
 <%
 		BuyerAccount buyer = (BuyerAccount)(session.getAttribute("buyeruser"));
-		int m_id = Integer.parseInt((String)request.getParameter("id"));
+		String m_id = (String)request.getParameter("id");
 		String buy_num = (String) request.getParameter("buynum");
 		session.setAttribute("m_id", m_id);
 		session.setAttribute("buynum",buy_num);
 		if(buyer==null){
-			response.sendRedirect("authentication/buyer_login/buyer_login.jsp");
+			response.sendRedirect("../../authentication/seller_login/seller_login.jsp");
 		}else{
 			response.sendRedirect("../../buymerchandiseServlet");
 		}

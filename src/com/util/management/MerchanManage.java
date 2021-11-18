@@ -59,6 +59,7 @@ public class MerchanManage implements MerchanManageUtil {
 		StockLogD sld = new StockLogDI();
 		MerchandiseD md = new MerchandiseDI();
 		GetFull gf = new GetFull();
+		System.out.println("addStock:"+m_id);
 		try {
 			Merchandise m2 = md.selectMerchan(m_id);
 			m2 = md.selectStockLog(m2);
@@ -72,6 +73,9 @@ public class MerchanManage implements MerchanManageUtil {
 				md.updateStatus(m2, 1);
 			}
 			m = gf.getAllMerchan(m2);
+			if(m.getM_status() == 0) {
+				md.updateStatus(m, 1);
+			}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

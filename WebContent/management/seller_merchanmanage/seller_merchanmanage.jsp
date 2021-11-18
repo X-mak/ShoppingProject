@@ -23,18 +23,18 @@
                 </tr>
 <%
 MerchanView mv = new MerchanView();
-ArrayList<Merchandise> am = mv.showAllMerchanOnSale();
+ArrayList<Merchandise> am = mv.showAllMerchan();
 Iterator<Merchandise> im = am.iterator(); 
 while(im.hasNext()){
 	Merchandise m = im.next();
 	MPicture p = m.getmPicture().get(0);
-	StockLog sl = m.getStockLog().get(0);
+	int s_num = m.getM_num();
 	String img_path = "../../imgs/"+p.getP_ads();
 %>
            <tr>
           	<td><img src=<%=img_path %>></td>
         	<td><%= m.getM_name()%></td>
-            <td><%= sl.getSl_num() %></td>
+            <td><%= s_num %></td>
             <td><a href = "<%=basePath %>management/seller_merchanmanage/seller_genremanage.jsp?m_id=<%=m.getM_id() %>">商品种类管理</a></td>
             <td><a href = "<%=basePath %>management/seller_merchanmanage/seller_stockmanage.jsp?m_id=<%=m.getM_id() %>">商品库存管理</a></td>
         </tr>

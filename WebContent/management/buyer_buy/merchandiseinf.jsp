@@ -31,9 +31,9 @@
             <div class="goodcontro">商品介绍：</br><%=new_m.getM_intro() %></div>
             <div class="price">价格:<%=new_m.getM_price() %></div>
             			</br>商品库存：<%=new_m.getM_num() %> <br/>
-                                                                  购买数量：<input type="text" name="buynum" placeholder="1"><br/>
 			<div class="buy">
                 <form action="<%=basePath %>management/buyer_buy/buyer_buycheck.jsp?id=<%=m_id %>" method="post">
+                   	购买数量：<input type="text" name="buynum" placeholder="1"><br/>
                     <input type="submit" value="购买">
                 </form>
             </div>
