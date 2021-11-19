@@ -1,6 +1,6 @@
 <%@page import="com.vo.*"%>
-<%@page import="com.dao.seller.SellerDI"%>
-<%@page import="com.dao.seller.SellerD"%>
+<%@page import="com.dao.users.SellerDI"%>
+<%@page import="com.dao.users.SellerD"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>

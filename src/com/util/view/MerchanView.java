@@ -35,17 +35,14 @@ public class MerchanView implements MerchanViewUtil {
 	public ArrayList<Merchandise> showAllMerchan(){
 		ArrayList<Merchandise> ao1 = new ArrayList<Merchandise>();
 		ArrayList<Merchandise> ao2 = new ArrayList<Merchandise>();
+		GetFull gf = new GetFull();
 		MerchandiseD md = new MerchandiseDI();
 		try {
 			ao1 = md.selectAllMerchan();
 			Iterator<Merchandise> im = ao1.iterator();
 			while(im.hasNext()) {
 				Merchandise m = im.next();
-				m = md.selectMPicture(m);
-				m = md.selectPriceLog(m);
-				m = md.selectStockLog(m);
-				m.setM_price(m.getPriceLog().get(0).getPl_price());
-				m.setM_num(m.getStockLog().get(0).getSl_num());
+				m = gf.getAllMerchan(m);
 				ao2.add(m);
 			}
 		}catch(Exception e) {

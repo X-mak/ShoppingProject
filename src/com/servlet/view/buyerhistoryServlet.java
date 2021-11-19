@@ -21,7 +21,7 @@ public class buyerhistoryServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		String b_act = (String)session.getAttribute("b_act");
 		OrdersView ov = new OrdersView();
-		ArrayList<Orders> ao = ov.showBuyerHistory(b_act);
+		ArrayList<Orders> ao = ov.getBuyerOrders(b_act);
 		session.setAttribute("orders", ao);
 		response.sendRedirect("view/seller_viewbuyerinfo/buyer_history.jsp");
 	}

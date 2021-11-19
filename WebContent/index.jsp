@@ -1,7 +1,7 @@
 <%@page import="com.util.view.MerchanView"%>
 <%@page import="com.vo.SellerAccount"%>
-<%@page import="com.dao.seller.SellerDI"%>
-<%@page import="com.dao.seller.SellerD"%>
+<%@page import="com.dao.users.SellerDI"%>
+<%@page import="com.dao.users.SellerD"%>
 <%@page import="com.vo.MPicture"%>
 <%@page import="com.vo.Merchandise"%>
 <%@page import="java.util.ArrayList"%>

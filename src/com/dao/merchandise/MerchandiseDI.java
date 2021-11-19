@@ -168,18 +168,18 @@ public class MerchandiseDI implements MerchandiseD {
 	
 	
 	
-	public Merchandise selectMerchan(int m_id)throws SQLException{
-		Merchandise m = null;
+	public Merchandise selectMerchan(Merchandise m)throws SQLException{
+		Merchandise new_m = m;
 		Connection conn = getConnect();
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
 			String sql = "select * from merchandise where m_id = ?";
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, m_id);
+			ps.setInt(1, m.getM_id());
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				m = new Merchandise(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getInt(5));
+				new_m = new Merchandise(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getInt(5));
 			}
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -188,7 +188,7 @@ public class MerchandiseDI implements MerchandiseD {
 			if(ps != null)ps.close();
 			if(rs != null)rs.close();
 		}	
-		return m;
+		return new_m;
 	}
 	
 	

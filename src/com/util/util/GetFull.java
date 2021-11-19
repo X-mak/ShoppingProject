@@ -1,11 +1,11 @@
 package com.util.util;
 
-import com.dao.buyer.BuyerD;
-import com.dao.buyer.BuyerDI;
 import com.dao.merchandise.MerchandiseD;
 import com.dao.merchandise.MerchandiseDI;
 import com.dao.orders.OrdersD;
 import com.dao.orders.OrdersDI;
+import com.dao.users.BuyerD;
+import com.dao.users.BuyerDI;
 import com.vo.BuyerInfo;
 import com.vo.Merchandise;
 import com.vo.Orders;
@@ -16,7 +16,7 @@ public class GetFull implements GetFullUtil{
 		MerchandiseD md = new MerchandiseDI();
 		Merchandise new_m = m;
 		try {
-			new_m = md.selectMerchan(m.getM_id());
+			new_m = md.selectMerchan(new_m);
 			new_m = md.selectMGenre(new_m);
 			new_m = md.selectMPicture(new_m);
 			new_m = md.selectPriceLog(new_m);

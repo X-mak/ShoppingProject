@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.dao.seller.SellerD;
-import com.dao.seller.SellerDI;
+import com.dao.users.SellerD;
+import com.dao.users.SellerDI;
 import com.vo.SellerAccount;
 
 

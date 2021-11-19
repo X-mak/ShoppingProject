@@ -1,22 +1,21 @@
 package com.util.authentication;
 
-import com.dao.buyer.BuyerD;
-import com.dao.buyer.BuyerDI;
-import com.dao.seller.SellerD;
-import com.dao.seller.SellerDI;
+import com.dao.users.BuyerD;
+import com.dao.users.BuyerDI;
+import com.dao.users.SellerD;
+import com.dao.users.SellerDI;
 import com.vo.BuyerAccount;
 import com.vo.SellerAccount;
 
 public class SellerAuthentic implements SellerAuthenticUtil {
 
 	
-	public String checkLogin(String act,String pwd) {
+	public String checkLogin(SellerAccount sa) {
 		SellerD sd = new SellerDI();
 		BuyerD bd = new BuyerDI();
-		String ans = "empty";
+		String ans = null;
 		try {				
-			SellerAccount sa = new SellerAccount(act,pwd);
-			BuyerAccount ba = new BuyerAccount(act, pwd);
+			BuyerAccount ba = new BuyerAccount(sa.getS_act(),sa.getS_pwd());
 			if(sd.selectAccount(sa))ans = "seller";
 			else if(bd.selectAccount(ba))ans = "buyer";
 		}catch(Exception e) {
@@ -26,14 +25,13 @@ public class SellerAuthentic implements SellerAuthenticUtil {
 	}
 	
 	
-	public boolean changePwd(String act,String old_pwd,String new_pwd) {
+	public boolean changePwd(SellerAccount sa,String new_pwd) {
 		boolean flag = false;
 		SellerD sd = new SellerDI();
 		try {
-			SellerAccount s = new SellerAccount(act,old_pwd);
-			if(sd.selectAccount(s)) {
+			if(sd.selectAccount(sa)) {
 				flag = true;
-				sd.updatePwd(s, new_pwd);
+				sd.updatePwd(sa, new_pwd);
 			}
 		}catch(Exception e) {
 			e.printStackTrace();

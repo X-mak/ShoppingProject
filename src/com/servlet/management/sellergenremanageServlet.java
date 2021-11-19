@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.util.management.MerchanManage;
 import com.util.management.MerchanManageUtil;
+import com.vo.MGenre;
 
 
 @WebServlet("/sellergenremanageServlet")
@@ -21,7 +22,8 @@ public class sellergenremanageServlet extends HttpServlet {
 		String goodgenre1 = request.getParameter("firstgenre");
 		String goodgenre2 = request.getParameter("secondgenre");
 		MerchanManageUtil mu = new MerchanManage();
-		mu.addGenre(m_id, goodgenre1, goodgenre2);
+		MGenre mg = new MGenre(m_id, goodgenre1, goodgenre2);
+		mu.addGenre(mg);
 		response.sendRedirect("management/seller_merchanmanage/seller_genremanage_success.jsp");
 	}
 
