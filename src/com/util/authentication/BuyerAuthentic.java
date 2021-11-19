@@ -2,10 +2,10 @@ package com.util.authentication;
 
 import java.util.ArrayList;
 
-import com.dao.buyer.BuyerD;
-import com.dao.buyer.BuyerDI;
-import com.dao.seller.SellerD;
-import com.dao.seller.SellerDI;
+import com.dao.users.BuyerD;
+import com.dao.users.BuyerDI;
+import com.dao.users.SellerD;
+import com.dao.users.SellerDI;
 import com.vo.BuyerAccount;
 import com.vo.BuyerAddress;
 import com.vo.BuyerInfo;
@@ -13,11 +13,10 @@ import com.vo.SellerAccount;
 
 public class BuyerAuthentic implements BuyerAuthenticUtil {
 
-	public boolean changePwd(String b_act,String old_pwd,String new_pwd) {
+	public boolean changePwd(BuyerAccount ba,String new_pwd) {
 		boolean flag = false;
 		BuyerD bd = new BuyerDI();
 		try {
-			BuyerAccount ba = new BuyerAccount(b_act,old_pwd);
 			if(bd.selectAccount(ba)) {
 				flag = true;
 				bd.updatePwd(ba, new_pwd);
@@ -30,34 +29,30 @@ public class BuyerAuthentic implements BuyerAuthenticUtil {
 	
 	
 	
-	public BuyerInfo changeInfo(String b_act,int b_tele,String b_ads) {
-		BuyerInfo bi = null;
+	public BuyerInfo changeInfo(BuyerInfo bi, BuyerAddress ba) {
+		BuyerInfo res = null;
 		BuyerD bd = new BuyerDI();
 		try {
-			bi = new BuyerInfo(b_act,b_tele);
+			res = bi;
 			bd.updateInfo(bi);
-			BuyerAddress ba = new BuyerAddress(b_act,b_ads);
 			bd.updateAddress(ba);
-			bi = bd.selectAddress(bi);
+			res = bd.selectAddress(bi);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return bi;
+		return res;
 	}
 	
 	
 	
-	public BuyerInfo addBuyer(String act,String pwd,String ads,int tele) {
-		BuyerInfo bi = null;
+	public BuyerInfo addBuyer(BuyerAccount ba,BuyerInfo bi, BuyerAddress bad) {
+		BuyerInfo res = null;
 		BuyerD bd = new BuyerDI();
 		SellerD sd = new SellerDI();
 		try {
 			ArrayList<BuyerAddress> aba = new ArrayList<BuyerAddress>();
-			BuyerAccount ba = new BuyerAccount(act,pwd);
-			SellerAccount sa = new SellerAccount(act, pwd);
+			SellerAccount sa = new SellerAccount(ba.getB_act(),ba.getB_pwd());
 			if(!bd.selectAct(ba) && !sd.selectAct(sa)) {
-				bi = new BuyerInfo(act,tele);
-				BuyerAddress bad = new BuyerAddress(act,ads);
 				bd.insertAccount(ba);              //顺序和下一行反了
 				bd.insertInfo(bi);
 				aba.add(bd.insertAddress(bad));
@@ -67,7 +62,7 @@ public class BuyerAuthentic implements BuyerAuthenticUtil {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		return bi;
+		return res;
 	}
 	
 	

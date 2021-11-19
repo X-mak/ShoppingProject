@@ -10,9 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.dao.seller.SellerD;
-import com.dao.seller.SellerDI;
+import com.dao.users.SellerD;
+import com.dao.users.SellerDI;
 import com.util.authentication.SellerAuthentic;
+import com.util.authentication.SellerAuthenticUtil;
 import com.vo.BuyerAccount;
 import com.vo.SellerAccount;
 
@@ -27,14 +28,14 @@ public class sellerloginServlet extends HttpServlet {
 		String pwd=request.getParameter("sellerpwd");
 		SellerAccount sa = new SellerAccount(account,pwd,1);  //本次还没有管理员，所以选择没有status的构造方法构造
 		BuyerAccount ba = new BuyerAccount(account, pwd);
-		SellerAuthentic sac = new SellerAuthentic();
+		SellerAuthenticUtil sac = new SellerAuthentic();
 		HttpSession session=request.getSession();
 		String flag1="True";
-			if(sac.checkLogin(account, pwd).equals("seller")) {
+			if(sac.checkLogin(sa).equals("seller")) {
 				session.setAttribute("selleruser", sa);
 				String address = "authentication/seller_login/seller_login_success.jsp";
 				response.sendRedirect(address);
-			}else if(sac.checkLogin(account, pwd).equals("buyer")) {
+			}else if(sac.checkLogin(sa).equals("buyer")) {
 				session.setAttribute("buyeruser", ba);
 				response.sendRedirect("authentication/buyer_login/buyer_login_success.jsp");
 			}

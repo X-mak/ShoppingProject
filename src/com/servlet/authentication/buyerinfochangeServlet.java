@@ -11,6 +11,8 @@ import javax.servlet.http.HttpSession;
 import com.util.authentication.BuyerAuthentic;
 import com.util.authentication.BuyerAuthenticUtil;
 import com.vo.BuyerAccount;
+import com.vo.BuyerAddress;
+import com.vo.BuyerInfo;
 
 
 @WebServlet("/buyerinfochangeServlet")
@@ -30,7 +32,9 @@ public class buyerinfochangeServlet extends HttpServlet {
 			} 
 		int b_tele = Integer.parseInt(b_tel);
 		BuyerAuthenticUtil ba = new BuyerAuthentic();
-		ba.changeInfo(b_acc, b_tele, b_ads); 
+		BuyerInfo bi = new BuyerInfo(b_acc,b_tele);
+		BuyerAddress bAddress = new BuyerAddress(b_acc,b_ads);
+		ba.changeInfo(bi,bAddress); 
 		response.sendRedirect("authentication/buyer_alter/buyer_changeinfo_success.jsp");	
 	}
 

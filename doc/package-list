@@ -1,0 +1,13 @@
+com.dao.comments
+com.dao.merchandise
+com.dao.orders
+com.dao.shop
+com.dao.users
+com.servlet.authentication
+com.servlet.management
+com.servlet.view
+com.util.authentication
+com.util.management
+com.util.util
+com.util.view
+com.vo

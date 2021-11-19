@@ -3,8 +3,8 @@ package com.util.view;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import com.dao.buyer.BuyerD;
-import com.dao.buyer.BuyerDI;
+import com.dao.users.BuyerD;
+import com.dao.users.BuyerDI;
 import com.util.util.GetFull;
 import com.vo.BuyerInfo;
 

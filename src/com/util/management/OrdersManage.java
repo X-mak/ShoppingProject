@@ -5,8 +5,8 @@ import java.util.Date;
 
 import com.dao.merchandise.MerchandiseD;
 import com.dao.merchandise.MerchandiseDI;
-import com.dao.merchaninfo.StockLogD;
-import com.dao.merchaninfo.StockLogDI;
+import com.dao.merchandise.StockLogD;
+import com.dao.merchandise.StockLogDI;
 import com.dao.orders.OrdersD;
 import com.dao.orders.OrdersDI;
 import com.vo.Merchandise;
@@ -23,7 +23,7 @@ public class OrdersManage implements OrdersManageUtil {
 		Orders o = null;
 		OrdersD od = new OrdersDI();
 		try {
-			Merchandise m = md.selectMerchan(m_id);
+			Merchandise m = md.selectMerchan(new Merchandise(m_id));
 			m = md.selectStockLog(m);
 			int num = m.getStockLog().get(0).getSl_num();
 			i = num - o_num;
@@ -84,7 +84,7 @@ public class OrdersManage implements OrdersManageUtil {
 		StockLogD slg = new StockLogDI();
 		try {
 			Orders o = new Orders(o_id);
-			if(od.deleteOrders(o) && slg.deleteLog(o_id)) {
+			if(od.deleteOrders(o) && slg.deleteLog(new Orders(o_id))) {
 				flag = true;
 			}			
 		}catch(Exception e) {

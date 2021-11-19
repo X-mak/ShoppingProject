@@ -45,13 +45,12 @@
 		if(o.getO_status()!=2){
 		Merchandise m = new Merchandise(o.getM_id());
 		GetFullUtil gf = new GetFull();
-		Merchandise full_m = gf.getAllMerchan(m);
 		BuyerInfo bi = o.getBuyerInfo();
 		BuyerInfo full_bi = gf.getAllBuyer(bi);
 		BuyerAddress bad = full_bi.getBuyerAddress().get(0);
 		%>
 		<tr>
-			<td><%= full_m.getM_name() %></td>
+			<td><%= o.getMerchandise().getM_name() %></td>
         	<td><%= o.getB_act()%></td>
             <td><%= bi.getB_tele() %></td>
             <td><%= bad.getB_ads() %></td>

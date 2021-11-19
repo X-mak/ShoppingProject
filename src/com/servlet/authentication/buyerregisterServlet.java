@@ -10,10 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.dao.buyer.BuyerD;
-import com.dao.buyer.BuyerDI;
+import com.dao.users.BuyerD;
+import com.dao.users.BuyerDI;
 import com.util.authentication.BuyerAuthentic;
+import com.util.authentication.BuyerAuthenticUtil;
 import com.vo.BuyerAccount;
+import com.vo.BuyerAddress;
+import com.vo.BuyerInfo;
 
 
 @WebServlet("/buyerregisterServlet")
@@ -32,7 +35,7 @@ public class buyerregisterServlet extends HttpServlet {
 		String b_ads = (String) request.getParameter("buyer_ads");
 		BuyerD bd = new BuyerDI();
 		BuyerAccount ba = new BuyerAccount(b_acc,b_pwd1);
-		BuyerAuthentic bac = new BuyerAuthentic();
+		BuyerAuthenticUtil bac = new BuyerAuthentic();
 		boolean flag = true;
 		if(b_pwd1.equals(b_pwd2)&&!b_acc.equals("")&&!b_ads.equals("")&&b_tel>10000) {
 			flag = true;
@@ -41,7 +44,9 @@ public class buyerregisterServlet extends HttpServlet {
 		}
 			if(flag) {
 					if(!bd.selectAct(ba)) {//≤ª‘ –Ì’À∫≈÷ÿ∏¥
-					bac.addBuyer(b_acc, b_pwd1, b_ads, b_tel);
+					BuyerInfo bi = new BuyerInfo(b_acc,b_tel);
+					BuyerAddress bAddress = new BuyerAddress(b_acc,b_ads);
+					bac.addBuyer(ba,bi,bAddress);
 					response.sendRedirect("authentication/buyer_register/buyer_register_success.jsp");
 					}else {
 					response.sendRedirect("authentication/buyer_register/buyer_register_fail.jsp");

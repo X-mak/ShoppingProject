@@ -28,22 +28,17 @@
 <%
 	ArrayList<Orders> ao = (ArrayList<Orders>)session.getAttribute("orders");
 	Iterator<Orders> io = ao.iterator();
-	System.out.println(ao);
-	System.out.println(io);
 	Orders o = new Orders();
 	while(io.hasNext()){
-		GetFullUtil gf = new GetFull();
-		if(o.getO_status()==2){
 		o = io.next();
-		o = gf.getAllOrders(o);
-		System.out.println(o);
+		if(o.getO_status() == 2 ){
 			%><tr>
-	        <td><%=o.getB_act()  %></td>
-	        <td><%=o.getMerchandise()  %></td>
+	        <td><%=  o.getMerchandise().getM_name()%></td>
+	        <td><%= o.getB_act() %></td>
 	    </tr>
 	    <%
 						}
-							   }
+		}
 		%>
         </table>
 	</div>

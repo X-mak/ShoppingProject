@@ -11,6 +11,7 @@ import javax.servlet.http.HttpSession;
 import com.util.management.MerchanManage;
 import com.util.management.MerchanManageUtil;
 import com.vo.SellerAccount;
+import com.vo.StockLog;
 
 @WebServlet("/sellerstockmanageServlet")
 public class sellerstockmanageServlet extends HttpServlet {
@@ -29,7 +30,8 @@ public class sellerstockmanageServlet extends HttpServlet {
 			  } 
 		int num = Integer.parseInt(newnum);
 		MerchanManageUtil mu = new MerchanManage();
-		mu.addStock(m_id, num);
+		StockLog sl = new StockLog(m_id,num);
+		mu.addStock(sl);
 		response.sendRedirect("management/seller_merchanmanage/seller_stockmanage_success.jsp");
 	}
 
