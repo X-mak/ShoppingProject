@@ -8,8 +8,13 @@
 </head>
 <%@include file="../../util/buyer_checklogin.jsp" %>
 <%@include file="../../util/getpath.jsp" %>
+<link rel="stylesheet" href="<%=basePath %>css/fail.css">
 <body>
-修改失败！
-<a href="<%=basePath%>authentication/buyer_login/buyer_login_success.jsp">返回买家后台</a>
+
+<div class="fail">
+        修改失败！
+        <a href="<%=basePath%>authentication/buyer_login/buyer_login_success.jsp">返回买家后台</a>
+</div>
+
 </body>
 </html>

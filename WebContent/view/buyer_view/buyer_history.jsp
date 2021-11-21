@@ -12,14 +12,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<%@include file="../../util/buyer_checklogin.jsp" %>
-<%@include file="../../util/getpath.jsp" %>
+<%@include file="../../component/buyer_navigation.jsp" %>
+<link rel="stylesheet" href="<%=basePath %>css/buyer_history.css">
 <body>
-		<table>
-                <tr >
-                    <td>商品名称</td>
-                    <td>购买地址</td>
-                </tr>
+		<table border="1">
+        	<thead>
+            	<th>商品名称</th>
+            	<th>购买地址</th>
+            	<th></th>
+        	</thead>
 <%
 		ArrayList<Orders> ao = (ArrayList<Orders>)session.getAttribute("orders");
 		Iterator<Orders> io = ao.iterator();

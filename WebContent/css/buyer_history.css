@@ -1,0 +1,11 @@
+table {
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
+
+table td {
+    text-align: center;
+    
+}

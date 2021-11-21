@@ -1,0 +1,31 @@
+table {
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+    height: fit-content;
+    border-collapse: collapse;
+}
+
+table td {
+    height: 40px;
+
+}
+
+table tr {
+	margin: 10px 0;
+}
+
+table tr td:nth-child(4) a{
+    text-decoration: none;
+    color: green;
+    width: fit-content;
+    padding: 5px 20px;
+    background-color: #f5f5f5;
+    border: 1px solid green;
+    border-radius: 20px;
+}
+
+table tr td:nth-child(4) a:hover {
+    color: white;
+    background-color: green;
+}

@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+.form {
+    padding-top: 100px;
+}
+
+.form>table {
+    margin: 0 auto;
+    width: 35%;
+    text-align: center;
+    
+}
+
+.form>table td {
+    padding: 5px 0;
+}
+
+.form>table input {
+    border: none;
+    border-bottom: 1px solid black;
+    width: 370px;
+    height: 40px;
+    outline: none;
+    text-align: center;
+    line-height: 40px;
+    background-color: transparent;
+}
+
+.form>table .image-input {
+    border: none;
+}
+
+.form>table textarea {
+    height: 50px;
+    width: 370px;
+    margin-left: 0;
+    outline: none;
+    padding: 2px;
+    overflow: auto;
+}
+
+.form>table .sub-btn {
+    width: 200px;
+    border: none;
+    background-color: white;
+    border: 1px solid green;
+    border-radius: 50px;
+    color: green;
+    font-weight: 700;
+}
+
+.form>table .sub-btn:hover {
+    background-color: green;
+    color: white;
+}

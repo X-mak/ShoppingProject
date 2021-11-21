@@ -14,13 +14,15 @@
 </head>
 <%@include file="../../util/checklogin.jsp" %>
 <%@include file="../../component/navigation.jsp" %>
+<link rel="stylesheet" id="templatecss" type="text/css" href="<%=basePath %>css/seller_merchanmanage.css">
 <body>
-	 <table>
-                <tr >
-                    <td>商品图片</td>
-                    <td>商品名称</td>
-                    <td>商品库存</td>
-                </tr>
+	 <table border="1" cellspacing="0">
+        <thead>
+            <th>商品图片</th>
+            <th>商品名称</th>
+            <th>商品库存</th>
+            <th colspan="2">操作</th>
+        </thead>
 <%
 MerchanView mv = new MerchanView();
 ArrayList<Merchandise> am = mv.showAllMerchan();
