@@ -10,5 +10,6 @@
 <%@include file="../../util/buyer_checklogin.jsp" %>
 <body>
 购买失败！
+<a href="<%=basePath %>index.jsp">返回首页</a>
 </body>
 </html>

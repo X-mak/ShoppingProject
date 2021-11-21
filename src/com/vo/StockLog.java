@@ -87,6 +87,9 @@ public class StockLog {
 		this.m_id = m_id;
 		this.sl_num = sl_num;
 	}
+	public StockLog() {
+		super();
+	}
 	
 	
 }

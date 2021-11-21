@@ -1,3 +1,4 @@
+<%@page import="com.util.util.GetFull"%>
 <%@page import="com.vo.BuyerInfo"%>
 <%@page import="com.vo.Merchandise"%>
 <%@page import="java.util.Iterator"%>
@@ -23,16 +24,19 @@
 <%
 		ArrayList<Orders> ao = (ArrayList<Orders>)session.getAttribute("orders");
 		Iterator<Orders> io = ao.iterator();
+		GetFull gf = new GetFull();
 		while(io.hasNext()){
 			Orders o = io.next();
 			Merchandise m = o.getMerchandise();
 			BuyerInfo bi = o.getBuyerInfo();
+			bi = gf.getAllBuyer(bi);
+			if(o.getO_status()==2){
 			%>
 		<tr>
         	<td><%= m.getM_name()%></td>
-            <td><%= bi.getBuyerAddress().get(0) %></td>
+            <td><%= bi.getBuyerAddress().get(0).getB_ads() %></td>
         </tr>
-			<% 
+			<% }
 		}
 %>
         </table>

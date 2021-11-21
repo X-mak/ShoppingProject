@@ -16,6 +16,7 @@ public class sellerquitorderServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		boolean flag;
 		int o_id = Integer.parseInt(request.getParameter("o_id"));
+		System.out.println(o_id);
 		HttpSession session = request.getSession();
 		OrdersManage om = new OrdersManage();
 		flag = om.deleteOrder(o_id);

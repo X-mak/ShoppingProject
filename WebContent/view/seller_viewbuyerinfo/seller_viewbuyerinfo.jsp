@@ -27,7 +27,7 @@
 <%
       	while(ib.hasNext()) {
       		BuyerInfo bi = ib.next();
-      		BuyerAddress bad = bi.getBuyerAddress().get(0);   //bi里面的地址还未存放
+      		BuyerAddress bad = bi.getBuyerAddress().get(0);   
 %>			
 		<tr>
         	<td><%= bi.getB_act()%></td>

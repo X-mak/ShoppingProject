@@ -29,4 +29,13 @@ public interface StockLogD {
 	 */
 	public boolean deleteLog(Orders o)throws SQLException;
 	
+	
+	/**
+	 * 用于更新库存日志状态
+	 * @param 库存日志StockLog,需要包括sl_id,o_id
+	 * @return 更新是否成功
+	 * @throws SQLException
+	 */
+	public boolean updateLog(StockLog sl)throws SQLException;
+	
 }

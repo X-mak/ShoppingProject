@@ -6,8 +6,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
+<%@include file="../../util/getpath.jsp" %>
 <body>
 注册成功!<br>
-<a href="../../index.jsp">返回首页</a>
+<a href="<%=basePath %>index.jsp">返回首页</a>
 </body>
 </html>
