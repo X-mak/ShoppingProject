@@ -12,18 +12,19 @@
 </head>
 <%@include file="../../component/navigation.jsp" %>
 <%@include file="../../util/checklogin.jsp" %>
-<link rel="stylesheet"  type="text/css" href="<%= basePath %>css/seller_check_interface.css">
+<link rel="stylesheet"  type="text/css" href="<%= basePath %>css/seller_viewbuyerinfo.css">
 <body>
 <% 
 		ArrayList<BuyerInfo> ab = (ArrayList<BuyerInfo>)(session.getAttribute("ab"));
 		Iterator<BuyerInfo> ib = ab.iterator();
 %>
-		 <table>
-                <tr >
-                    <td>客户账号</td>
-                    <td>客户电话</td>
-                    <td>客户地址</td>
-                </tr>
+		 <table border="1">
+                <thead>
+                    <th>客户账号</th>
+                    <th>客户电话</th>
+                    <th>客户地址</th>
+                    <th>操作</th>
+                </thead>
 <%
       	while(ib.hasNext()) {
       		BuyerInfo bi = ib.next();

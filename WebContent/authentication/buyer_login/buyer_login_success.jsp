@@ -6,12 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<%@include file="../../util/buyer_checklogin.jsp" %>
-<%@include file="../../util/getpath.jsp" %>
+<%@include file="../../component/buyer_navigation.jsp" %>
 <body>
-<a href="<%=basePath%>authentication/buyer_alter/buyer_changepwd.jsp">修改密码</a>
-<a href="<%=basePath%>buyerviewhistoryServlet">查看购买历史</a>
-<a href="<%=basePath%>authentication/buyer_alter/buyer_changeinfo.jsp">修改信息</a>
-<a href="<%=basePath%>/index.jsp">返回首页</a>
 </body>
 </html>

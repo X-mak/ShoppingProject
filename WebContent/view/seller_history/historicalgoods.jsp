@@ -20,11 +20,11 @@
 
 <div id = "main">
         <div class="goods">
-            <table>
-                <tr class="first">
-                    <td>商品名称</td>
-                    <td>购买人</td>
-                </tr>
+            <table cellspacing="0" border="1">
+                <thead>
+                    <th>商品名称</th>
+                    <th>购买人</th>
+                </thead>
 <%
 	ArrayList<Orders> ao = (ArrayList<Orders>)session.getAttribute("orders");
 	Iterator<Orders> io = ao.iterator();

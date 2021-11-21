@@ -12,10 +12,6 @@
 <body>
 <div id = "main">
 	<p>欢迎回来,<%=selleruser.getS_act() %></p>
-	<div>
-		<a href="<%=basePath %>authentication/seller_alter/sellerpwdchange.jsp">修改密码</a>
-		<a href="<%=basePath %>index.jsp">返回商城</a>
-	</div>	
 </div>
 </body>
 </html>

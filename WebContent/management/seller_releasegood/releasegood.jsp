@@ -8,14 +8,46 @@
 </head>
 <%@include file="../../util/checklogin.jsp" %>
 <%@include file="../../component/navigation.jsp" %>
+<link rel="stylesheet" id="templatecss" type="text/css" href="<%=basePath %>css/seller_release_interface.css">
 <body>
-	<form action="<%=basePath %>/releasegoodServlet" method="post" enctype="multipart/form-data">
-          	商品名称：<input type="text" name="goodname" placeholder="请输入商品名称"><br/>
-          	商品价格：<input type="text" name="goodprice" placeholder="请输入商品价格"><br/>
-          	商品数量：<input type="text" name="goodnum" placeholder="请输入商品数量"><br/>
-          	商品图片：<input type="file" name="goodimgfile"><br/>
-                                 商品描述：<textarea rows="10" cols="16" name="goodinf" placeholder="请输入商品简介"></textarea><br/>
-          		   <input type="submit" value="发布"/>
-   </form>
+	 <form action="<%=basePath %>/releasegoodServlet" method="post" enctype="multipart/form-data" class="form">
+        <table>
+            <tr>
+                <td>商品名称:</td>
+                <td><input type="text" name="goodname" placeholder="请输入商品名称"></td>
+            </tr>
+            <tr>
+                <td>商品价格:</td>
+                <td><input type="text" name="goodprice" placeholder="请输入商品价格"></td>
+            </tr>
+            <tr>
+                <td>商品数量:</td>
+                <td><input type="text" name="goodnum" placeholder="请输入商品数量"></td>
+            </tr>
+            <tr>
+                <td>商品种类:</td>
+                <td>
+                    <select name="selectName">
+                        <option selected="selected" value="生活用品">生活用品</option>
+                        <option value="体育用品">体育用品</option>
+                        <option value="学习用品">学习用品</option>
+                        <option value="食品">食品</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>商品图片:</td>
+                <td><input type="file" name="goodimgfile" class="image-input"></td>
+            </tr>
+            <tr>
+                <td>商品描述:</td>
+                <td><textarea rows="10" cols="16" name="goodinf" placeholder="请输入商品简介" style="resize: none;"></textarea><br /></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="发布" class="sub-btn"/></td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
 </body>
 </html>

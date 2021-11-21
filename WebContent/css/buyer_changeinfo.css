@@ -1,0 +1,24 @@
+form {
+    width: 50%;
+    text-align: center;
+    margin: 150px auto;
+    transform: scale(1.5);
+}
+
+form input {
+    outline: none;
+    margin-top: 20px;
+}
+
+form input[type="submit"] {
+    padding: 0 20px;
+    color: green;
+    background-color: white;
+    border-radius: 20px;
+    border: 1px solid green;
+}
+
+form input[type="submit"]:hover {
+    color: white;
+    background-color: green;
+}

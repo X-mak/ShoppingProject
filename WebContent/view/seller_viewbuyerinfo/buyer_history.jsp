@@ -14,9 +14,9 @@
 </head>
 <%@include file="../../component/navigation.jsp" %>
 <%@include file="../../util/checklogin.jsp" %>
-<link rel="stylesheet"  type="text/css" href="<%= basePath %>css/seller_check_interface.css">
+<link rel="stylesheet"  type="text/css" href="<%= basePath %>css/buyer_history.css">
 <body>
-		<table>
+		<table border="1">
                 <tr >
                     <td>商品名称</td>
                     <td>购买地址</td>
