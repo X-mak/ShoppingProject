@@ -10,5 +10,6 @@
 <%@include file="../../util/getpath.jsp" %>
 <body>
 订单提交成功！
+<a href="<%=basePath %>index.jsp">返回首页</a>
 </body>
 </html>

@@ -100,4 +100,7 @@ public interface OrdersD {
 	 */
 	public ArrayList<Orders> selectByAct(String b_act)throws SQLException;
 	
+	
+	
+	
 }

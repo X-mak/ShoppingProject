@@ -19,7 +19,8 @@ public class buyerhistoryServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		String b_act = (String)session.getAttribute("b_act");
+		String b_act = (String)request.getParameter("b_act");
+		System.out.println(b_act);
 		OrdersView ov = new OrdersView();
 		ArrayList<Orders> ao = ov.getBuyerOrders(b_act);
 		session.setAttribute("orders", ao);

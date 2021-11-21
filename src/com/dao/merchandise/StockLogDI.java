@@ -73,4 +73,27 @@ public class StockLogDI implements StockLogD {
 		return flag;
 	}
 	
+	
+	public boolean updateLog(StockLog sl)throws SQLException{
+		Connection conn = getConnect();
+		PreparedStatement ps = null;
+		int rs = 0;
+		boolean flag = false;
+		try {
+			String sql = "UPDATE stocklog SET o_id = ? WHERE sl_id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, sl.getO_id());
+			ps.setInt(2, sl.getSl_id());
+			ps.executeUpdate();
+			if(rs !=  0) {
+				flag = true;
+			}
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(conn != null)conn.close();
+			if(ps != null)ps.close();
+		}	
+		return flag;
+	}
 }
