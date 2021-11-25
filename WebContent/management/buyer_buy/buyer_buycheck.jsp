@@ -1,4 +1,4 @@
-<%@page import="com.vo.BuyerAccount"%>
+<%@page import="com.vo.UserAccount"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,12 +10,12 @@
 <%@include file="../../util/getpath.jsp" %>
 <body>
 <%
-		BuyerAccount buyer = (BuyerAccount)(session.getAttribute("buyeruser"));
+		UserAccount buyer = (UserAccount)(session.getAttribute("buyeruser"));
 		String m_id = (String)request.getParameter("id");
 		String buy_num = (String) request.getParameter("buynum");
 		session.setAttribute("m_id", m_id);
 		session.setAttribute("buynum",buy_num);
-		if(buyer==null){
+		if(!buyer.getUserGroup().getU_role().equals("buyer")){
 			response.sendRedirect("../../authentication/seller_login/seller_login.jsp");
 		}else{
 			response.sendRedirect("../../buymerchandiseServlet");

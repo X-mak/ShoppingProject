@@ -1,6 +1,5 @@
 package com.vo;
 
-import java.sql.Date;
 
 public class StockLog {
 	private int sl_id;

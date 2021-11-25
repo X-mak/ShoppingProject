@@ -10,8 +10,8 @@ import javax.servlet.http.HttpSession;
 
 import com.util.management.MerchanManage;
 import com.util.management.MerchanManageUtil;
-import com.vo.SellerAccount;
 import com.vo.StockLog;
+import com.vo.UserAccount;
 
 @WebServlet("/sellerstockmanageServlet")
 public class sellerstockmanageServlet extends HttpServlet {
@@ -19,7 +19,7 @@ public class sellerstockmanageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
-		SellerAccount as = (SellerAccount)session.getAttribute("selleruser");
+		UserAccount as = (UserAccount)session.getAttribute("selleruser");
 		int m_id = Integer.parseInt((String)request.getParameter("m_id"));
 		String newnum = (String)request.getParameter("newnum");
 		 for (int i = newnum.length();--i>=0;){   

@@ -10,13 +10,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.dao.users.BuyerD;
-import com.dao.users.BuyerDI;
+import com.dao.users.UserDao;
+import com.dao.users.UserDaoImpl;
 import com.util.authentication.BuyerAuthentic;
 import com.util.authentication.BuyerAuthenticUtil;
-import com.vo.BuyerAccount;
 import com.vo.BuyerAddress;
 import com.vo.BuyerInfo;
+import com.vo.UserAccount;
 
 
 @WebServlet("/buyerregisterServlet")
@@ -33,8 +33,8 @@ public class buyerregisterServlet extends HttpServlet {
 		String b_pwd2 = (String) request.getParameter("buyer_pwd2");
 		int b_tel = Integer.parseInt(request.getParameter("buyer_tel"));
 		String b_ads = (String) request.getParameter("buyer_ads");
-		BuyerD bd = new BuyerDI();
-		BuyerAccount ba = new BuyerAccount(b_acc,b_pwd1);
+		UserDao ud = new UserDaoImpl();
+		UserAccount ba = new UserAccount(b_acc,b_pwd1);
 		BuyerAuthenticUtil bac = new BuyerAuthentic();
 		boolean flag = true;
 		if(b_pwd1.equals(b_pwd2)&&!b_acc.equals("")&&!b_ads.equals("")&&b_tel>10000) {
@@ -43,7 +43,7 @@ public class buyerregisterServlet extends HttpServlet {
 			flag = false;
 		}
 			if(flag) {
-					if(!bd.selectAct(ba)) {//不允许账号重复
+					if(ud.isValid(ba)) {//不允许账号重复
 					BuyerInfo bi = new BuyerInfo(b_acc,b_tel);
 					BuyerAddress bAddress = new BuyerAddress(b_acc,b_ads);
 					bac.addBuyer(ba,bi,bAddress);

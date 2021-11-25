@@ -10,9 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.dao.users.SellerD;
-import com.dao.users.SellerDI;
-import com.vo.SellerAccount;
+import com.dao.users.UserDao;
+import com.dao.users.UserDaoImpl;
+import com.util.authentication.SellerAuthentic;
+import com.util.authentication.SellerAuthenticUtil;
+import com.vo.SellerInfo;
+import com.vo.UserAccount;
 
 
 
@@ -26,8 +29,9 @@ public class sellerregisterServlet extends HttpServlet {
 		String s_acc = (String) request.getParameter("seller_acc");
 		String s_pwd1 = (String) request.getParameter("seller_pwd1");
 		String s_pwd2 = (String) request.getParameter("seller_pwd2");
-		SellerAccount sa = new SellerAccount(s_acc,s_pwd1,0);
-		SellerD sd = new SellerDI();
+		UserAccount sa = new UserAccount(s_acc,s_pwd1);
+		UserDao ud = new UserDaoImpl();
+		SellerAuthenticUtil sellerAuthentic = new SellerAuthentic();
 		boolean flag = true;
 		if(s_pwd1.equals(s_pwd2)) {
 			flag = true;
@@ -36,9 +40,10 @@ public class sellerregisterServlet extends HttpServlet {
 		}
 			if(flag) {//后续增加新的函数来判断该账号是否已经存在，如果存在就进入else分支
 				try {
-					if(!sd.selectAct(sa)) {
-					sd.insertAccount(sa);
-					response.sendRedirect("authentication/seller_register/seller_register_success.jsp");
+					if(ud.isValid(sa)) {
+						SellerInfo si = new SellerInfo(s_acc, 1);
+						sellerAuthentic.addSeller(sa, si);
+						response.sendRedirect("authentication/seller_register/seller_register_success.jsp");
 					}
 				} catch (SQLException | IOException e) {
 					e.printStackTrace();

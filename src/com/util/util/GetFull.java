@@ -1,19 +1,23 @@
 package com.util.util;
 
-import com.dao.merchandise.MerchandiseD;
-import com.dao.merchandise.MerchandiseDI;
-import com.dao.orders.OrdersD;
-import com.dao.orders.OrdersDI;
-import com.dao.users.BuyerD;
-import com.dao.users.BuyerDI;
+import com.dao.merchandise.MerchandiseDao;
+import com.dao.merchandise.MerchandiseDaoImpl;
+import com.dao.orders.OrdersDao;
+import com.dao.orders.OrdersDaoImpl;
+import com.dao.users.BuyerDao;
+import com.dao.users.BuyerDaoImpl;
+import com.dao.users.UserDao;
+import com.dao.users.UserDaoImpl;
 import com.vo.BuyerInfo;
 import com.vo.Merchandise;
 import com.vo.Orders;
+import com.vo.UserAccount;
+import com.vo.UserGroup;
 
 public class GetFull implements GetFullUtil{
 
 	public Merchandise getAllMerchan(Merchandise m) {
-		MerchandiseD md = new MerchandiseDI();
+		MerchandiseDao md = new MerchandiseDaoImpl();
 		Merchandise new_m = m;
 		try {
 			new_m = md.selectMerchan(new_m);
@@ -31,7 +35,7 @@ public class GetFull implements GetFullUtil{
 	
 	
 	public Orders getAllOrders(Orders o) {
-		OrdersD od = new OrdersDI();
+		OrdersDao od = new OrdersDaoImpl();
 		Orders new_o = o;
 		try {
 			new_o = od.selectOrdersById(o.getO_id());
@@ -45,14 +49,26 @@ public class GetFull implements GetFullUtil{
 	
 	
 	public BuyerInfo getAllBuyer(BuyerInfo bi) {
-		BuyerD bd = new BuyerDI();
+		BuyerDao bd = new BuyerDaoImpl();
 		BuyerInfo new_bi = bi;
 		try {
-			new_bi = bd.selectAccount(bi);
 			new_bi = bd.selectAddress(bi);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		return new_bi;
+	}
+	
+	
+	public UserAccount getAllUser(UserAccount ua) {
+		UserDao ud = new UserDaoImpl();
+		UserAccount new_ua = ua;
+		try {
+			UserGroup ug = ud.selectGroup(new_ua);
+			new_ua.setUserGroup(ug);
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		return new_ua;
 	}
 }

@@ -3,8 +3,8 @@ package com.util.view;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import com.dao.orders.OrdersD;
-import com.dao.orders.OrdersDI;
+import com.dao.orders.OrdersDao;
+import com.dao.orders.OrdersDaoImpl;
 import com.util.util.GetFull;
 import com.vo.Orders;
 
@@ -14,7 +14,7 @@ public class OrdersView implements OrdersViewUtil {
 	public ArrayList<Orders> getBuyerOrders(String b_act){
 		ArrayList<Orders> ao1 = new ArrayList<Orders>();
 		ArrayList<Orders> ao2 = new ArrayList<Orders>();
-		OrdersD od = new OrdersDI();
+		OrdersDao od = new OrdersDaoImpl();
 		try {
 			ao1 = od.selectByAct(b_act);
 			Iterator<Orders> io = ao1.iterator();
@@ -35,7 +35,7 @@ public class OrdersView implements OrdersViewUtil {
 		ArrayList<Orders> ao1 = new ArrayList<Orders>();
 		ArrayList<Orders> ao2 = new ArrayList<Orders>();
 		GetFull gf = new GetFull();
-		OrdersD od = new OrdersDI();
+		OrdersDao od = new OrdersDaoImpl();
 		try {
 			ao1 = od.selectAllOrders();
 			Iterator<Orders> io = ao1.iterator();

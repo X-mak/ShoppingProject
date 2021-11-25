@@ -1,5 +1,4 @@
 <%@page import="com.util.view.MerchanView"%>
-<%@page import="com.vo.SellerAccount"%>
 <%@page import="com.vo.MPicture"%>
 <%@page import="com.vo.Merchandise"%>
 <%@page import="java.util.ArrayList"%>

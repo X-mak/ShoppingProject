@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.util.management.OrdersManage;
 import com.util.management.OrdersManageUtil;
-import com.vo.BuyerAccount;
+import com.vo.UserAccount;
 
 @WebServlet("/buymerchandiseServlet")
 public class buymerchandiseServlet extends HttpServlet {
@@ -19,7 +19,7 @@ public class buymerchandiseServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		int m_id = Integer.parseInt((String) session.getAttribute("m_id"));
 		String buynum = (String)session.getAttribute("buynum");
-		BuyerAccount ba = (BuyerAccount)session.getAttribute("buyeruser");
+		UserAccount ba = (UserAccount)session.getAttribute("buyeruser");
 		OrdersManageUtil om =new OrdersManage();
 		 for (int i = buynum.length();--i>=0;){   
 			   if (!Character.isDigit(buynum.charAt(i))){ 
@@ -28,7 +28,7 @@ public class buymerchandiseServlet extends HttpServlet {
 			   } 
 			  } 
 		int buy_num = Integer.parseInt(buynum);
-		om.havaOrder(m_id, ba.getB_act(), buy_num);
+		om.havaOrder(m_id, ba.getU_act(), buy_num);
 		response.sendRedirect("management/buyer_buy/buyer_buy_success.jsp");
 	}
 

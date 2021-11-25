@@ -1,4 +1,4 @@
-<%@page import="com.vo.BuyerAccount"%>
+<%@page import="com.vo.UserAccount"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,8 +11,8 @@
 <%
 String bpath = request.getContextPath();
 String bbasePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+bpath+"/";
-BuyerAccount buyer = (BuyerAccount)(session.getAttribute("buyeruser"));
-		if(buyer==null){
+UserAccount buyer = (UserAccount)(session.getAttribute("buyeruser"));
+		if(!buyer.getUserGroup().getU_role().equals("buyer")){
 			response.sendRedirect(bbasePath+"authentication/buyer_login/buyer_login.jsp");
 			return;
 		}

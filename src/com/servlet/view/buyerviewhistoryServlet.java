@@ -11,16 +11,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.util.view.OrdersView;
-import com.vo.BuyerAccount;
 import com.vo.Orders;
+import com.vo.UserAccount;
 
 @WebServlet("/buyerviewhistoryServlet")
 public class buyerviewhistoryServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		BuyerAccount ba = (BuyerAccount)session.getAttribute("buyeruser");
+		UserAccount ba = (UserAccount)session.getAttribute("buyeruser");
 		OrdersView ov = new OrdersView();
-		ArrayList<Orders> ao = ov.getBuyerOrders(ba.getB_act());
+		ArrayList<Orders> ao = ov.getBuyerOrders(ba.getU_act());
 		session.setAttribute("orders", ao);
 		response.sendRedirect("view/buyer_view/buyer_history.jsp");
 	}

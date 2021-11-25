@@ -1,4 +1,4 @@
-<%@page import="com.vo.SellerAccount"%>
+<%@page import="com.vo.UserAccount"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -11,8 +11,8 @@
 <%
 String ipath = request.getContextPath();
 String ibasePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+ipath+"/";
-SellerAccount selleruser = (SellerAccount)(session.getAttribute("selleruser"));
-		if(selleruser==null){
+UserAccount selleruser = (UserAccount)(session.getAttribute("selleruser"));
+		if(!selleruser.getUserGroup().getU_role().equals("seller")){
 			response.sendRedirect(ibasePath+"authentication/seller_login/seller_login.jsp");
 			return;
 		}

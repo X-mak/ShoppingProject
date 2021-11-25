@@ -3,6 +3,7 @@ package com.util.util;
 import com.vo.BuyerInfo;
 import com.vo.Merchandise;
 import com.vo.Orders;
+import com.vo.UserAccount;
 
 /**
  * @author 徐敏阳
@@ -32,5 +33,13 @@ public interface GetFullUtil {
 	 * @return 成功则返回包含所有相关信息的BuyerInfo,失败则返回原参数
 	 */
 	public BuyerInfo getAllBuyer(BuyerInfo bi); 
+	
+	
+	/**
+	 * 用于获取完整的用户账号UserAccount
+	 * @param 用户账号UserAccount,需要包括u_act
+	 * @return 成功则返回包含所有相关信息的UserAccount,失败则返回原参数
+	 */
+	public UserAccount getAllUser(UserAccount ua);
 	
 }

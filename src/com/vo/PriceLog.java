@@ -1,6 +1,5 @@
 package com.vo;
 
-import java.sql.Date;
 
 public class PriceLog {
 	private int pl_id;

@@ -11,7 +11,7 @@
 <link rel="stylesheet" id="templatecss" type="text/css" href="<%=basePath %>css/sellerPage_interface.css">
 <body>
 <div id = "main">
-	<p>欢迎回来,<%=selleruser.getS_act() %></p>
+	<p>欢迎回来,<%=selleruser.getU_act() %></p>
 </div>
 </body>
 </html>

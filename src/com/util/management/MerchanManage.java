@@ -6,16 +6,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.Iterator;
 
-import com.dao.merchandise.MGenreD;
-import com.dao.merchandise.MGenreDI;
-import com.dao.merchandise.MPictureD;
-import com.dao.merchandise.MPictureDI;
-import com.dao.merchandise.MerchandiseD;
-import com.dao.merchandise.MerchandiseDI;
-import com.dao.merchandise.PriceLogD;
-import com.dao.merchandise.PriceLogDI;
-import com.dao.merchandise.StockLogD;
-import com.dao.merchandise.StockLogDI;
+import com.dao.merchandise.MGenreDao;
+import com.dao.merchandise.MGenreDaoImpl;
+import com.dao.merchandise.MPictureDao;
+import com.dao.merchandise.MPictureDaoImpl;
+import com.dao.merchandise.MerchandiseDao;
+import com.dao.merchandise.MerchandiseDaoImpl;
+import com.dao.merchandise.PriceLogDao;
+import com.dao.merchandise.PriceLogDaoImpl;
+import com.dao.merchandise.StockLogDao;
+import com.dao.merchandise.StockLogDaoImpl;
 import com.util.util.GetFull;
 import com.vo.MGenre;
 import com.vo.MPicture;
@@ -27,8 +27,8 @@ public class MerchanManage implements MerchanManageUtil {
 
 	public boolean addStock(StockLog sl) {
 		boolean flag = false;
-		StockLogD sld = new StockLogDI();
-		MerchandiseD md = new MerchandiseDI();
+		StockLogDao sld = new StockLogDaoImpl();
+		MerchandiseDao md = new MerchandiseDaoImpl();
 		try {
 			Merchandise m = new Merchandise(sl.getM_id());
 			m = md.selectMerchan(m);
@@ -52,7 +52,7 @@ public class MerchanManage implements MerchanManageUtil {
 	
 	public boolean addGenre(MGenre mg) {
 		boolean flag = false;
-		MGenreD mgd = new MGenreDI();
+		MGenreDao mgd = new MGenreDaoImpl();
 		try {
 			if(mgd.insertGenre(mg) != null) {
 				flag = true;
@@ -66,7 +66,7 @@ public class MerchanManage implements MerchanManageUtil {
 	
 	public boolean updateGenre(MGenre mg) {
 		boolean flag = false;
-		MGenreD mgd = new MGenreDI();
+		MGenreDao mgd = new MGenreDaoImpl();
 		try {
 			if(mgd.updateGenre(mg)) {
 				flag = true;
@@ -79,10 +79,10 @@ public class MerchanManage implements MerchanManageUtil {
 	
 		
 	public Merchandise addMerchan(Merchandise m,ArrayList<MPicture> am,int price,int num) {
-		MerchandiseD md = new MerchandiseDI();
-		MPictureD pd = new MPictureDI();
-		PriceLogD pld = new PriceLogDI();
-		StockLogD sd = new StockLogDI();
+		MerchandiseDao md = new MerchandiseDaoImpl();
+		MPictureDao pd = new MPictureDaoImpl();
+		PriceLogDao pld = new PriceLogDaoImpl();
+		StockLogDao sd = new StockLogDaoImpl();
 		ArrayList<MPicture> amp = new ArrayList<MPicture>();
 		ArrayList<PriceLog> apl = new ArrayList<PriceLog>();
 		ArrayList<StockLog> asl = new ArrayList<StockLog>();

@@ -1,33 +1,38 @@
 package com.vo;
 
 public class SellerInfo {
-	private String s_act;
-	private String a_act;
-	public String getS_act() {
-		return s_act;
+	private String u_act;
+	private int s_status;
+	public String getU_act() {
+		return u_act;
 	}
-	public void setS_act(String s_act) {
-		this.s_act = s_act;
+	public void setU_act(String s_act) {
+		this.u_act = s_act;
 	}
-	public String getA_act() {
-		return a_act;
+	public int getS_status() {
+		return s_status;
 	}
-	public void setA_act(String a_act) {
-		this.a_act = a_act;
+	public void setS_status(int s_status) {
+		this.s_status = s_status;
 	}
 	@Override
 	public String toString() {
-		return "SellerInfo [s_act=" + s_act + ", a_act=" + a_act + "]";
+		return "SellerInfo [u_act=" + u_act + ", s_status=" + s_status + "]";
+	}
+	public SellerInfo(String u_act, int s_status) {
+		super();
+		this.u_act = u_act;
+		this.s_status = s_status;
 	}
 	public SellerInfo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public SellerInfo(String s_act, String a_act) {
+	public SellerInfo(String u_act) {
 		super();
-		this.s_act = s_act;
-		this.a_act = a_act;
+		this.u_act = u_act;
 	}
+
 
 	
 }
