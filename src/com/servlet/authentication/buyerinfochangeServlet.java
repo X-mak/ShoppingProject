@@ -10,9 +10,9 @@ import javax.servlet.http.HttpSession;
 
 import com.util.authentication.BuyerAuthentic;
 import com.util.authentication.BuyerAuthenticUtil;
-import com.vo.BuyerAccount;
 import com.vo.BuyerAddress;
 import com.vo.BuyerInfo;
+import com.vo.UserAccount;
 
 
 @WebServlet("/buyerinfochangeServlet")
@@ -20,8 +20,8 @@ public class buyerinfochangeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
-		BuyerAccount bac = (BuyerAccount)session.getAttribute("buyeruser");
-		String b_acc = bac.getB_act();
+		UserAccount bac = (UserAccount)session.getAttribute("buyeruser");
+		String b_acc = bac.getU_act();
 		String b_tel = request.getParameter("newtel");
 		String b_ads = request.getParameter("newadd");
 		for (int i = b_tel.length();--i>=0;){   

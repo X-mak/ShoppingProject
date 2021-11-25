@@ -51,7 +51,7 @@
 		%>
 		<tr>
 			<td><%= o.getMerchandise().getM_name() %></td>
-        	<td><%= o.getB_act()%></td>
+        	<td><%= o.getU_act()%></td>
             <td><%= bi.getB_tele() %></td>
             <td><%= bad.getB_ads() %></td>
             <% 

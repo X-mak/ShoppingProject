@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 public class Merchandise {
 	private int m_id;
-	private int sh_id;
 	private String m_name;
 	private String m_intro;
 	private Shop shop;
@@ -39,12 +38,6 @@ public class Merchandise {
 	}
 	public void setM_id(int m_id) {
 		this.m_id = m_id;
-	}
-	public int getSh_id() {
-		return sh_id;
-	}
-	public void setSh_id(int sh_id) {
-		this.sh_id = sh_id;
 	}
 	public String getM_name() {
 		return m_name;
@@ -90,7 +83,7 @@ public class Merchandise {
 	}
 	@Override
 	public String toString() {
-		return "Merchandise [m_id=" + m_id + ", sh_id=" + sh_id + ", m_name=" + m_name + ", m_intro=" + m_intro + "]";
+		return "Merchandise [m_id=" + m_id  + ", m_name=" + m_name + ", m_intro=" + m_intro + "]";
 	}
 	public Merchandise() {
 		super();
@@ -100,16 +93,14 @@ public class Merchandise {
 		super();
 		this.m_id = m_id;
 	}
-	public Merchandise(int sh_id, String m_name, String m_intro) {
+	public Merchandise( String m_name, String m_intro) {
 		super();
-		this.sh_id = sh_id;
 		this.m_name = m_name;
 		this.m_intro = m_intro;
 	}
-	public Merchandise(int sh_id, String m_name, String m_intro, Shop shop, ArrayList<MPicture> mPicture,
+	public Merchandise( String m_name, String m_intro, Shop shop, ArrayList<MPicture> mPicture,
 			ArrayList<PriceLog> priceLog, ArrayList<StockLog> stockLog, MGenre mGenre) {
 		super();
-		this.sh_id = sh_id;
 		this.m_name = m_name;
 		this.m_intro = m_intro;
 		this.shop = shop;
@@ -118,17 +109,15 @@ public class Merchandise {
 		this.stockLog = stockLog;
 		this.mGenre = mGenre;
 	}
-	public Merchandise(int m_id, int sh_id, String m_name, String m_intro) {
+	public Merchandise(int m_id, String m_name, String m_intro) {
 		super();
 		this.m_id = m_id;
-		this.sh_id = sh_id;
 		this.m_name = m_name;
 		this.m_intro = m_intro;
 	}
-	public Merchandise(int m_id, int sh_id, String m_name, String m_intro, int m_status) {
+	public Merchandise(int m_id,String m_name, String m_intro, int m_status) {
 		super();
 		this.m_id = m_id;
-		this.sh_id = sh_id;
 		this.m_name = m_name;
 		this.m_intro = m_intro;
 		this.m_status = m_status;

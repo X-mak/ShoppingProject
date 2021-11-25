@@ -8,9 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.util.authentication.BuyerAuthentic;
-import com.util.authentication.BuyerAuthenticUtil;
-import com.vo.BuyerAccount;
+import com.util.authentication.UserAuthentic;
+import com.util.authentication.UserAuthenticaUtil;
+import com.vo.UserAccount;
 
 @WebServlet("/buyerpwdchangeServlet")
 public class buyerpwdchangeServlet extends HttpServlet {
@@ -20,8 +20,8 @@ public class buyerpwdchangeServlet extends HttpServlet {
 		String pwd = request.getParameter("buyeroldpwd");
 		String newpwd = request.getParameter("buyernewpwd");
 		HttpSession session = request.getSession();
-		BuyerAuthenticUtil bu = new BuyerAuthentic();
-		BuyerAccount ba = new BuyerAccount(account, pwd);
+		UserAuthenticaUtil bu = new UserAuthentic();
+		UserAccount ba = new UserAccount(account, pwd);
 			if(bu.changePwd(ba, newpwd)) {
 				response.sendRedirect("authentication/buyer_alter/buyer_changepwd_success.jsp");
 			}else {

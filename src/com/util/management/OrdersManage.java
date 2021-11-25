@@ -3,12 +3,12 @@ package com.util.management;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.dao.merchandise.MerchandiseD;
-import com.dao.merchandise.MerchandiseDI;
-import com.dao.merchandise.StockLogD;
-import com.dao.merchandise.StockLogDI;
-import com.dao.orders.OrdersD;
-import com.dao.orders.OrdersDI;
+import com.dao.merchandise.MerchandiseDao;
+import com.dao.merchandise.MerchandiseDaoImpl;
+import com.dao.merchandise.StockLogDao;
+import com.dao.merchandise.StockLogDaoImpl;
+import com.dao.orders.OrdersDao;
+import com.dao.orders.OrdersDaoImpl;
 import com.util.util.GetFull;
 import com.vo.Merchandise;
 import com.vo.Orders;
@@ -19,10 +19,10 @@ public class OrdersManage implements OrdersManageUtil {
 	
 	public Orders havaOrder(int m_id,String b_act,int o_num) {
 		int i = 0;
-		MerchandiseD md = new MerchandiseDI();
-		StockLogD sld = new StockLogDI();
+		MerchandiseDao md = new MerchandiseDaoImpl();
+		StockLogDao sld = new StockLogDaoImpl();
 		Orders o = null;
-		OrdersD od = new OrdersDI();
+		OrdersDao od = new OrdersDaoImpl();
 		try {
 			Merchandise m = md.selectMerchan(new Merchandise(m_id));
 			m = md.selectStockLog(m);
@@ -53,7 +53,7 @@ public class OrdersManage implements OrdersManageUtil {
 	
 	public boolean sellerChooseBuyer(int o_id) {
 		boolean flag = false;
-		OrdersD od = new OrdersDI();
+		OrdersDao od = new OrdersDaoImpl();
 		try {
 			Orders o = new Orders(o_id);
 			if(od.updateStatus(o, 1))
@@ -68,7 +68,7 @@ public class OrdersManage implements OrdersManageUtil {
 	
 	public boolean finshDeal(int o_id) {
 		boolean flag = false;
-		OrdersD od = new OrdersDI();
+		OrdersDao od = new OrdersDaoImpl();
 		try {
 			Orders o = new Orders(o_id);
 			if(od.updateStatus(o, 2))
@@ -83,8 +83,8 @@ public class OrdersManage implements OrdersManageUtil {
 	
 	public boolean deleteOrder(int o_id) {
 		boolean flag = false;
-		OrdersD od = new OrdersDI();
-		StockLogD slg = new StockLogDI();
+		OrdersDao od = new OrdersDaoImpl();
+		StockLogDao slg = new StockLogDaoImpl();
 		GetFull gf = new GetFull();
 		try {
 			Orders o = new Orders(o_id);

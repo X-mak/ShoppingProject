@@ -10,12 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.dao.merchandise.MerchandiseD;
-import com.dao.merchandise.MerchandiseDI;
-import com.util.management.MerchanManage;
-import com.util.management.MerchanManageUtil;
+import com.dao.merchandise.MerchandiseDao;
+import com.dao.merchandise.MerchandiseDaoImpl;
 import com.vo.Merchandise;
-import com.vo.SellerAccount;
+import com.vo.UserAccount;
 
 
 @WebServlet("/sellermerchandropServlet")
@@ -24,9 +22,9 @@ public class sellermerchandropServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
-		SellerAccount as = (SellerAccount)session.getAttribute("selleruser");
+		UserAccount as = (UserAccount)session.getAttribute("selleruser");
 		int m_id = Integer.parseInt((String)request.getParameter("m_id"));
-		MerchandiseD md = new MerchandiseDI();
+		MerchandiseDao md = new MerchandiseDaoImpl();
 		try {
 			md.updateStatus(new Merchandise(m_id), 0);
 		} catch (SQLException e) {

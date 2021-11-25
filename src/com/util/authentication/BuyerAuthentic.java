@@ -2,36 +2,21 @@ package com.util.authentication;
 
 import java.util.ArrayList;
 
-import com.dao.users.BuyerD;
-import com.dao.users.BuyerDI;
-import com.dao.users.SellerD;
-import com.dao.users.SellerDI;
-import com.vo.BuyerAccount;
+import com.dao.users.BuyerDao;
+import com.dao.users.BuyerDaoImpl;
+import com.dao.users.UserDao;
+import com.dao.users.UserDaoImpl;
 import com.vo.BuyerAddress;
 import com.vo.BuyerInfo;
-import com.vo.SellerAccount;
+import com.vo.UserAccount;
+import com.vo.UserGroup;
 
 public class BuyerAuthentic implements BuyerAuthenticUtil {
 
-	public boolean changePwd(BuyerAccount ba,String new_pwd) {
-		boolean flag = false;
-		BuyerD bd = new BuyerDI();
-		try {
-			if(bd.selectAccount(ba)) {
-				flag = true;
-				bd.updatePwd(ba, new_pwd);
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return flag;
-	}
-	
-	
 	
 	public BuyerInfo changeInfo(BuyerInfo bi, BuyerAddress ba) {
 		BuyerInfo res = null;
-		BuyerD bd = new BuyerDI();
+		BuyerDao bd = new BuyerDaoImpl();
 		try {
 			res = bi;
 			bd.updateInfo(bi);
@@ -45,18 +30,18 @@ public class BuyerAuthentic implements BuyerAuthenticUtil {
 	
 	
 	
-	public BuyerInfo addBuyer(BuyerAccount ba,BuyerInfo bi, BuyerAddress bad) {
+	public BuyerInfo addBuyer(UserAccount ua,BuyerInfo bi, BuyerAddress bad) {
 		BuyerInfo res = null;
-		BuyerD bd = new BuyerDI();
-		SellerD sd = new SellerDI();
+		BuyerDao bd = new BuyerDaoImpl();
+		UserDao ud = new UserDaoImpl();
 		try {
 			ArrayList<BuyerAddress> aba = new ArrayList<BuyerAddress>();
-			SellerAccount sa = new SellerAccount(ba.getB_act(),ba.getB_pwd());
-			if(!bd.selectAct(ba) && !sd.selectAct(sa)) {
-				bd.insertAccount(ba);              //顺序和下一行反了
+			if(ud.isValid(ua)) {
+				ud.insertAccount(ua);              //顺序和下一行反了
 				bd.insertInfo(bi);
+				UserGroup ug = new UserGroup(ua.getU_act(), "buyer");
+				ud.insertGroup(ug);
 				aba.add(bd.insertAddress(bad));
-				bi.setBuyerAccount(ba);
 				bi.setBuyerAddress(aba);
 			}
 		}catch(Exception e) {

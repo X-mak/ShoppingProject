@@ -3,8 +3,8 @@ package com.util.view;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import com.dao.merchandise.MerchandiseD;
-import com.dao.merchandise.MerchandiseDI;
+import com.dao.merchandise.MerchandiseDao;
+import com.dao.merchandise.MerchandiseDaoImpl;
 import com.util.util.GetFull;
 import com.vo.Merchandise;
 
@@ -13,7 +13,7 @@ public class MerchanView implements MerchanViewUtil {
 	
 	
 	public ArrayList<Merchandise> showAllMerchanOnSale() {
-		MerchandiseD md = new MerchandiseDI();
+		MerchandiseDao md = new MerchandiseDaoImpl();
 		GetFull gf = new GetFull();
 		ArrayList<Merchandise> am1 = new ArrayList<Merchandise>();
 		ArrayList<Merchandise> am2 = new ArrayList<Merchandise>();
@@ -36,7 +36,7 @@ public class MerchanView implements MerchanViewUtil {
 		ArrayList<Merchandise> ao1 = new ArrayList<Merchandise>();
 		ArrayList<Merchandise> ao2 = new ArrayList<Merchandise>();
 		GetFull gf = new GetFull();
-		MerchandiseD md = new MerchandiseDI();
+		MerchandiseDao md = new MerchandiseDaoImpl();
 		try {
 			ao1 = md.selectAllMerchan();
 			Iterator<Merchandise> im = ao1.iterator();
@@ -53,7 +53,7 @@ public class MerchanView implements MerchanViewUtil {
 	
 	
 	public ArrayList<Merchandise> showSelectedMerchan(String words){
-		MerchandiseD md = new MerchandiseDI();
+		MerchandiseDao md = new MerchandiseDaoImpl();
 		GetFull gf = new GetFull();
 		ArrayList<Merchandise> l = new ArrayList<Merchandise>();
 		try {

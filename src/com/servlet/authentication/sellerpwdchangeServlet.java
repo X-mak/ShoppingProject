@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.util.authentication.SellerAuthentic;
-import com.util.authentication.SellerAuthenticUtil;
-import com.vo.SellerAccount;
+import com.dao.users.UserDao;
+import com.dao.users.UserDaoImpl;
+import com.util.authentication.UserAuthentic;
+import com.util.authentication.UserAuthenticaUtil;
+import com.vo.UserAccount;
 
 
 @WebServlet("/sellerpwdchangeServlet")
@@ -23,9 +25,9 @@ public class sellerpwdchangeServlet extends HttpServlet {
 		String pwd = request.getParameter("selleroldpwd");
 		String newpwd = request.getParameter("sellernewpwd");
 		HttpSession session = request.getSession();
-		SellerAuthenticUtil sa = new SellerAuthentic();
-		SellerAccount sAccount = new SellerAccount(account, pwd);
-			if(sa.changePwd(sAccount, newpwd)) {
+		UserAuthenticaUtil userAuthentic = new UserAuthentic();
+		UserAccount sAccount = new UserAccount(account, pwd);
+			if(userAuthentic.changePwd(sAccount, newpwd)) {
 				response.sendRedirect("authentication/seller_alter/sellerpwdchange_success.jsp");
 			}else {
 				response.sendRedirect("authentication/seller_alter/sellerpwdchange_fail.jsp");

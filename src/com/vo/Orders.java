@@ -6,7 +6,7 @@ package com.vo;
 public class Orders {
 	private int o_id;
 	private int m_id;
-	private String b_act;
+	private String u_act;
 	private int sl_id;
 	private int o_status;
 	private int o_num;
@@ -25,11 +25,11 @@ public class Orders {
 	public void setM_id(int m_id) {
 		this.m_id = m_id;
 	}
-	public String getB_act() {
-		return b_act;
+	public String getU_act() {
+		return u_act;
 	}
-	public void setB_act(String b_act) {
-		this.b_act = b_act;
+	public void setU_act(String b_act) {
+		this.u_act = b_act;
 	}
 	public int getSl_id() {
 		return sl_id;
@@ -69,14 +69,14 @@ public class Orders {
 	}
 	@Override
 	public String toString() {
-		return "Orders [o_id=" + o_id + ", m_id=" + m_id + ", b_act=" + b_act + ", sl_id=" + sl_id + ", o_status="
+		return "Orders [o_id=" + o_id + ", m_id=" + m_id + ", b_act=" + u_act + ", sl_id=" + sl_id + ", o_status="
 				+ o_status + ", o_num=" + o_num + "]";
 	}
 	public Orders(int o_id, int m_id, String b_act, int sl_id, int o_status, int o_num) {
 		super();
 		this.o_id = o_id;
 		this.m_id = m_id;
-		this.b_act = b_act;
+		this.u_act = b_act;
 		this.sl_id = sl_id;
 		this.o_status = o_status;
 		this.o_num = o_num;
@@ -88,7 +88,7 @@ public class Orders {
 	public Orders(int m_id, String b_act, int sl_id, int o_status, int o_num) {
 		super();
 		this.m_id = m_id;
-		this.b_act = b_act;
+		this.u_act = b_act;
 		this.sl_id = sl_id;
 		this.o_status = o_status;
 		this.o_num = o_num;

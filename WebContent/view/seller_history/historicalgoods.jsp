@@ -34,7 +34,7 @@
 		if(o.getO_status() == 2 ){
 			%><tr>
 	        <td><%=  o.getMerchandise().getM_name()%></td>
-	        <td><%= o.getB_act() %></td>
+	        <td><%= o.getU_act() %></td>
 	    </tr>
 	    <%
 						}
