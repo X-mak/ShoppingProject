@@ -9,6 +9,9 @@
 <%@include file="../../util/checklogin.jsp" %>
 <%@include file="../../component/navigation.jsp" %>
 <link rel="stylesheet" id="templatecss" type="text/css" href="<%=basePath %>css/seller_release_interface.css">
+<script type="text/javascript" src="<%=basePath %>ueditor/ueditor.config.js"></script>
+<script type="text/javascript" src="<%=basePath %>ueditor/ueditor.all.js"></script>
+<script type="text/javascript" charset="utf-8" src="<%=basePath %>ueditor/lang/zh-cn/zh-cn.js"></script>
 <body>
 	 <form action="<%=basePath %>/releasegoodServlet" method="post" enctype="multipart/form-data" class="form">
         <table>
@@ -41,7 +44,7 @@
             </tr>
             <tr>
                 <td>商品描述:</td>
-                <td><textarea rows="10" cols="16" name="goodinf" placeholder="请输入商品简介" style="resize: none;"></textarea><br /></td>
+                <td><textarea id="richmedia"  name="goodinf"  style="resize: none;"></textarea><br /></td>
             </tr>
             <tr>
                 <td colspan="2" align="center"><input type="submit" value="发布" class="sub-btn"/></td>
@@ -50,4 +53,12 @@
         </table>
     </form>
 </body>
+ <script type="text/javascript">
+
+       var ue = UE.getEditor("richmedia",{});
+
+		setTimeout(function(){editor.execCommand('drafts')},2000);//自动保存
+
+
+      </script>
 </html>

@@ -33,7 +33,7 @@
                         <summary> 商品管理</summary>
                         <ul class="box">
                             <li><a href="<%=basePath %>management/seller_releasegood/releasegood.jsp">发布商品 &gt;</a></li>
-                            <li><a href="<%=basePath %>management/seller_merchanmanage/seller_merchanmanage.jsp">商品管理 &gt;</a></li>
+                            <li><a href="<%=basePath %>management/seller_merchanmanage/seller_merchanmanage.jsp?pages=1">商品管理 &gt;</a></li>
                             <li><a href="<%=basePath %>historyServlet">历史商品  &gt;</a></li>
                         </ul>
                     </details>
@@ -73,4 +73,5 @@
         <!-- <div class="context shadow"></div> -->
     </div>
 </body>
+
 </html>

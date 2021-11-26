@@ -3,6 +3,7 @@ package com.servlet.view;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,8 +25,16 @@ public class historyServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		OrdersView ov = new OrdersView();
 		ArrayList<Orders> ListOrder = ov.showAllOrders();
-		session.setAttribute("orders", ListOrder);
-		response.sendRedirect("view/seller_history/historicalgoods.jsp");
+		ArrayList<Orders> res = new ArrayList<Orders>();
+		Iterator<Orders> io = ListOrder.iterator();
+		while(io.hasNext()) {
+			Orders o = io.next();
+			if(o.getO_status() == 2) {
+				res.add(o);
+			}
+		}
+		session.setAttribute("orders", res);
+		response.sendRedirect("view/seller_history/historicalgoods.jsp?pages=1");
 	}
 
 	
