@@ -2,6 +2,7 @@ package com.servlet.view;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,8 +22,16 @@ public class buyerviewhistoryServlet extends HttpServlet {
 		UserAccount ba = (UserAccount)session.getAttribute("buyeruser");
 		OrdersView ov = new OrdersView();
 		ArrayList<Orders> ao = ov.getBuyerOrders(ba.getU_act());
-		session.setAttribute("orders", ao);
-		response.sendRedirect("view/buyer_view/buyer_history.jsp");
+		ArrayList<Orders> res = new ArrayList<Orders>();
+		Iterator<Orders> io = ao.iterator();
+		while(io.hasNext()) {
+			Orders o = io.next();
+			if(o.getO_status() == 2) {
+				res.add(o);
+			}
+		}
+		session.setAttribute("orders", res);
+		response.sendRedirect("view/buyer_view/buyer_history.jsp?pages=1");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
