@@ -1,3 +1,4 @@
+<%@page import="java.util.Iterator"%>
 <%@page import="com.util.util.GetFull"%>
 <%@page import="com.util.view.MerchanView"%>
 <%@page import="com.vo.MPicture"%>
@@ -20,12 +21,18 @@
 		GetFull gf = new GetFull();
 		Merchandise new_m = gf.getAllMerchan(m);
 		ArrayList<MPicture> amp = new_m.getmPicture();
-		String img_path = basePath+"/imgs/"+amp.get(0).getP_ads();
+		Iterator<MPicture> im = amp.iterator();
+		//String img_path = basePath+"/imgs/"+amp.get(0).getP_ads();
 		// String img_path = basePath+"/imgs/"+merchan.getM_pic();
 %><br>
 <div class="blank"></div>
     <div class="box mid">
+        <div><% while(im.hasNext()){
+        	String img_path = basePath+"/imgs/"+im.next().getP_ads();
+        %>
         <img src=<%=img_path %> alt="goodsimg">
+        <% }%>
+        </div>
         <div class="text">
             <div class="goodname">商品名称：<%=new_m.getM_name() %></div>
             <div class="goodcontro">商品介绍：</br><%=new_m.getM_intro() %></div>

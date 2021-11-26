@@ -16,6 +16,7 @@
 <%
 	session.setAttribute("flag1", "");
 	session.setAttribute("flag2", "");
+	String value = (String) session.getAttribute("value");
 %>
 <body>
 	<div class="spa">
@@ -44,7 +45,7 @@
         </span>
         <form class="search" action="<%=basePath%>merchansearchServlet">
             <div class="search-field">
-                <input class="input" type="text" name="search">
+                <input class="input" type="text" name="search" placeholder="<%=value%>">
                 <input class="btn" type="submit" value="搜索">
             </div>
         </form>
@@ -52,8 +53,7 @@
     <hr>
     <div class="goods mid">
 <%
-MerchanView mv = new MerchanView();
-ArrayList<Merchandise> am = mv.showAllMerchanOnSale();
+ArrayList<Merchandise> am = (ArrayList<Merchandise>)session.getAttribute("am");
 Iterator<Merchandise> im = am.iterator(); 
 while(im.hasNext()){
 	Merchandise m = im.next();
