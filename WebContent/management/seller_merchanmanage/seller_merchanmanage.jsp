@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="com.vo.StockLog"%>
 <%@page import="com.vo.MPicture"%>
 <%@page import="com.vo.Merchandise"%>
@@ -24,14 +25,29 @@
             <th colspan="2">操作</th>
         </thead>
 <%
-MerchanView mv = new MerchanView();
-ArrayList<Merchandise> am = mv.showAllMerchan();
-Iterator<Merchandise> im = am.iterator(); 
+//换页
+	MerchanView mv = new MerchanView();
+	ArrayList<Merchandise> am = mv.showAllMerchan();
+	Iterator<Merchandise> im = am.iterator(); 
+	String p = request.getParameter("pages");
+	int pages = 1;
+	if(p.matches("\\d+")){
+		pages = Integer.parseInt(p);
+	}	
+	int eachPageNum = 10;			//一页显示多少数据
+	if(pages < 1)pages = 1;
+	if(pages > am.size()/eachPageNum + 1)pages = am.size()/eachPageNum + 1;
+	int maxItem = Math.min(am.size(), pages*eachPageNum);
+	List<Merchandise> order = am.subList(eachPageNum*(pages - 1), maxItem);
+	String url = "management/seller_merchanmanage/seller_merchanmanage.jsp";
+
+
+//遍历
 while(im.hasNext()){
 	Merchandise m = im.next();
-	MPicture p = m.getmPicture().get(0);
+	MPicture pic = m.getmPicture().get(0);
 	int s_num = m.getM_num();
-	String img_path = "../../imgs/"+p.getP_ads();
+	String img_path = "../../imgs/"+pic.getP_ads();
 %>
            <tr>
           	<td><img src=<%=img_path %>></td>
@@ -44,5 +60,16 @@ while(im.hasNext()){
 	}
 %>
 </table>
+	<hr>
+        <div style="margin:0px auto;width:200px;">
+        	<span>总共<%= am.size()/eachPageNum + 1%>页，当前在第<%= pages%>页</span><br/>
+        	<a href="<%=basePath %><%= url%>?pages=1">首页</a>
+        	<a href="<%=basePath %><%= url%>?pages=<%=pages - 1%>">上一页</a>
+        	<a href="<%=basePath %><%= url%>?pages=<%=pages + 1%>">下一页</a>
+        	<form action="<%=basePath %><%= url%>" method="post">
+        		跳转到第<input type="text" name="pages" value="<%= pages%>" style="width:20px;"></input>页
+        		<input type="submit" class="button" value="跳转" />
+        	</form>
+        </div>
 </body>
 </html>

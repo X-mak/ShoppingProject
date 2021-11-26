@@ -2,6 +2,7 @@ package com.servlet.management;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,8 +21,14 @@ public class sellerordermanageServlet extends HttpServlet {
 		HttpSession session = request.getSession();	
 		OrdersView ov = new OrdersView();
 		ArrayList<Orders> ListOrder = ov.showAllOrders();
-		session.setAttribute("orders", ListOrder);
-		response.sendRedirect("management/seller_check/buyerinf.jsp");
+		ArrayList<Orders> res = new ArrayList<Orders>();
+		Iterator<Orders> io = ListOrder.iterator();
+		while(io.hasNext()) {
+			Orders o = io.next();
+			res.add(o);
+		}
+		session.setAttribute("orders", res);
+		response.sendRedirect("management/seller_check/buyerinf.jsp?pages=1");
 	}
 
 
