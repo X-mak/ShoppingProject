@@ -23,7 +23,7 @@ public class sellergenremanageServlet extends HttpServlet {
 		String goodgenre2 = request.getParameter("secondgenre");
 		MerchanManageUtil mu = new MerchanManage();
 		MGenre mg = new MGenre(m_id, goodgenre1, goodgenre2);
-		mu.addGenre(mg);
+		mu.updateGenre(mg);
 		response.sendRedirect("management/seller_merchanmanage/seller_genremanage_success.jsp");
 	}
 

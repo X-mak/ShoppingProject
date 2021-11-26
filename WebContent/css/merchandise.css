@@ -1,3 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
 .mid {
     margin: 0 auto;
     width: 80%;
@@ -20,12 +34,81 @@ body {
     width: 1242px;
 }
 
-.box img {
+.box .rotation {
+    position: relative;
     float: left;
-    width: 45%; 
+    width: 500px;
     height: 370px;
     margin-right: 10px;
+    overflow: hidden;
 }
+
+
+.box .rotation .prev,
+.box .rotation .next {
+    display: none;
+    position: absolute;
+    top: 50%;
+    margin-top: -25px;
+    text-align: center;
+    width: 30px;
+    height: 50px;
+    background-color: rgba(43, 51, 127, 0.7);
+    text-align: center;
+    line-height: 45px;
+    font-size: 30px;
+    color: #fff;
+    z-index: 2;
+}
+
+.box .rotation .prev {
+    left: 0;
+}
+
+.box .rotation .next {
+    right: 0;
+}
+
+
+.box .rotation ul {
+    width: 400%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.box .rotation ul li img {
+    float: left;
+    height: 370px;
+    width: 500px;
+    vertical-align: bottom;
+}
+
+.box .rotation .point {
+    position: absolute;
+    width: 78px;
+    bottom: 16px;
+    right: 14px;
+}
+
+.box .rotation .point li {
+    float: left;
+    height: 10px;
+    width: 10px;
+    line-height: 10px;
+    font-size: 12px;
+    border-radius: 50%;
+    background-color: #fff;
+    opacity: 0.5;
+    border-radius: 50%;
+    margin: 0 8px;
+}
+
+.box .rotation .point .current {
+    background-color: #fff;
+    opacity: 1;
+}
+
 
 .box .text {
     position: relative;
@@ -44,6 +127,9 @@ body {
 
 .box .goodcontro {
     margin-left: 20px;
+    font-size: 20px;
+    font-weight: 700;
+    height: 150px
 }
 
 .box .price {
@@ -54,20 +140,19 @@ body {
     font-size: 20px;
 }
 
+.box .back,
 .box .buy {
     position: absolute;
     bottom: 0px;
     margin-left: 20px;
-
 }
 
-.box .back{
-	position: absolute;
-    bottom: 0px;
-    margin-left: 260px;
+.box .back {
+	margin-left: 250px
 }
 
-.box .back input{
+.box .back input,
+.box .buy input {
     color: #000;
     font-weight: 700;
     font-size: 15px;
@@ -75,20 +160,8 @@ body {
     height: 40px;
     border-radius: 15px;
 }
-.box .back:hover input{
-    background-color: orange;
-    color: #fff;
-}
-
-.box .buy input{
-    color: #000;
-    font-weight: 700;
-    font-size: 15px;
-    width: 200px;
-    height: 40px;
-    border-radius: 15px;
-}
-.box .buy:hover input{
+.box .back:hover input,
+.box .buy:hover input {
     background-color: orange;
     color: #fff;
 }

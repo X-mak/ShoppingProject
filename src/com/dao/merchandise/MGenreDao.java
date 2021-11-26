@@ -22,7 +22,7 @@ public interface MGenreDao {
 	
 	/**
 	 * 用于加入新的类别信息
-	 * @param 商品类别信息MGenre,需要包含m_id,genre1,genre2
+	 * @param 商品类别信息MGenre,需要包含m_id
 	 * @return 成功则返回插入的MGenre,失败则返回null
 	 * @throws SQLException
 	 */
