@@ -29,7 +29,7 @@
             <!-- container包含了nav所有的框框 -->
             <ul class="container">
                 <li>
-                    <details>
+                    <details id="merchan">
                         <summary> 商品管理</summary>
                         <ul class="box">
                             <li><a href="<%=basePath %>management/seller_releasegood/releasegood.jsp">发布商品 &gt;</a></li>
