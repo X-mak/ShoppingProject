@@ -17,6 +17,8 @@
 <%@include file="../../component/navigation.jsp" %>
 <link rel="stylesheet"  type="text/css" href="<%= basePath %>css/seller_history_interface.css">
 </head>
+<script src="<%=basePath %>js/jquery-3.5.1.min.js"></script>
+<script src="<%= basePath%>js/navi/goto_merchan.js"></script>
 <body>
 
 <div id = "main">
@@ -69,4 +71,7 @@
         </div>
 </div>
 </body>
+<script>
+	$(".first li").eq(2).css("background-image","linear-gradient(to right,#00a3af,#84a2d4)");
+</script>
 </html>

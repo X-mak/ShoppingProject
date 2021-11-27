@@ -29,3 +29,56 @@ table td a:hover {
     background-color: green;
     color: white;
 }
+.p{
+    width: 500px;
+    height: auto;
+    margin: 10px auto;
+}
+.p a{
+    text-decoration: none;
+    display: inline-block;
+    width: auto;
+    height: 30px;
+    background-color: rgb(146, 146, 146);
+    text-align: center;
+    line-height: 30px;
+    border: gray 2px solid;
+    color: aliceblue;
+    padding: 0 6px;
+}
+form{
+    margin:0px;
+    display: inline-block;
+        
+}
+.change{
+        display: inline-block;
+        width: 80px;
+        height: 30px;
+        background-color: rgb(146, 146, 146);
+        text-align: center;
+        line-height: 30px;
+        border: gray 2px solid;
+        color: aliceblue;
+    }
+    form input[type="text"]{
+        height: 15px;
+        line-height: 15px;
+        
+    }
+    form input[type="submit"]{
+        width: auto;
+        height: 30px;
+        background-color: rgb(146, 146, 146);
+        text-align: center;
+        line-height: 30px;
+        border: gray 2px solid;
+        color: aliceblue;
+        padding: 0 6px;
+    }
+    form input[type="submit"]:hover{
+        background-color: rgb(170,216,62);
+    }
+    .p a:hover{
+        background-color: rgb(170,216,62);
+    }

@@ -16,6 +16,8 @@
 <%@include file="../../util/checklogin.jsp" %>
 <%@include file="../../component/navigation.jsp" %>
 <link rel="stylesheet" id="templatecss" type="text/css" href="<%=basePath %>css/seller_merchanmanage.css">
+<script src="<%=basePath %>js/jquery-3.5.1.min.js"></script>
+<script src="<%= basePath%>js/navi/goto_merchan.js"></script>
 <body>
 	 <table border="1" cellspacing="0">
         <thead>
@@ -60,16 +62,21 @@ while(im.hasNext()){
 	}
 %>
 </table>
-	<hr>
-        <div style="margin:0px auto;width:200px;">
-        	<span>总共<%= am.size()/eachPageNum + 1%>页，当前在第<%= pages%>页</span><br/>
-        	<a href="<%=basePath %><%= url%>?pages=1">首页</a>
-        	<a href="<%=basePath %><%= url%>?pages=<%=pages - 1%>">上一页</a>
-        	<a href="<%=basePath %><%= url%>?pages=<%=pages + 1%>">下一页</a>
-        	<form action="<%=basePath %><%= url%>" method="post">
-        		跳转到第<input type="text" name="pages" value="<%= pages%>" style="width:20px;"></input>页
-        		<input type="submit" class="button" value="跳转" />
-        	</form>
-        </div>
+    <hr>
+    <div class="p">      
+        <a href="<%=basePath %><%= url%>?pages=1">&lt;&lt;</a>
+        <a href="<%=basePath %><%= url%>?pages=<%=pages - 1%>">&lt;Prev</a>
+        <form action="<%=basePath %><%= url%>" method="post">
+            <div class="change">
+                <input type="text" name="pages" value="<%=pages %>" style="width:20px;"></input><span>/<%= am.size()/eachPageNum + 1%></span>
+            </div>
+            <input type="submit" class="button" value="Go" />
+        </form>
+        <a href="<%=basePath %><%= url%>?pages=<%=pages + 1%>">Next&gt;</a>
+        <a href="<%=basePath %><%= url%>?pages=<%=am.size()/eachPageNum + 1%>">&gt;&gt;</a>
+    </div>
 </body>
+<script>
+	$(".first li").eq(1).css("background-image","linear-gradient(to right,#00a3af,#84a2d4)");
+</script>
 </html>

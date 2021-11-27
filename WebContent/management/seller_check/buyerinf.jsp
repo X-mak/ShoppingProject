@@ -19,6 +19,8 @@
 <%@include file="../../util/checklogin.jsp" %>
 <link rel="stylesheet"  type="text/css" href="<%= basePath %>css/seller_check_interface.css">
 </head>
+<script src="<%=basePath %>js/jquery-3.5.1.min.js"></script>
+<script src="<%= basePath%>js/navi/goto_order.js"></script>
 <body>
     <div id = "main">
         <div class="goods">
@@ -103,4 +105,7 @@
         </div>
     </div>
 </body>
+<script>
+	$(".second li").eq(0).css("background-image","linear-gradient(to right,#00a3af,#84a2d4)");
+</script>
 </html>

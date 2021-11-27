@@ -87,16 +87,19 @@
 		<%
 	}
 %>
-<div style="width:200px; position:absolute;left: 50%;margin-left:-100px; bottom:5px">
-        	<span>总共<%= am.size()/eachPageNum + 1%>页，当前在第<%= pages%>页</span><br/>
-        	<a href="<%=basePath %><%= url%>?pages=1">首页</a>
-        	<a href="<%=basePath %><%= url%>?pages=<%=pages - 1%>">上一页</a>
-        	<a href="<%=basePath %><%= url%>?pages=<%=pages + 1%>">下一页</a>
-        	<form action="<%=basePath %><%= url%>" method="post">
-        		跳转到第<input type="text" name="pages" value="<%= pages%>" style="width:20px;"></input>页
-        		<input type="submit" class="button" value="跳转" />
-        	</form>
-        </div>
 </div>
+    <hr>
+    <div class="pages">      
+        <a href="<%=basePath %><%= url%>?pages=1">&lt;&lt;</a>
+        <a href="<%=basePath %><%= url%>?pages=<%=pages - 1%>">&lt;Prev</a>
+        <form action="<%=basePath %><%= url%>" method="post">
+            <div class="change">
+                <input type="text" name="pages" value="<%=pages %>" style="width:20px;"></input><span>/<%= am.size()/eachPageNum + 1%></span>
+            </div>
+            <input type="submit" class="button" value="Go" />
+        </form>
+        <a href="<%=basePath %><%= url%>?pages=<%=pages + 1%>">Next&gt;</a>
+        <a href="<%=basePath %><%= url%>?pages=<%=am.size()/eachPageNum + 1%>">&gt;&gt;</a>
+    </div>
 </body>
 </html>
