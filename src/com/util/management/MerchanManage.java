@@ -48,20 +48,7 @@ public class MerchanManage implements MerchanManageUtil {
 		}
 		return flag;
 	}
-	
-	
-	public boolean addGenre(MGenre mg) {
-		boolean flag = false;
-		MGenreDao mgd = new MGenreDaoImpl();
-		try {
-			if(mgd.insertGenre(mg) != null) {
-				flag = true;
-			}
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-		return flag;
-	}
+
 	
 	
 	public boolean updateGenre(MGenre mg) {
@@ -102,10 +89,12 @@ public class MerchanManage implements MerchanManageUtil {
 			String time = df.format(date);
 			PriceLog pl = new PriceLog(m.getM_id(),price,time);
 			StockLog sl = new StockLog(m.getM_id(),num,time);
+			MGenre mg = new MGenre(m.getM_id());
 			pl = pld.insertLog(pl);
 			sl = sd.insertLog(sl);
 			apl.add(pl);
 			asl.add(sl);
+			m.setmGenre(mg);
 			m.setPriceLog(apl);
 			m.setStockLog(asl);
 			res = m;

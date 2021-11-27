@@ -28,19 +28,8 @@
                 <td><input type="text" name="goodnum" placeholder="请输入商品数量"></td>
             </tr>
             <tr>
-                <td>商品种类:</td>
-                <td>
-                    <select name="selectName">
-                        <option selected="selected" value="生活用品">生活用品</option>
-                        <option value="体育用品">体育用品</option>
-                        <option value="学习用品">学习用品</option>
-                        <option value="食品">食品</option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
                 <td>商品图片:</td>
-                <td><input type="file" name="goodimgfile" class="image-input"></td>
+                <td><input type="file" name="goodimgfile" class="image-input" multiple="multiple"></td>
             </tr>
             <tr>
                 <td>商品描述:</td>

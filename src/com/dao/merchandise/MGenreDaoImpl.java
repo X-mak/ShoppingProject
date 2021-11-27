@@ -41,11 +41,9 @@ public class MGenreDaoImpl extends BaseDao implements MGenreDao {
 		PreparedStatement ps = null;
 		int rs = 0;
 		try {
-			String sql = "insert mgenre(m_id,genre1,genre2) values (?,?,?)";
+			String sql = "insert mgenre(m_id) values (?)";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, mg.getM_id());
-			ps.setString(2, mg.getGenre1());
-			ps.setString(3, mg.getGenre2());
 			rs = ps.executeUpdate();
 			if(rs != 0)
 				new_mg = mg;		
