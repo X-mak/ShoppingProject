@@ -21,13 +21,7 @@ public interface MerchanManageUtil {
 	 */
 	public boolean addStock(StockLog sl);
 	
-	
-	/**
-	 * 用于增加类别信息
-	 * @param 商品类别信息MGenre,需要包含m_id,genre1,genre2
-	 * @return 添加是否成功
-	 */
-	public boolean addGenre(MGenre mg);
+
 	
 	/**
 	 * 用于更新类别信息

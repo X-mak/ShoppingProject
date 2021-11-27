@@ -46,6 +46,7 @@ public class releasegoodServlet extends HttpServlet {
 				ServletFileUpload upload = new ServletFileUpload(factory);
 				List<FileItem> items = upload.parseRequest(request);
 				Iterator<FileItem> iter = items.iterator();
+				ArrayList<MPicture> am = new ArrayList<MPicture>();
 				while(iter.hasNext()) {
 					FileItem item = iter.next();
 					String itemName = item.getFieldName();
@@ -60,10 +61,13 @@ public class releasegoodServlet extends HttpServlet {
 						}else if(itemName.equals("goodnum")) {
 							goodnum = Integer.parseInt(item.getString());
 						}
-						}else {//文件上传
+						}else {
+							//文件上传
 							//文件名 getFieldName是获取普通表单字段的Name值
 							//getName（）获取 文件名
 							fileName = (new File(item.getName())).getName();
+							MPicture mp = new MPicture(fileName);	
+							am.add(mp);
 							//获取文件内容并上传
 							//定义文件路径：指定上传的位置
 							//String path = System.getProperty("user.dir").replace("bin", "webapps") + "wp/imgs";
@@ -79,9 +83,9 @@ public class releasegoodServlet extends HttpServlet {
 				else{											   //********需要重写
 			Merchandise m = new Merchandise(1,goodname,goodinf);   //商铺id，商品名称，商品信息
 			MerchanManage mm = new MerchanManage();					   //获取商品信息，获取图片信息，但是图片只有p_ads属性，不知道后面会不会出错
-			ArrayList<MPicture> am = new ArrayList<MPicture>();
-			MPicture mp = new MPicture(fileName);				   //单单创建p_ads属性的mpicture
-			am.add(mp);
+			//ArrayList<MPicture> am = new ArrayList<MPicture>();
+			//MPicture mp = new MPicture(fileName);				   //单单创建p_ads属性的mpicture
+			//am.add(mp);
 			mm.addMerchan(m, am, goodprice, goodnum);
 			response.sendRedirect("management/seller_releasegood/releasegood_success.jsp");}
 		}

@@ -1,3 +1,4 @@
+<%@page import="java.util.Iterator"%>
 <%@page import="com.util.util.GetFull"%>
 <%@page import="com.util.view.MerchanView"%>
 <%@page import="com.vo.MPicture"%>
@@ -20,31 +21,47 @@
 		GetFull gf = new GetFull();
 		Merchandise new_m = gf.getAllMerchan(m);
 		ArrayList<MPicture> amp = new_m.getmPicture();
-		String img_path = basePath+"/imgs/"+amp.get(0).getP_ads();
+		Iterator<MPicture> im = amp.iterator();
+		//String img_path = basePath+"/imgs/"+amp.get(0).getP_ads();
 		// String img_path = basePath+"/imgs/"+merchan.getM_pic();
 %><br>
 <div class="blank"></div>
     <div class="box mid">
-        <img src=<%=img_path %> alt="goodsimg">
+   	 <div class="rotation">
+            <a href="javascript:;" class="prev">&lt;</a>
+            <a href="javascript:;" class="next">&gt;</a>
+            <ul>
+             <% while(im.hasNext()){
+        	String img_path = basePath+"/imgs/"+im.next().getP_ads();
+        %>
+                <li> <img src=<%=img_path %> alt="goodsimg"></li>
+            <% }%>
+            </ul>
+            <ol class="point">
+            
+            </ol>
+        </div>
         <div class="text">
             <div class="goodname">商品名称：<%=new_m.getM_name() %></div>
-            <div class="goodcontro">商品介绍：</br><%=new_m.getM_intro() %></div>
+                                 商品介绍：</br><div class="goodcontro"><%=new_m.getM_intro() %></div>
             <div class="price">价格:<%=new_m.getM_price() %></div>
             			</br>商品库存：<%=new_m.getM_num() %> <br/>
-			<div class="buy">
-                <form action="<%=basePath %>management/buyer_buy/buyer_buycheck.jsp?id=<%=m_id %>" method="post">
+            <form action="<%=basePath %>management/buyer_buy/buyer_buycheck.jsp?id=<%=m_id %>" method="post">
                    	购买数量：<input type="text" name="buynum" placeholder="1"><br/>
+                   	<div class="buy">
                     <input type="submit" value="购买">
-                </form>
-            </div>
+                    </div>
+            </form>
             <div class="back">
             	<form action="<%=basePath %>/index.jsp" method="post">
                     <input type="submit" value="返回">
                 </form>
-            </div>
-
-			
+            </div>	
 	</div>
 </div>
 </body>
+<script src="<%=basePath %>js/animate.js">
+</script>
+<script src="<%=basePath %>js/merchandise.js">
+</script>
 </html>

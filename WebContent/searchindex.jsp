@@ -17,6 +17,7 @@
 <%
 	session.setAttribute("flag1", "");
 	session.setAttribute("flag2", "");
+	String value = (String) session.getAttribute("value");
 %>
 <body>
 	<div class="spa">
@@ -45,7 +46,7 @@
         </span>
         <form class="search" action="<%=basePath%>merchansearchServlet">
             <div class="search-field">
-                <input class="input" type="text" name="search">
+                <input class="input" type="text" name="search" placeholder="<%=value%>">
                 <input class="btn" type="submit" value="搜索">
             </div>
         </form>
@@ -53,13 +54,13 @@
     <hr>
     <div class="goods mid">
 <%
-	MerchanView mv = new MerchanView();
-	ArrayList<Merchandise> am = mv.showAllMerchanOnSale();
+	ArrayList<Merchandise> am = (ArrayList<Merchandise>)session.getAttribute("am");
 	String pa = request.getParameter("pages");
+	int pages = 1;
+	System.out.println(am.size());
 	if(pa==null){
 		pa = "1";
 	}
-	int pages = 1;
 	if(pa.matches("\\d+")){
 		pages = Integer.parseInt(pa);
 	}	
@@ -68,10 +69,9 @@
 	if(pages > am.size()/eachPageNum + 1)pages = am.size()/eachPageNum + 1;
 	int maxItem = Math.min(am.size(), pages*eachPageNum);
 	List<Merchandise> order = am.subList(eachPageNum*(pages - 1), maxItem);
-	String url = "index.jsp";
-	//-------------------------！！---------------
+	String url = "searchindex.jsp";
 	Iterator<Merchandise> im = am.iterator(); 
-	while(im.hasNext()){
+	while(im.hasNext()){	
 		Merchandise m = im.next();
 		MPicture p = m.getmPicture().get(0);
 		String img_path = "imgs/"+p.getP_ads();

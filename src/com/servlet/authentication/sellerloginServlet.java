@@ -22,11 +22,16 @@ public class sellerloginServlet extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		String account=request.getParameter("selleracnumber");
 		String pwd=request.getParameter("sellerpwd");
+		String flag1="True";
+		HttpSession session=request.getSession();
+		if(account==null||pwd==null) {
+			flag1="False";
+			session.setAttribute("flag1", flag1);
+			response.sendRedirect("authentication/seller_login/seller_login.jsp");
+		}
 		GetFullUtil gf = new GetFull();
 		UserAccount ua = new UserAccount(account, pwd);
-		HttpSession session=request.getSession();
 		ua = gf.getAllUser(ua);
-		String flag1="True";
 			if(ua.getUserGroup().getU_role().equals("seller")) {
 				session.setAttribute("selleruser", ua);
 				String address = "authentication/seller_login/seller_login_success.jsp";
