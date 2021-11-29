@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -29,43 +29,44 @@
             <!-- container包含了nav所有的框框 -->
             <ul class="container">
                 <li>
-                    <details>
+                    <details id="merchan">
                         <summary> 商品管理</summary>
-                        <ul class="box">
+                    </details>
+                        <ul class="first box">
                             <li><a href="<%=basePath %>management/seller_releasegood/releasegood.jsp">发布商品 &gt;</a></li>
-                            <li><a href="<%=basePath %>management/seller_merchanmanage/seller_merchanmanage.jsp?pages=1">商品管理 &gt;</a></li>
+                            <li><a href="<%=basePath %>management/seller_merchanmanage/seller_merchanmanage.jsp?pages=1">我的商品 &gt;</a></li>
                             <li><a href="<%=basePath %>historyServlet">历史商品  &gt;</a></li>
                         </ul>
-                    </details>
+
                 </li>
                 <li>
-                    <details>
+                    <details id="order">
                         <summary> 订单管理</summary>
-                        <ul class="box">
+                    </details>
+                        <ul class="second box">
                             <li> <a href="<%=basePath %>sellerordermanageServlet">查看购买意向&gt;</a></li>
                             <!--  <li>childdemo2 &gt;</li>
                             <li>childdemo3 &gt;</li>-->
                         </ul>
-                    </details>
                 </li>
                <!--  --> <li>
-                    <details>
+                    <details id="user">
                         <summary> 用户管理</summary>
-                        <ul class="box">
+                    </details>
+                        <ul class="third box">
                             <li><a href="<%=basePath %>viewbuyerinfoServlet">查看客户信息&gt;</a></li>
                           <!--   <li>childdemo3 &gt;</li> -->
                         </ul>
-                    </details>
                 </li>
                 <li>
-                    <details>
+                    <details id="me">
                         <summary> 个人空间</summary>
-                        <ul class="box">
+                    </details>
+                        <ul class="forth box">
                             <li><a href="<%=basePath %>authentication/seller_alter/sellerpwdchange.jsp">修改密码&gt;</a></li>
                             <!--  <li>childdemo2 &gt;</li>
                             <li>childdemo3 &gt;</li>-->
                         </ul>
-                    </details>
                 </li>
                 <a href="<%=basePath %>index.jsp">返回商城</a>
             </ul>

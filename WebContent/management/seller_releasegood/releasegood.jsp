@@ -12,6 +12,9 @@
 <script type="text/javascript" src="<%=basePath %>ueditor/ueditor.config.js"></script>
 <script type="text/javascript" src="<%=basePath %>ueditor/ueditor.all.js"></script>
 <script type="text/javascript" charset="utf-8" src="<%=basePath %>ueditor/lang/zh-cn/zh-cn.js"></script>
+<script src="<%=basePath %>js/jquery-3.5.1.min.js"></script>
+<script src="<%= basePath%>js/navi/goto_merchan.js"></script>
+
 <body>
 	 <form action="<%=basePath %>/releasegoodServlet" method="post" enctype="multipart/form-data" class="form">
         <table>
@@ -43,11 +46,11 @@
     </form>
 </body>
  <script type="text/javascript">
-
        var ue = UE.getEditor("richmedia",{});
 
 		setTimeout(function(){editor.execCommand('drafts')},2000);//自动保存
-
+		
+		$(".first li").eq(0).css("background-image","linear-gradient(to right,#00a3af,#84a2d4)");
 
       </script>
 </html>

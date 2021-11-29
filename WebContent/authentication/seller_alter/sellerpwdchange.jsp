@@ -9,6 +9,8 @@
 <%@include file="../../util/checklogin.jsp" %>
 <%@include file="../../component/navigation.jsp" %>
 <link rel="stylesheet"  type="text/css" href="<%= basePath %>css/seller_alter_interface.css">
+<script src="<%=basePath %>js/jquery-3.5.1.min.js"></script>
+<script src="<%= basePath%>js/navi/goto_me.js"></script>
 <body>
     <div id = "main">
         <form action="<%=basePath %>sellerpwdchangeServlet" method="post" >
@@ -19,4 +21,7 @@
         </form>
     </div>
 </body>
+<script>
+	$(".forth li").eq(0).css("background-image","linear-gradient(to right,#00a3af,#84a2d4)");
+</script>
 </html>

@@ -8,6 +8,8 @@
 </head>
 <%@include file="../../util/checklogin.jsp" %>
 <%@include file="../../component/navigation.jsp" %>
+<script src="<%=basePath %>js/jquery-3.5.1.min.js"></script>
+<script src="<%= basePath%>js/navi/goto_merchan.js"></script>
 <body>
 <% 
 	int m_id = Integer.parseInt((String)request.getParameter("m_id"));
@@ -20,4 +22,7 @@
                     <input type="submit" value="下架商品">
         </form>
 </body>
+<script>
+	$(".first li").eq(1).css("background-image","linear-gradient(to right,#00a3af,#84a2d4)");
+</script>
 </html>
