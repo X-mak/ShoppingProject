@@ -33,7 +33,7 @@ public class releasegoodServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		String goodname = null;
-		int goodprice = 0 ;
+		Double goodprice = 0 ;
 		int goodnum = 0 ;
 		String goodinf = null;
 		String fileName = null;
@@ -55,7 +55,7 @@ public class releasegoodServlet extends HttpServlet {
 						if(itemName.equals("goodname")) {
 							goodname = item.getString("utf-8");
 						}else if(itemName.equals("goodprice")){
-							goodprice = Integer.parseInt(item.getString());
+							goodprice = Double.parseDouble(item.getString());
 						}else if(itemName.equals("goodinf")) {
 							goodinf = item.getString("utf-8");
 						}else if(itemName.equals("goodnum")) {

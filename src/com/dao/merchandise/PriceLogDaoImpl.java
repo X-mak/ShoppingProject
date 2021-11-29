@@ -19,7 +19,7 @@ public class PriceLogDaoImpl extends BaseDao implements PriceLogDao {
 			String sql = "INSERT INTO pricelog (m_id,pl_price,pl_date)VALUES(?,?,?)";
 			ps = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 			ps.setInt(1, pl.getM_id());
-			ps.setInt(2, pl.getPl_price());
+			ps.setDouble(2, pl.getPl_price());
 			ps.setString(3, pl.getPl_date());
 			ps.executeUpdate();
 			rs = ps.getGeneratedKeys();

@@ -4,7 +4,7 @@ package com.vo;
 public class PriceLog {
 	private int pl_id;
 	private int m_id;
-	private int pl_price;
+	private Double pl_price;
 	private String pl_date;
 	private Merchandise merchandise;
 	public int getPl_id() {
@@ -19,10 +19,10 @@ public class PriceLog {
 	public void setM_id(int m_id) {
 		this.m_id = m_id;
 	}
-	public int getPl_price() {
+	public Double getPl_price() {
 		return pl_price;
 	}
-	public void setPl_price(int pl_price) {
+	public void setPl_price(Double pl_price) {
 		this.pl_price = pl_price;
 	}
 
@@ -46,7 +46,7 @@ public class PriceLog {
 		super();
 		this.pl_id = pl_id;
 	}
-	public PriceLog(int m_id, int pl_price, String pl_date) {
+	public PriceLog(int m_id, Double pl_price, String pl_date) {
 		super();
 		this.m_id = m_id;
 		this.pl_price = pl_price;
@@ -56,7 +56,7 @@ public class PriceLog {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public PriceLog(int pl_id, int m_id, int pl_price, String pl_date) {
+	public PriceLog(int pl_id, int m_id, Double pl_price, String pl_date) {
 		super();
 		this.pl_id = pl_id;
 		this.m_id = m_id;
