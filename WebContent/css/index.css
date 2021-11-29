@@ -124,9 +124,11 @@ a {
 }
 
     .pages{
+        position: absolute;
         width: 500px;
         height: auto;
-        margin: 10px auto;
+        left: 38%;
+        top:80%;
     }
     .pages a{
         text-decoration: none;

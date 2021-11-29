@@ -81,7 +81,7 @@ public class releasegoodServlet extends HttpServlet {
 					response.sendRedirect("management/seller_releasegood/releasegood_fail.jsp");
 				}
 				else{											   //********需要重写
-			Merchandise m = new Merchandise(1,goodname,goodinf);   //商铺id，商品名称，商品信息
+			Merchandise m = new Merchandise(goodname,goodinf);   //商铺id，商品名称，商品信息
 			MerchanManage mm = new MerchanManage();					   //获取商品信息，获取图片信息，但是图片只有p_ads属性，不知道后面会不会出错
 			//ArrayList<MPicture> am = new ArrayList<MPicture>();
 			//MPicture mp = new MPicture(fileName);				   //单单创建p_ads属性的mpicture

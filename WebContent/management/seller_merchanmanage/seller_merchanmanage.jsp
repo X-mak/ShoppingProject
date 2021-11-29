@@ -16,6 +16,7 @@
 <%@include file="../../util/checklogin.jsp" %>
 <%@include file="../../component/navigation.jsp" %>
 <link rel="stylesheet" id="templatecss" type="text/css" href="<%=basePath %>css/seller_merchanmanage.css">
+<link rel="stylesheet" id="templatecss" type="text/css" href="<%=basePath %>css/page_changing.css">
 <script src="<%=basePath %>js/jquery-3.5.1.min.js"></script>
 <script src="<%= basePath%>js/navi/goto_merchan.js"></script>
 <body>
@@ -62,6 +63,7 @@ while(im.hasNext()){
 	}
 %>
 </table>
+	<br>
     <hr>
     <div class="p">      
         <a href="<%=basePath %><%= url%>?pages=1">&lt;&lt;</a>

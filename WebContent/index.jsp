@@ -88,7 +88,6 @@
 	}
 %>
 </div>
-    <hr>
     <div class="pages">      
         <a href="<%=basePath %><%= url%>?pages=1">&lt;&lt;</a>
         <a href="<%=basePath %><%= url%>?pages=<%=pages - 1%>">&lt;Prev</a>
