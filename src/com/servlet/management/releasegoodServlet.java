@@ -33,7 +33,7 @@ public class releasegoodServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		String goodname = null;
-		Double goodprice = 0 ;
+		Double goodprice = 0.0 ;
 		int goodnum = 0 ;
 		String goodinf = null;
 		String fileName = null;

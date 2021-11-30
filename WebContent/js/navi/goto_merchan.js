@@ -1,3 +1,12 @@
 window.onload = function(){
-	$('#merchan').attr("open","open");
+	$('details').each(function(){
+		$(this).removeAttr("open");
+	})
+	$('.merchan').attr("open","open");
+    $(".merchan").removeClass("detail");
+    $(".merchan").addClass("subdetail");
+    $(".merchan").click(function(){
+        $(this).removeClass("subdetail");
+        $(this).addClass("detail");
+    })
 }

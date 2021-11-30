@@ -26,6 +26,7 @@ public class GetFull implements GetFullUtil{
 			new_m = md.selectPriceLog(new_m);
 			new_m = md.selectStockLog(new_m);
 			new_m.setM_price(new_m.getPriceLog().get(0).getPl_price());
+
 			new_m.setM_num(new_m.getStockLog().get(0).getSl_num());
 		}catch(Exception e) {
 			e.printStackTrace();
