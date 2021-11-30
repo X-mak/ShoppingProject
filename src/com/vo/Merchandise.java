@@ -12,7 +12,7 @@ public class Merchandise {
 	private ArrayList<StockLog> stockLog;
 	private MGenre mGenre;
 	private int m_status;
-	private int m_price;
+	private Double m_price;
 	private int m_num;
 	
 	public int getM_status() {
@@ -21,10 +21,10 @@ public class Merchandise {
 	public void setM_status(int m_status) {
 		this.m_status = m_status;
 	}
-	public int getM_price() {
+	public Double getM_price() {
 		return m_price;
 	}
-	public void setM_price(int m_price) {
+	public void setM_price(Double m_price) {
 		this.m_price = m_price;
 	}
 	public int getM_num() {

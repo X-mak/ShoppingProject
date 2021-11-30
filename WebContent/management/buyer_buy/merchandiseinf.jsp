@@ -1,3 +1,4 @@
+<%@page import="java.text.DecimalFormat"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="com.util.util.GetFull"%>
 <%@page import="com.util.view.MerchanView"%>
@@ -24,6 +25,8 @@
 		Iterator<MPicture> im = amp.iterator();
 		//String img_path = basePath+"/imgs/"+amp.get(0).getP_ads();
 		// String img_path = basePath+"/imgs/"+merchan.getM_pic();
+		DecimalFormat df=new DecimalFormat("######0.00");
+		String price = df.format(new_m.getM_price());
 %><br>
 <div class="blank"></div>
     <div class="box mid">
@@ -44,7 +47,7 @@
         <div class="text">
             <div class="goodname">商品名称：<%=new_m.getM_name() %></div>
                                  商品介绍：</br><div class="goodcontro"><%=new_m.getM_intro() %></div>
-            <div class="price">价格:<%=new_m.getM_price() %></div>
+            <div class="price">价格:<%= price %></div>
             			</br>商品库存：<%=new_m.getM_num() %> <br/>
             <form action="<%=basePath %>management/buyer_buy/buyer_buycheck.jsp?id=<%=m_id %>" method="post">
                    	购买数量：<input type="text" name="buynum" placeholder="1"><br/>

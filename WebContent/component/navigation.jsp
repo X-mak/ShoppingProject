@@ -29,7 +29,7 @@
             <!-- container包含了nav所有的框框 -->
             <ul class="container">
                 <li>
-                    <details id="merchan">
+                    <details class="merchan detail">
                         <summary> 商品管理</summary>
                     </details>
                         <ul class="first box">
@@ -40,7 +40,7 @@
 
                 </li>
                 <li>
-                    <details id="order">
+                    <details class="order detail">
                         <summary> 订单管理</summary>
                     </details>
                         <ul class="second box">
@@ -50,7 +50,7 @@
                         </ul>
                 </li>
                <!--  --> <li>
-                    <details id="user">
+                    <details class="user detail">
                         <summary> 用户管理</summary>
                     </details>
                         <ul class="third box">
@@ -59,7 +59,7 @@
                         </ul>
                 </li>
                 <li>
-                    <details id="me">
+                    <details class="me detail">
                         <summary> 个人空间</summary>
                     </details>
                         <ul class="forth box">

@@ -65,7 +65,7 @@ public class MerchanManage implements MerchanManageUtil {
 	}
 	
 		
-	public Merchandise addMerchan(Merchandise m,ArrayList<MPicture> am,int price,int num) {
+	public Merchandise addMerchan(Merchandise m,ArrayList<MPicture> am,Double price,int num) {
 		MerchandiseDao md = new MerchandiseDaoImpl();
 		MPictureDao pd = new MPictureDaoImpl();
 		PriceLogDao pld = new PriceLogDaoImpl();

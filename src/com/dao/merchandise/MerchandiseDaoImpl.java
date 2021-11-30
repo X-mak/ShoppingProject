@@ -85,7 +85,7 @@ public class MerchandiseDaoImpl extends BaseDao implements MerchandiseDao {
 			ps.setInt(1, m.getM_id());
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				PriceLog p = new PriceLog(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getString(4));
+				PriceLog p = new PriceLog(rs.getInt(1),rs.getInt(2),rs.getDouble(3),rs.getString(4));
 				ap.add(p);
 			}
 			new_m.setPriceLog(ap);
