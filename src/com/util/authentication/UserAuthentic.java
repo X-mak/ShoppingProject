@@ -22,7 +22,7 @@ public class UserAuthentic implements UserAuthenticaUtil{
 	
 	
 	public String checkLogin(UserAccount sa) {
-		String res = null;
+		String res = "";
 		UserDao ud = new UserDaoImpl();
 		try {
 			if(ud.selectAccount(sa)) {

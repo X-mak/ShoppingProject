@@ -39,7 +39,7 @@ public interface MerchanManageUtil {
 	 * @param 整数num,商品的数量
 	 * @return 成功则返回包含所有信息的Merchandise,失败则返回null
 	 */
-	public Merchandise addMerchan(Merchandise m,ArrayList<MPicture> am,int price,int num);
+	public Merchandise addMerchan(Merchandise m,ArrayList<MPicture> am,Double price,int num);
 
 
 }

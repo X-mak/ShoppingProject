@@ -26,16 +26,20 @@ public class buyerinfochangeServlet extends HttpServlet {
 		String b_ads = request.getParameter("newadd");
 		for (int i = b_tel.length();--i>=0;){   
 			   if (!Character.isDigit(b_tel.charAt(i))){ 
-			    response.sendRedirect("authentication/buyer_alter/buyer_changeinfo_fail.jsp"); 
+			    response.sendRedirect("authentication/buyer_alter/buyer_changeinfo.jsp"); 
+			    session.setAttribute("msg6", "false");
 			    return;
 			   } 
-			} 
+		} 
 		int b_tele = Integer.parseInt(b_tel);
 		BuyerAuthenticUtil ba = new BuyerAuthentic();
 		BuyerInfo bi = new BuyerInfo(b_acc,b_tele);
 		BuyerAddress bAddress = new BuyerAddress(b_acc,b_ads);
-		ba.changeInfo(bi,bAddress); 
-		response.sendRedirect("authentication/buyer_alter/buyer_changeinfo_success.jsp");	
+		if(ba.changeInfo(bi,bAddress) == null)
+			session.setAttribute("msg6", "false");
+		else
+			session.setAttribute("msg6", "true");
+		response.sendRedirect("authentication/buyer_alter/buyer_changeinfo.jsp");	
 	}
 
 	

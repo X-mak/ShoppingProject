@@ -23,10 +23,11 @@ public class buyerpwdchangeServlet extends HttpServlet {
 		UserAuthenticaUtil bu = new UserAuthentic();
 		UserAccount ba = new UserAccount(account, pwd);
 			if(bu.changePwd(ba, newpwd)) {
-				response.sendRedirect("authentication/buyer_alter/buyer_changepwd_success.jsp");
+				session.setAttribute("msg7", "true");	
 			}else {
-				response.sendRedirect("authentication/buyer_alter/buyer_changepwd_fail.jsp");
+				session.setAttribute("msg7", "false");
 			}
+		response.sendRedirect("authentication/buyer_alter/buyer_changepwd.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

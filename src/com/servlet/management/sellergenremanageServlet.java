@@ -21,10 +21,17 @@ public class sellergenremanageServlet extends HttpServlet {
 		int m_id = Integer.parseInt((String)request.getParameter("id"));
 		String goodgenre1 = request.getParameter("firstgenre");
 		String goodgenre2 = request.getParameter("secondgenre");
+		if(goodgenre1 == null || goodgenre2 == null) {
+			session.setAttribute("msg2", "false");
+			response.sendRedirect("management/seller_merchanmanage/seller_genremanage.jsp");
+		}
 		MerchanManageUtil mu = new MerchanManage();
 		MGenre mg = new MGenre(m_id, goodgenre1, goodgenre2);
-		mu.updateGenre(mg);
-		response.sendRedirect("management/seller_merchanmanage/seller_genremanage_success.jsp");
+		if(mu.updateGenre(mg))
+			session.setAttribute("msg2", "true");
+		else
+			session.setAttribute("msg2", "false");
+		response.sendRedirect("management/seller_merchanmanage/seller_genremanage.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

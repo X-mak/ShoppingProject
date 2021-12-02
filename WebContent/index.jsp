@@ -17,6 +17,7 @@
 <%
 	session.setAttribute("flag1", "");
 	session.setAttribute("flag2", "");
+
 %>
 <body>
 	<div class="spa">

@@ -19,9 +19,12 @@
 <%@include file="../../util/checklogin.jsp" %>
 <link rel="stylesheet"  type="text/css" href="<%= basePath %>css/seller_check_interface.css">
 <link rel="stylesheet" id="templatecss" type="text/css" href="<%=basePath %>css/page_changing.css">
+
 </head>
 <script src="<%=basePath %>js/jquery-3.5.1.min.js"></script>
 <script src="<%= basePath%>js/navi/goto_order.js"></script>
+<link rel="stylesheet" id="templatecss" type="text/css" href="<%=basePath %>css/msgbox.css">
+<script src="<%= basePath%>js/msgbox.js"></script>
 <body>
     <div id = "main">
         <div class="goods">
@@ -109,6 +112,27 @@
     </div>
     </div>
 </body>
+<%
+	try{
+		String msg = (String)(session.getAttribute("msg4"));
+		if(msg.equals("true")){
+			session.setAttribute("msg4", "");
+			%>
+				<script>
+			    	alert("更新成功！");
+				</script>
+			<%}else if(msg.equals("false")){
+				session.setAttribute("msg4", "");
+			%>
+				<script>
+			    	alert("更新失败！");
+				</script>
+			<%} 
+	}catch(Exception e){
+		e.printStackTrace();
+		session.setAttribute("msg4", "");
+	}
+%>
 <script>
 	$(".second li").eq(0).css("background-image","linear-gradient(to right,#00a3af,#84a2d4)");
 </script>

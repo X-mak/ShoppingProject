@@ -19,10 +19,12 @@ public class sellerquitorderServlet extends HttpServlet {
 		System.out.println(o_id);
 		HttpSession session = request.getSession();
 		OrdersManage om = new OrdersManage();
-		flag = om.deleteOrder(o_id);
-		if(flag){
-			response.sendRedirect("management/seller_check/order_quit_success.jsp");
+		if(om.deleteOrder(o_id)){
+			session.setAttribute("msg4", "true");
+		}else {
+			session.setAttribute("msg4", "false");
 		}
+		response.sendRedirect("management/seller_check/buyerinf.jsp");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

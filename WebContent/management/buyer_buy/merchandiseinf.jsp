@@ -14,6 +14,9 @@
 <title>商品</title>
 <%@include file="../../util/getpath.jsp" %>
 <link rel="stylesheet" href="<%=basePath %>css/merchandise.css">
+<script src="<%=basePath %>js/jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" id="templatecss" type="text/css" href="<%=basePath %>css/msgbox.css">
+<script src="<%= basePath%>js/msgbox.js"></script>
 </head>
 <body>
 <%	    //该界面还需要修改，未完全正常
@@ -67,4 +70,25 @@
 </script>
 <script src="<%=basePath %>js/merchandise.js">
 </script>
+<%
+	try{
+		String msg = (String)(session.getAttribute("msg5"));
+		if(msg.equals("true")){
+			session.setAttribute("msg5", "");
+			%>
+				<script>
+			    	alert("购买成功，请等待卖家确认！");
+				</script>
+			<%}else if(msg.equals("false")){
+				session.setAttribute("msg5", "");
+			%>
+				<script>
+			    	alert("购买失败！");
+				</script>
+			<%} 
+	}catch(Exception e){
+		e.printStackTrace();
+		session.setAttribute("msg5", "");
+	}
+%>
 </html>

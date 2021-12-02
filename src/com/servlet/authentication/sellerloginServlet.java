@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.util.authentication.UserAuthentic;
+import com.util.authentication.UserAuthenticaUtil;
 import com.util.util.GetFull;
 import com.util.util.GetFullUtil;
 import com.vo.UserAccount;
@@ -24,19 +26,19 @@ public class sellerloginServlet extends HttpServlet {
 		String pwd=request.getParameter("sellerpwd");
 		String flag1="True";
 		HttpSession session=request.getSession();
+		UserAuthenticaUtil userAuthentic = new UserAuthentic();
 		if(account==null||pwd==null) {
 			flag1="False";
 			session.setAttribute("flag1", flag1);
 			response.sendRedirect("authentication/seller_login/seller_login.jsp");
+			return;
 		}
-		GetFullUtil gf = new GetFull();
 		UserAccount ua = new UserAccount(account, pwd);
-		ua = gf.getAllUser(ua);
-			if(ua.getUserGroup().getU_role().equals("seller")) {
+			if(userAuthentic.checkLogin(ua).equals("seller")) {
 				session.setAttribute("selleruser", ua);
 				String address = "authentication/seller_login/seller_login_success.jsp";
 				response.sendRedirect(address);
-			}else if(ua.getUserGroup().getU_role().equals("buyer")) {
+			}else if(userAuthentic.checkLogin(ua).equals("buyer")) {
 				session.setAttribute("buyeruser", ua);
 				response.sendRedirect("authentication/buyer_login/buyer_login_success.jsp");
 			}

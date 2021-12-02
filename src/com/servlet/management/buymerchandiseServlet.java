@@ -21,15 +21,19 @@ public class buymerchandiseServlet extends HttpServlet {
 		String buynum = (String)session.getAttribute("buynum");
 		UserAccount ba = (UserAccount)session.getAttribute("buyeruser");
 		OrdersManageUtil om =new OrdersManage();
-		 for (int i = buynum.length();--i>=0;){   
+		for (int i = buynum.length();--i>=0;){   
 			   if (!Character.isDigit(buynum.charAt(i))){ 
-			    response.sendRedirect("management/buyer_buy/buyer_buy_fail.jsp"); 
-			    return;
+				   session.setAttribute("msg5", "false");
+				   response.sendRedirect("management/buyer_buy/buyer_buy_fail.jsp"); 
+				   return;
 			   } 
-			  } 
+		} 
 		int buy_num = Integer.parseInt(buynum);
-		om.havaOrder(m_id, ba.getU_act(), buy_num);
-		response.sendRedirect("management/buyer_buy/buyer_buy_success.jsp");
+		if(om.havaOrder(m_id, ba.getU_act(), buy_num) == null)
+			session.setAttribute("msg5", "false");
+		else 
+			session.setAttribute("msg5", "true");
+		response.sendRedirect("management/buyer_buy/merchandiseinf.jsp?m_id="+m_id);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

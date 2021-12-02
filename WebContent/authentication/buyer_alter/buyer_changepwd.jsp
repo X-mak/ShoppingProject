@@ -8,6 +8,9 @@
 </head>
 <%@include file="../../component/buyer_navigation.jsp" %>
 <link rel="stylesheet" href="<%=basePath %>css/buyer_changepwd.css">
+<script src="<%=basePath %>js/jquery-3.5.1.min.js"></script>
+<link rel="stylesheet" id="templatecss" type="text/css" href="<%=basePath %>css/msgbox.css">
+<script src="<%= basePath%>js/msgbox.js"></script>
 <body>
  <form action="<%=basePath %>buyerpwdchangeServlet" method="post" >
         <table>
@@ -29,4 +32,26 @@
             </tr>
         </table>
     </form>
+</body>
+<%
+	try{
+		String msg = (String)(session.getAttribute("msg7"));
+		if(msg.equals("true")){
+			session.setAttribute("msg7", "");
+			%>
+				<script>
+			    	alert("更新成功！");
+				</script>
+			<%}else if(msg.equals("false")){
+				session.setAttribute("msg7", "");
+			%>
+				<script>
+			    	alert("更新失败！");
+				</script>
+			<%} 
+	}catch(Exception e){
+		e.printStackTrace();
+		session.setAttribute("msg7", "");
+	}
+%>
 </html>

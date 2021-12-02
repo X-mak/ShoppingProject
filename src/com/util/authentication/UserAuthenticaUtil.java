@@ -16,7 +16,7 @@ public interface UserAuthenticaUtil {
 	/**
 	 * 用于检查当前的用户是否能够通过登录认证
 	 * @param 用户账号UserAccount,需要包括u_act,u_pwd
-	 * @return 如果是买家账号返回"buyer",如果是卖家账号返回"seller",如果都不是则返回null
+	 * @return 如果是买家账号返回"buyer",如果是卖家账号返回"seller",如果都不是则返回空字符串
 	 */
 	public String checkLogin(UserAccount sa);
 	

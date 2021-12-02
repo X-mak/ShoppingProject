@@ -28,10 +28,11 @@ public class sellerpwdchangeServlet extends HttpServlet {
 		UserAuthenticaUtil userAuthentic = new UserAuthentic();
 		UserAccount sAccount = new UserAccount(account, pwd);
 			if(userAuthentic.changePwd(sAccount, newpwd)) {
-				response.sendRedirect("authentication/seller_alter/sellerpwdchange_success.jsp");
+				session.setAttribute("msg9", "true");
 			}else {
-				response.sendRedirect("authentication/seller_alter/sellerpwdchange_fail.jsp");
+				session.setAttribute("msg9", "false");
 			}
+			response.sendRedirect("authentication/seller_alter/sellerpwdchange.jsp");
 	}			
 	
 
