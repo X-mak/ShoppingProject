@@ -43,13 +43,15 @@ public class sellerregisterServlet extends HttpServlet {
 					if(ud.isValid(sa)) {
 						SellerInfo si = new SellerInfo(s_acc, 1);
 						sellerAuthentic.addSeller(sa, si);
-						response.sendRedirect("authentication/seller_register/seller_register_success.jsp");
+						session.setAttribute("msg10", "true");
+						response.sendRedirect("authentication/seller_register/seller_register.jsp");
 					}
 				} catch (SQLException | IOException e) {
 					e.printStackTrace();
 				}
 			}else {
-				response.sendRedirect("authentication/seller_register/seller_register_fail.jsp");
+				session.setAttribute("msg10", "false");
+				response.sendRedirect("authentication/seller_register/seller_register.jsp");
 			}
 	}
 

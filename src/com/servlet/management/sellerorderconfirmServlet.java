@@ -19,10 +19,11 @@ public class sellerorderconfirmServlet extends HttpServlet {
 		int o_id = Integer.parseInt(request.getParameter("o_id"));
 		HttpSession session = request.getSession();
 		OrdersManage om = new OrdersManage();
-		flag = om.sellerChooseBuyer(o_id);
-		if(flag){
-			response.sendRedirect("management/seller_check/order_confirm_success.jsp");
-		}
+		if(om.sellerChooseBuyer(o_id)){
+			session.setAttribute("msg4", "true");
+		}else
+			session.setAttribute("msg4", "false");
+		response.sendRedirect("management/seller_check/buyerinf.jsp?pages=1");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

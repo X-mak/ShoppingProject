@@ -47,13 +47,16 @@ public class buyerregisterServlet extends HttpServlet {
 					BuyerInfo bi = new BuyerInfo(b_acc,b_tel);
 					BuyerAddress bAddress = new BuyerAddress(b_acc,b_ads);
 					bac.addBuyer(ba,bi,bAddress);
-					response.sendRedirect("authentication/buyer_register/buyer_register_success.jsp");
+					session.setAttribute("msg8", "true");
+					response.sendRedirect("authentication/buyer_register/buyer_register.jsp");
 					}else {
-					response.sendRedirect("authentication/buyer_register/buyer_register_fail.jsp");
+						session.setAttribute("msg8", "false");
+					response.sendRedirect("authentication/buyer_register/buyer_register.jsp");
 					}
 				 
 			}else {
-				response.sendRedirect("authentication/buyer_register/buyer_register_fail.jsp");
+				session.setAttribute("msg8", "false");
+				response.sendRedirect("authentication/buyer_register/buyer_register.jsp");
 			}
 		}
 		catch (SQLException | IOException e) {

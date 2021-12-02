@@ -27,10 +27,12 @@ public class sellermerchandropServlet extends HttpServlet {
 		MerchandiseDao md = new MerchandiseDaoImpl();
 		try {
 			md.updateStatus(new Merchandise(m_id), 0);
-		} catch (SQLException e) {
+			session.setAttribute("msg3", "true");
+		} catch (Exception e) {
+			session.setAttribute("msg3", "false");
 			e.printStackTrace();
 		}
-		response.sendRedirect("management/seller_merchanmanage/seller_merchandrop_success.jsp");
+		response.sendRedirect("management/seller_merchanmanage/seller_merchandrop.jsp?m_id"+m_id);
 		return;
 	}
 

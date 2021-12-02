@@ -17,15 +17,15 @@ import com.util.management.OrdersManage;
 @WebServlet("/dealServlet")
 public class dealServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		boolean flag;
 		int o_id = Integer.parseInt(request.getParameter("o_id"));
 		HttpSession session = request.getSession();
 		OrdersManage om = new OrdersManage();
-		flag = om.finshDeal(o_id);
-		if(flag){
-			response.sendRedirect("management/seller_check/order_deal_success.jsp");
+		if(om.finshDeal(o_id)){
+			session.setAttribute("msg4", "true");
+		}else {
+			session.setAttribute("msg4", "false");
 		}
-		 
+		response.sendRedirect("management/seller_check/buyerinf.jsp?pages=1");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -38,6 +38,7 @@ public class releasegoodServlet extends HttpServlet {
 		String goodinf = null;
 		String fileName = null;
 		HttpSession session=request.getSession();	
+		session.setAttribute("msg1", "false");
 		//上传
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 		try {
@@ -52,14 +53,15 @@ public class releasegoodServlet extends HttpServlet {
 					String itemName = item.getFieldName();
 					//判断前台字段是普通form表单字段还是，文件字段
 					if(item.isFormField()) {
-						if(itemName.equals("goodname")) {
+						if(itemName.equals("goodname") && !item.getString().equals("")) {
 							goodname = item.getString("utf-8");
-						}else if(itemName.equals("goodprice")){
-							goodprice = Double.parseDouble(item.getString());
-						}else if(itemName.equals("goodinf")) {
+						}else if(itemName.equals("goodprice") && !item.getString().equals("")){
+								goodprice = Double.parseDouble(item.getString());
+						}else if(itemName.equals("goodinf") && !item.getString().equals("")) {
 							goodinf = item.getString("utf-8");
-						}else if(itemName.equals("goodnum")) {
-							goodnum = Integer.parseInt(item.getString());
+						}else if(itemName.equals("goodnum") && !item.getString().equals("")) {
+							if(!item.getString().equals(""))
+								goodnum = Integer.parseInt(item.getString());
 						}
 						}else {
 							//文件上传
@@ -77,8 +79,8 @@ public class releasegoodServlet extends HttpServlet {
 							item.write(file);
 				}
 				}
-				if(goodname.equals("")||goodinf.equals("")||goodprice<=0||goodnum<=0) {
-					response.sendRedirect("management/seller_releasegood/releasegood_fail.jsp");
+				if(goodname == null || goodinf == null || goodprice <= 0|| goodnum <= 0 ) {
+					response.sendRedirect("management/seller_releasegood/releasegood.jsp");
 				}
 				else{											   //********需要重写
 			Merchandise m = new Merchandise(goodname,goodinf);   //商铺id，商品名称，商品信息
@@ -87,14 +89,15 @@ public class releasegoodServlet extends HttpServlet {
 			//MPicture mp = new MPicture(fileName);				   //单单创建p_ads属性的mpicture
 			//am.add(mp);
 			mm.addMerchan(m, am, goodprice, goodnum);
-			response.sendRedirect("management/seller_releasegood/releasegood_success.jsp");}
+			session.setAttribute("msg1", "true");
+			response.sendRedirect("management/seller_releasegood/releasegood.jsp");}
 		}
 		}catch (FileUploadException e) {
 			e.printStackTrace();
-			response.sendRedirect("management/seller_releasegood/releasegood_fail.jsp");
+			response.sendRedirect("management/seller_releasegood/releasegood.jsp");
 		} catch (Exception e) {
 			e.printStackTrace();
-			response.sendRedirect("management/seller_releasegood/releasegood_fail.jsp");
+			response.sendRedirect("management/seller_releasegood/releasegood.jsp");
 		}
 	}
 

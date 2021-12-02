@@ -16,7 +16,6 @@ import com.dao.merchandise.PriceLogDao;
 import com.dao.merchandise.PriceLogDaoImpl;
 import com.dao.merchandise.StockLogDao;
 import com.dao.merchandise.StockLogDaoImpl;
-import com.util.util.GetFull;
 import com.vo.MGenre;
 import com.vo.MPicture;
 import com.vo.Merchandise;
