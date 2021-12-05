@@ -16,7 +16,7 @@ public class MGenreDaoImpl extends BaseDao implements MGenreDao {
 		PreparedStatement ps = null;
 		int rs = 0;
 		try {
-			String sql = "UPDATE mgenre SET genre1 = ? AND genre2 = ? WHERE m_id = ?";
+			String sql = "UPDATE mgenre SET genre1 = ? , genre2 = ? WHERE m_id = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, mg.getGenre1());
 			ps.setString(2, mg.getGenre2());
