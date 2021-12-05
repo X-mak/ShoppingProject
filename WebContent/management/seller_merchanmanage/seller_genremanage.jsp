@@ -19,7 +19,7 @@
 <% 
 	String m_id = request.getParameter("m_id");
 %>
-	<form action="<%=basePath %>sellergenremanageServlet?id=<%=m_id%>" name="form" method="post">
+	<form action="<%=basePath %>sellergenremanageServlet?m_id=<%=m_id%>" name="form" method="post">
 	一级分类：<select name="firstgenre" id="firstgenre" onChange="changeGenre()">
 				   <option>--请选择一级分类--</option>
           		   <option value="生活用品">生活用品</option>
