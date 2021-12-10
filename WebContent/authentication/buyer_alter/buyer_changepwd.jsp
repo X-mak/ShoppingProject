@@ -9,6 +9,7 @@
 <%@include file="../../component/buyer_navigation.jsp" %>
 <link rel="stylesheet" href="<%=basePath %>css/buyer_changepwd.css">
 <script src="<%=basePath %>js/jquery-3.5.1.min.js"></script>
+<script src="<%= basePath%>js/navi/goto_me.js"></script>
 <link rel="stylesheet" id="templatecss" type="text/css" href="<%=basePath %>css/msgbox.css">
 <script src="<%= basePath%>js/msgbox.js"></script>
 <body>
