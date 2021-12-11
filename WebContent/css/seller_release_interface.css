@@ -10,13 +10,19 @@
 
 .form>table {
     margin: 0 auto;
-    width: 35%;
+    width: 75%;
     text-align: center;
     
 }
 
 .form>table td {
     padding: 5px 0;
+}
+.form>table td:nth-child(1) {
+    width: 30%;
+}
+.form>table td:nth-child(2) {
+    width: 70%;
 }
 
 .form>table input {

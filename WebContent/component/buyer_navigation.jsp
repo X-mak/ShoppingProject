@@ -30,24 +30,26 @@
             <!-- container包含了nav所有的框框 -->
             <ul class="container">
                 <li>
-                    <details>
+                    <details class="order detail">
                         <summary> 订单信息</summary>
-                        <ul class="box">
+                    </details>
+                        <ul class="first box">
                             <li><a href="<%=basePath%>buyerviewhistoryServlet">查看购买历史&gt;</a></li>
                             <!-- <li>childdemo2 &gt;</li>
                             <li>childdemo3 &gt;</li> -->
                         </ul>
-                    </details>
+                    
                 </li>
                 <li>
-                    <details>
+                    <details class="me detail">
                         <summary> 个人空间</summary>
-                        <ul class="box">
+                    </details>
+                        <ul class=" second box">
                             <li><a href="<%=basePath%>authentication/buyer_alter/buyer_changeinfo.jsp">修改信息&gt;</a></li>
                            <li><a href="<%=basePath %>authentication/buyer_alter/buyer_changepwd.jsp">修改密码&gt;</a></li>
                            <!--  <li>childdemo3 &gt;</li> -->
                         </ul>
-                    </details>
+                    
                 </li>
                 <a href="<%=basePath %>index.jsp">返回商城</a>
             </ul>
