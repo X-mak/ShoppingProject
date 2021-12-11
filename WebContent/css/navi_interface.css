@@ -86,6 +86,7 @@ html,body{
 .headrow .buyerinfo .mesul {
     text-align: center;
     width: 80px;
+    overflow: hidden;
 
 }
 

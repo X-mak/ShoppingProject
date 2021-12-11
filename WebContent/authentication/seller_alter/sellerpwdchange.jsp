@@ -16,9 +16,16 @@
 <body>
     <div id = "main">
         <form action="<%=basePath %>sellerpwdchangeServlet" method="post" >
-            <p>账号：</p> <input type="text" name="selleracnumber" placeholder="请输入账号"><br/>
-            <p>原密码：</p> <input type="password" name="selleroldpwd" placeholder="请输入原密码"><br/>
-            <p>新密码：</p> <input type="password" name="sellernewpwd" placeholder="请输入新密码"><br/>
+        	<div class="account">
+        		<p>账号：</p> <input type="text" name="selleracnumber" placeholder="请输入账号"><br/>
+        	</div>
+            <div class="oldpwd">
+            	 <p>原密码：</p> <input type="password" name="selleroldpwd" placeholder="请输入原密码"><br/>
+            </div>
+           	<div class="newpwd">
+           		<p>新密码：</p> <input type="password" name="sellernewpwd" placeholder="请输入新密码"><br/>
+           	</div>
+            
             <p></p> <input type="submit" value="修改"/>
         </form>
     </div>

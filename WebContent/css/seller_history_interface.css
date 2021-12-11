@@ -1,3 +1,7 @@
+#main {
+	float: left;
+	width: 85%;
+}
 #main .goods{
     /* border: 1px solid #000; */
     width: 70%;
@@ -8,6 +12,7 @@
     width: 100%; 
     text-align: center;
     border-collapse: collapse;
+    margin: 0 auto;
 }
 
 

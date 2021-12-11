@@ -116,6 +116,7 @@ a {
 .goods .agood img {
     margin-top: 20px;
     width: 90%;
+    height: 200px;
 }
 
 .goods .agood h4 {
