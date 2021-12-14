@@ -1,4 +1,4 @@
-body
+    body
 {
 	margin: 0;
 	padding: 0;
@@ -15,7 +15,7 @@ body
 	left: 80%;
 	transform: translate(-50%,-50%);
 	width: 350px;
-	height: 420px;
+	height: 440px;
 	padding: 70px 40px;
 	box-sizing: border-box;
 	background: rgba(59, 35, 35, 0.5);
@@ -54,7 +54,7 @@ h2
 {
 	color: rgba(255,255,255,0.52);
 }
-.login-Box input[type="submit"]
+.button
 {
 	border: none;
 	outline: none;
@@ -66,8 +66,23 @@ h2
 	border-radius: 20px;
     margin-top: 20px;
 }
-.login-Box input[type="submit"]:hover
+.button:hover
 {
 	background: #efed40;
+	color: #262626;
+}
+.back{
+    border: none;
+	outline: none;
+	height: 40px;
+	color: #fff;
+	font-size: 16px;
+	background: #ff267e;
+	cursor: pointer;
+	border-radius: 20px;
+    margin-top: 4px;
+}
+.back:hover{
+    background: #efed40;
 	color: #262626;
 }

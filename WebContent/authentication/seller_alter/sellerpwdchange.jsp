@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-<%@include file="../../util/checklogin.jsp" %>
 <%@include file="../../component/navigation.jsp" %>
 <link rel="stylesheet"  type="text/css" href="<%= basePath %>css/seller_alter_interface.css">
 <script src="<%=basePath %>js/jquery-3.5.1.min.js"></script>

@@ -47,7 +47,9 @@
 				<script>
 			    	alert("注册成功！");
 				</script>
-			<%}else if(msg.equals("false")){
+			<%
+			response.sendRedirect(basePath+"index.jsp");	
+		}else if(msg.equals("false")){
 				session.setAttribute("msg8", "");
 			%>
 				<script>

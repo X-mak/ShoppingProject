@@ -31,6 +31,9 @@
                 <input type="password" name="sellerpwd" id="password" placeholder="请输入密码"><br/>
                 <input type="submit" class="button" value="登录"/>
             </form>
+            <form action="<%=basePath %>/index.jsp" method="post">
+                <input type="submit" class="back" value="返回">
+            </form>
     </div>
 </body>
 </html>
