@@ -19,13 +19,16 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		try {
-			String sql = "select * from useraccount where BINARY u_act = ? and BINARY u_pwd = ?";
+			String sql = "select u_pwd from useraccount where BINARY u_act = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, aa.getU_act());
-			ps.setString(2, encode.getSHA256StrJava(aa.getU_pwd()));
 			rs = ps.executeQuery();
-			if(rs.next())
-				flag = true;
+			if(rs.next()) {
+				String encodePwd = rs.getString(1);
+				if(encode.getSHA256StrJava(aa.getU_pwd()).equals(encodePwd.substring(64)))
+					flag = true;
+			}
+				
 		}catch(Exception e) {
 			e.printStackTrace();
 		}finally {
@@ -44,9 +47,12 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		PreparedStatement ps = null;
 		int rs = 0;
 		try {
-			String sql = "UPDATE adminaccount SET u_pwd = ? WHERE BINARY u_act = ?";
+			String sql = "UPDATE useraccount SET u_pwd = ? WHERE BINARY u_act = ?";
+			String randomNum = (int)((Math.random()*9+1)*100)+"";
+			//将随机数加密后于真正的密码加密后进行字符串拼接
+			String encodePwd = encode.getSHA256StrJava(randomNum) + encode.getSHA256StrJava(pwd);
 			ps = conn.prepareStatement(sql);
-			ps.setString(1, encode.getSHA256StrJava(pwd));
+			ps.setString(1, encodePwd);
 			ps.setString(2, aa.getU_act());
 			rs = ps.executeUpdate();
 			if(rs != 0)
@@ -69,9 +75,13 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		int rs = 0;
 		try {
 			String sql = "INSERT INTO useraccount VALUES(?,?)";
+			//随机生成三位数字
+			String randomNum = (int)((Math.random()*9+1)*100)+"";
+			//将随机数加密后于真正的密码加密后进行字符串拼接
+			String encodePwd = encode.getSHA256StrJava(randomNum) + encode.getSHA256StrJava(aa.getU_pwd());
 			ps = conn.prepareStatement(sql);
 			ps.setString(1,aa.getU_act());
-			ps.setString(2, encode.getSHA256StrJava(aa.getU_pwd()));
+			ps.setString(2, encodePwd);
 			rs = ps.executeUpdate();
 			if(rs != 0)
 				flag = true;			

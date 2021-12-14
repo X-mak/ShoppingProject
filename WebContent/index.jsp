@@ -102,4 +102,21 @@
         <a href="<%=basePath %><%= url%>?pages=<%=am.size()/eachPageNum + 1%>">&gt;&gt;</a>
     </div>
 </body>
+
+<%
+	try{
+		String msg = (String)(session.getAttribute("msg8"));
+		if(msg.equals("true")){
+			session.setAttribute("msg8", "");
+			%>
+				<script>
+			    	alert("注册成功！");
+				</script>
+			<%
+			} 
+	}catch(Exception e){
+		e.printStackTrace();
+		session.setAttribute("msg8", "");
+	}
+%>
 </html>
