@@ -51,7 +51,7 @@ public class BuyerDaoImpl extends BaseDao implements BuyerDao {
 			String sql = "INSERT INTO buyerinfo VALUES(?,?)";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1,bi.getU_act());
-			ps.setInt(2, bi.getB_tele());
+			ps.setString(2, bi.getB_tele());
 			rs = ps.executeUpdate();
 			if(rs != 0)
 				flag = true;			
@@ -105,7 +105,7 @@ public class BuyerDaoImpl extends BaseDao implements BuyerDao {
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while(rs.next()) {
-				BuyerInfo bi = new BuyerInfo(rs.getString(1),rs.getInt(2));
+				BuyerInfo bi = new BuyerInfo(rs.getString(1),rs.getString(2));
 				ab.add(bi);
 			}
 		}catch(Exception e) {
@@ -129,7 +129,7 @@ public class BuyerDaoImpl extends BaseDao implements BuyerDao {
 		try {
 			String sql = "UPDATE buyerinfo SET b_tele = ? WHERE BINARY u_act = ?";
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, bi.getB_tele());
+			ps.setString(1, bi.getB_tele());
 			ps.setString(2, bi.getU_act());
 			rs = ps.executeUpdate();
 			if(rs != 0)

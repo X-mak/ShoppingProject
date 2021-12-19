@@ -64,7 +64,7 @@
 	if(pa.matches("\\d+")){
 		pages = Integer.parseInt(pa);
 	}	
-	int eachPageNum = 10;			//一页显示多少数据
+	int eachPageNum = 8;			//一页显示多少数据
 	if(pages < 1)pages = 1;
 	if(pages > am.size()/eachPageNum + 1)pages = am.size()/eachPageNum + 1;
 	int maxItem = Math.min(am.size(), pages*eachPageNum);

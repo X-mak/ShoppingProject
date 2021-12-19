@@ -103,7 +103,7 @@ public class OrdersDaoImpl extends BaseDao implements OrdersDao {
 			ps.setString(1, o.getU_act());
 			rs = ps.executeQuery();
 			if(rs.next()) {
-				BuyerInfo bi = new BuyerInfo(rs.getString(1),rs.getInt(2));
+				BuyerInfo bi = new BuyerInfo(rs.getString(1),rs.getString(2));
 				new_o.setBuyerInfo(bi);
 			}
 		}catch(Exception e) {

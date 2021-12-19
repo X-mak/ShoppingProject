@@ -20,6 +20,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import com.util.management.MerchanManage;
+import com.util.util.Check;
 import com.vo.MPicture;
 import com.vo.Merchandise;
 
@@ -33,10 +34,11 @@ public class releasegoodServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		String goodname = null;
-		Double goodprice = 0.0 ;
-		int goodnum = 0 ;
+		String goodprice = null ;
+		String goodnum = null ;
 		String goodinf = null;
 		String fileName = null;
+		Check check = new Check();
 		HttpSession session=request.getSession();	
 		session.setAttribute("msg1", "false");
 		//上传
@@ -56,12 +58,12 @@ public class releasegoodServlet extends HttpServlet {
 						if(itemName.equals("goodname") && !item.getString().equals("")) {
 							goodname = item.getString("utf-8");
 						}else if(itemName.equals("goodprice") && !item.getString().equals("")){
-								goodprice = Double.parseDouble(item.getString());
+								goodprice = item.getString("utf-8"); //Double.parseDouble(item.getString());
 						}else if(itemName.equals("goodinf") && !item.getString().equals("")) {
 							goodinf = item.getString("utf-8");
 						}else if(itemName.equals("goodnum") && !item.getString().equals("")) {
 							if(!item.getString().equals(""))
-								goodnum = Integer.parseInt(item.getString());
+								goodnum = item.getString("utf-8"); //Integer.parseInt(item.getString());
 						}
 						}else {
 							//文件上传
@@ -79,16 +81,19 @@ public class releasegoodServlet extends HttpServlet {
 							item.write(file);
 				}
 				}
-				if(goodname == null || goodinf == null || goodprice <= 0|| goodnum <= 0 ) {
+				if(goodname == null || goodinf == null || !check.check_num(goodnum) || !check.check_price(goodprice)) {
 					response.sendRedirect("management/seller_releasegood/releasegood.jsp");
+					return;
 				}
-				else{											   //********需要重写
+				else{		
+			Double	goodprice1 = Double.parseDouble(goodprice);
+			int goodnum1 = Integer.parseInt(goodnum);
 			Merchandise m = new Merchandise(goodname,goodinf);   //商铺id，商品名称，商品信息
 			MerchanManage mm = new MerchanManage();					   //获取商品信息，获取图片信息，但是图片只有p_ads属性，不知道后面会不会出错
 			//ArrayList<MPicture> am = new ArrayList<MPicture>();
 			//MPicture mp = new MPicture(fileName);				   //单单创建p_ads属性的mpicture
 			//am.add(mp);
-			mm.addMerchan(m, am, goodprice, goodnum);
+			mm.addMerchan(m, am, goodprice1, goodnum1);
 			session.setAttribute("msg1", "true");
 			response.sendRedirect("management/seller_releasegood/releasegood.jsp");}
 		}

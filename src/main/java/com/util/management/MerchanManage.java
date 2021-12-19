@@ -69,6 +69,7 @@ public class MerchanManage implements MerchanManageUtil {
 		MPictureDao pd = new MPictureDaoImpl();
 		PriceLogDao pld = new PriceLogDaoImpl();
 		StockLogDao sd = new StockLogDaoImpl();
+		MGenreDao mgd = new MGenreDaoImpl();
 		ArrayList<MPicture> amp = new ArrayList<MPicture>();
 		ArrayList<PriceLog> apl = new ArrayList<PriceLog>();
 		ArrayList<StockLog> asl = new ArrayList<StockLog>();
@@ -89,6 +90,7 @@ public class MerchanManage implements MerchanManageUtil {
 			PriceLog pl = new PriceLog(m.getM_id(),price,time);
 			StockLog sl = new StockLog(m.getM_id(),num,time);
 			MGenre mg = new MGenre(m.getM_id());
+			mgd.insertGenre(mg);
 			pl = pld.insertLog(pl);
 			sl = sd.insertLog(sl);
 			apl.add(pl);

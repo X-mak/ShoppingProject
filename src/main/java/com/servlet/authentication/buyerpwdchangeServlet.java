@@ -10,19 +10,23 @@ import javax.servlet.http.HttpSession;
 
 import com.util.authentication.UserAuthentic;
 import com.util.authentication.UserAuthenticaUtil;
+import com.util.util.Check;
 import com.vo.UserAccount;
 
 @WebServlet("/buyerpwdchangeServlet")
 public class buyerpwdchangeServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String account = request.getParameter("buyeracnumber");
+		
 		String pwd = request.getParameter("buyeroldpwd");
 		String newpwd = request.getParameter("buyernewpwd");
+		Check check = new Check();
 		HttpSession session = request.getSession();
+		UserAccount buyer = (UserAccount)(session.getAttribute("buyeruser"));
+		String account = buyer.getU_act();
 		UserAuthenticaUtil bu = new UserAuthentic();
 		UserAccount ba = new UserAccount(account, pwd);
-			if(bu.changePwd(ba, newpwd)) {
+			if(bu.changePwd(ba, newpwd)&&check.pwdiscorrect(newpwd)) {
 				session.setAttribute("msg7", "true");	
 			}else {
 				session.setAttribute("msg7", "false");
