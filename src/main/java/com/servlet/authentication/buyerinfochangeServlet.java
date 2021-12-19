@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.util.authentication.BuyerAuthentic;
 import com.util.authentication.BuyerAuthenticUtil;
+import com.util.util.Check;
 import com.vo.BuyerAddress;
 import com.vo.BuyerInfo;
 import com.vo.UserAccount;
@@ -24,21 +25,17 @@ public class buyerinfochangeServlet extends HttpServlet {
 		String b_acc = bac.getU_act();
 		String b_tel = request.getParameter("newtel");
 		String b_ads = request.getParameter("newadd");
-		for (int i = b_tel.length();--i>=0;){   
-			   if (!Character.isDigit(b_tel.charAt(i))){ 
-			    response.sendRedirect("authentication/buyer_alter/buyer_changeinfo.jsp"); 
-			    session.setAttribute("msg6", "false");
-			    return;
-			   } 
-		} 
-		int b_tele = Integer.parseInt(b_tel);
+		Check check = new Check();
+		if(check.check_phone(b_tel)) {
 		BuyerAuthenticUtil ba = new BuyerAuthentic();
-		BuyerInfo bi = new BuyerInfo(b_acc,b_tele);
+		BuyerInfo bi = new BuyerInfo(b_acc,b_tel);
 		BuyerAddress bAddress = new BuyerAddress(b_acc,b_ads);
 		if(ba.changeInfo(bi,bAddress) == null)
 			session.setAttribute("msg6", "false");
 		else
-			session.setAttribute("msg6", "true");
+			session.setAttribute("msg6", "true");}
+		else
+			session.setAttribute("msg6", "false");
 		response.sendRedirect("authentication/buyer_alter/buyer_changeinfo.jsp");	
 	}
 

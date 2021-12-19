@@ -16,27 +16,29 @@
         <table>
             <tr>
                 <td>账号：</td>
-                <td><input type="text" name="buyer_acc"><br></td>
+                <td><input type="text" name="buyer_acc" maxlength = "16"><br></td>
             </tr>
             <tr>
                 <td>密码：</td>
-                <td><input type="password" name="buyer_pwd1"><br></td>
+                <td><input type="password" name="buyer_pwd1" maxlength = "16"><br></td>
             </tr>
             <tr>
                 <td>确认密码：</td>
-                <td><input type="password" name="buyer_pwd2"><br></td>
+                <td><input type="password" name="buyer_pwd2" maxlength = "16"><br></td>
             </tr>
             <tr>
                 <td>电话：</td>
-                <td><input type="text" name="buyer_tel"><br></td>
+                <td><input type="text" name="buyer_tel" maxlength = "16"><br></td>
             </tr>
             <tr>
                 <td>地址：</td>
-                <td><input type="text" name="buyer_ads"><br></td>
+                <td><input type="text" name="buyer_ads" maxlength = "16"><br></td>
             </tr>
             <td colspan="2" align="center"><input type="submit" value="注册"></td>
         </table>	
+        <a href="<%=basePath%>index.jsp">返回</a>
 	</form>
+	
 </body>
 <%
 	try{

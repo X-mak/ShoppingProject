@@ -12,9 +12,9 @@
 </head>
 <body>
 	<form action="<%=basePath %>sellerregisterServlet" method="get">
-		账号：<input type="text" name="seller_acc"><br>
-		密码：<input type="password" name="seller_pwd1"><br>
-		确认密码：<input type="password" name="seller_pwd2"><br>
+		账号：<input type="text" name="seller_acc" maxlength = "16"><br>
+		密码：<input type="password" name="seller_pwd1" maxlength = "16"><br>
+		确认密码：<input type="password" name="seller_pwd2" maxlength = "16"><br>
 		<input type="submit" value="注册">
 	</form>
 </body>

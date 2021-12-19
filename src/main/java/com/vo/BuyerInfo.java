@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class BuyerInfo {
 	private String u_act;
-	private int b_tele;
+	private String b_tele;
 	private ArrayList<BuyerAddress> buyerAddress;
 	public String getU_act() {
 		return u_act;
@@ -12,10 +12,10 @@ public class BuyerInfo {
 	public void setU_act(String b_act) {
 		this.u_act = b_act;
 	}
-	public int getB_tele() {
+	public String getB_tele() {
 		return b_tele;
 	}
-	public void setB_tele(int b_tele) {
+	public void setB_tele(String b_tele) {
 		this.b_tele = b_tele;
 	}
 
@@ -37,15 +37,12 @@ public class BuyerInfo {
 		super();
 		this.u_act = b_act;
 	}
-	public BuyerInfo(String b_act, int b_tele) {
+	public BuyerInfo(String b_act, String b_tele) {
 		super();
 		this.u_act = b_act;
 		this.b_tele = b_tele;
 	}
-	public BuyerInfo(int b_tele) {
-		super();
-		this.b_tele = b_tele;
-	}
+
 
 	
 	

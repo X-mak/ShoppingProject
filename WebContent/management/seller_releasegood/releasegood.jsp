@@ -22,15 +22,15 @@
         <table>
             <tr>
                 <td>商品名称:</td>
-                <td><input type="text" name="goodname" placeholder="请输入商品名称"></td>
+                <td><input type="text" name="goodname" placeholder="请输入商品名称" maxlength = "16"></td>
             </tr>
             <tr>
                 <td>商品价格:</td>
-                <td><input type="text" name="goodprice" placeholder="请输入商品价格"></td>
+                <td><input type="text" name="goodprice" placeholder="请输入商品价格" maxlength = "16"></td>
             </tr>
             <tr>
                 <td>商品数量:</td>
-                <td><input type="text" name="goodnum" placeholder="请输入商品数量"></td>
+                <td><input type="text" name="goodnum" placeholder="请输入商品数量" maxlength = "16"></td>
             </tr>
             <tr>
                 <td>商品图片:</td>
@@ -38,7 +38,7 @@
             </tr>
             <tr>
                 <td>商品描述:</td>
-                <td><textarea id="richmedia"  name="goodinf"  style="resize: none;"></textarea><br /></td>
+                <td><textarea id="richmedia"  name="goodinf"  style="resize: none;" maxlength = "300"></textarea><br /></td>
             </tr>
             <tr>
                 <td colspan="2" align="center"><input type="submit" value="发布" class="sub-btn"/></td>

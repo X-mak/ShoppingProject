@@ -26,9 +26,9 @@
                 %>
         <form action="<%=basePath %>sellerloginServlet" method="post">
             <p>用户名</p>
-                <input type="text" name="selleracnumber" id="name" placeholder="请输入用户名"><br/>
+                <input type="text" name="selleracnumber" id="name" placeholder="请输入用户名" maxlength = "16"><br/>
             <p>密码</p>
-                <input type="password" name="sellerpwd" id="password" placeholder="请输入密码"><br/>
+                <input type="password" name="sellerpwd" id="password" placeholder="请输入密码" maxlength = "16"><br/>
                 <input type="submit" class="button" value="登录"/>
             </form>
             <form action="<%=basePath %>/index.jsp" method="post">
