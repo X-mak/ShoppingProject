@@ -74,7 +74,7 @@ public class Check {
 	    }//¶Ô¼Û¸ñ¼ì²â
 	
 	public boolean check_num(String num) {
-		String regEx = "\\d{5}" ;
+		String regEx = "\\d{1,5}" ;
 	    Pattern p = Pattern.compile(regEx);
 	    Matcher m = p.matcher(num);
 	    if(m.find()) {
