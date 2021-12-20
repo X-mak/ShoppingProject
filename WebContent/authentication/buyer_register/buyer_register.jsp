@@ -16,19 +16,19 @@
         <table>
             <tr>
                 <td>账号：</td>
-                <td><input type="text" name="buyer_acc" maxlength = "16"><br></td>
+                <td><input type="text" name="buyer_acc" maxlength = "16" placeholder="8到16位，需要数字和字母"><br></td>
             </tr>
             <tr>
                 <td>密码：</td>
-                <td><input type="password" name="buyer_pwd1" maxlength = "16"><br></td>
+                <td><input type="password" name="buyer_pwd1" maxlength = "16" placeholder="8到16位，需要数字和字母"><br></td>
             </tr>
             <tr>
                 <td>确认密码：</td>
-                <td><input type="password" name="buyer_pwd2" maxlength = "16"><br></td>
+                <td><input type="password" name="buyer_pwd2" maxlength = "16" placeholder="重复密码"><br></td>
             </tr>
             <tr>
                 <td>电话：</td>
-                <td><input type="text" name="buyer_tel" maxlength = "16"><br></td>
+                <td><input type="text" name="buyer_tel" maxlength = "16" placeholder="11位电话号码"><br></td>
             </tr>
             <tr>
                 <td>地址：</td>
