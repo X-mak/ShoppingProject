@@ -135,7 +135,8 @@ a {
         width: 500px;
         height: auto;
         left: 38%;
-        top:90%;
+        top:105%;
+        padding-bottom:50px;
     }
     .pages a{
         text-decoration: none;
