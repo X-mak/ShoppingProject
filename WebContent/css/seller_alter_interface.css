@@ -1,15 +1,26 @@
+#main {
+	float: left;
+	width:50%
+}
+
     #main form{
         margin: 50px 460px;
     }
     #main form p{
         margin: 0;
 	    padding: 0;
+	    display: inline-block;
         font-size: 18px;
 	    font-weight: bold;
 	    color: rgb(12, 12, 12);
+	    width: 200px;
+    }
+    #main form>div {
+    	wdith: fit-content;
     }
     #main form input{
         margin: 10px 0;
+        display: inline-block
         height: 24px;
         width: 300px;
     }

@@ -1,3 +1,7 @@
+    #main {
+    float: left;
+    width: 80%;
+    }
     #main .goods{
         margin: 20px auto; 
         border: 1px solid #000; 
@@ -22,7 +26,8 @@
     .first td:nth-child(3){
         width: 30%;
     }
-    ul li:nth-child(4) a{
-		background-color: #f7d024;
-        color: black;
-	} 
+    
+    .buyer>table>td:nth-child(5),
+    .buyer>table>td:nth-child(6) {
+    	width: 15%;
+    }
